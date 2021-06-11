@@ -1,0 +1,1146 @@
+PragmaDirective
+   Source: "pragma solidity ^0.4.0;"
+ContractDefinition "InsurBit"
+   Source: "contract InsurBit {\n\t/*********************************************************************/\n\t/*************** Types */\n\t/* User structure */\n\tstruct User {\n\t\taddress addr;\n\t\tuint amount;\n\t}\n\n\t/* World cell structure */\n\tstruct Cell {\n\t\tuint32 usercount;\n\t\tmapping (uint32 => User) users;\t\t// Users in the cell\n\t\tuint32 intensity;\t\t\t\t\t// Gained intensity by event in the cell during the period\n\t}\n\n\t/* Event structure */\n\tenum EventType { Earthquake }\n\n\tstruct Event {\n\t\tEventType eventType;\n\t\tuint32 intensity;\n\t\tuint32[] cells;\n\t\tuint distributed;\n\t\tuint32 users;\n\t}\n\n\t/*********************************************************************/\n\t/*************** Events */\n\t/* Fired on the end of the insuring period */\n\tevent InsuringPeriodEnd (uint totalInsuredAmount, uint32 totalUsers);\n\n\t/* Fired on new event */\n\tevent RaisedEvent (EventType eventType, uint32 intensity, uint32[] cells, uint distributed, uint32 affected);\n\n\t/* Raised on term distribution */\n\tevent LongTermDistribution (uint distributed, uint affected);\n\n\n\t/*********************************************************************/\n\t/*************** State variables */\n\t/* Total insured amount (short term and long term) */\n\tuint public totalInsuredAmount;\n\tuint public totalInsuredAmountShortTerm;\n\tuint public totalInsuredAmountLongTerm;\n\n\t/* Total users insured in this bucket */\n\tuint32 public totalUsers;\n\n\t/* Mapping from cell number to user */\n\tmapping (uint32 => Cell) public world;\n\n\t/* Events in the current year */\n\tuint32 public totalEvents;\n\tmapping (uint32 => Event) public events;\n\n\t/* Intensity sum */\n\tuint32 public intensitySum;\n\n\t/* Insuring period status */\n\tbool public insuringPeriodActive;\n\t\n\n\t/*********************************************************************/\n\t/*************** Contract parameters */\n\t/* Contract parameters: contract owner */\n\taddress public HELPERBIT_ADDRESS;\n\n\t/* Contract parameters: excepted annual intensity */\n\tuint public YEAR_INTENSITY;\n\n\t/* Contract parameters: short and long term distribution */\n\tuint public SPLIT_SHORT_TERM;\n\tuint public SPLIT_LONG_TERM;\n\n\n\n\t/*********************************************************************/\n\t/*************** Modifiers */\n\t/* Callable only by helperbit */\n\tmodifier onlyHB () {\n        if (msg.sender != HELPERBIT_ADDRESS)\n            throw;\n        _;\n    }\n\n\t/* Callable only if the insuring period is active */\n\tmodifier insuringPeriod () {\n        if (!insuringPeriodActive)\n            throw;\n        _;\n    }\n\n\n\t/*********************************************************************/\n\t/*************** Methods */\t\n\t/** Constructor */\n\tfunction InsurBit () {\n\t\tHELPERBIT_ADDRESS = msg.sender;\n\t\tYEAR_INTENSITY = 43013;\n\t\tSPLIT_SHORT_TERM = 100;\n\t\tSPLIT_LONG_TERM = 0;\n\n\t\ttotalUsers = 0;\n\t\ttotalInsuredAmount = 0;\n\t\ttotalInsuredAmountShortTerm = 0;\n\t\ttotalInsuredAmountLongTerm = 0;\n\n\t\tintensitySum = 0;\n\n\t\ttotalEvents = 0;\n\n\t\tinsuringPeriodActive = true;\n\t}\n\t\n\n\t/** \n\t * Called by helperbit for insuring a new user \n\t *\n\t * This method places a new insured user in a world cell.\n\t *\n\t * Only helperbit is enabled to insert a new insurer, so the fee is deducted before the contract call,\n\t * and the cell is the verified cell from helperbit.\n\t */\n\t/// Insure a new user \n\tfunction insure (uint32 cell, address user) onlyHB() insuringPeriod() {\n\t\ttotalInsuredAmount += msg.value;\n\t\ttotalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100;\n\t\ttotalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100;\n\t\ttotalUsers += 1;\n\n\n\t\t/* Initialize empty cell */\n\t\tif (world[cell].usercount == 0) {\n\t\t\tworld[cell] = Cell ({ usercount: 0, intensity: 0 });\n\t\t}\n\n\t\t/* Insert the new insured user */\n\t\tworld[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value });\n\t\tworld[cell].usercount += 1;\n\t}\n\n\t/**\n\t * Called at the end of the insuring period\n\t */\n\t function endInsuringPeriod () onlyHB() {\n\t\t insuringPeriodActive = false;\n\t\t InsuringPeriodEnd (totalInsuredAmount, totalUsers);\n\t }\n\n\n\t/** \n\t * Called by helperbit when an event occurs \n\t *\n\t * The interested cells are pushed to the affected list; every\n\t * user in the interested cells is rewarded with the short term calculated amount.\n\t */\n\t/// Raise a new event\n\tfunction raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {\t\t\n\t\t/* Sum the total amount of insured users in the affected cells */\n\t\tuint total = 0;\n\n\t\tuint i;\n\t\tuint32 j;\n\t\tuint32 celln;\n\t\tuint32 affected;\n\n\t\tfor (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}\n\t\t}\n\n\t\t/* Evalute the value depending on intensity, excepted year intensity, bucketsize */\n\t\tuint toDistribute = intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm; \n\n\t\t/* Send the immediate reward */\n\t\tfor (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}\n\n\t\t\t/* Update the affected cell */\n\t\t\tworld[celln].intensity += intensity;\n\t\t}\n\n\t\tintensitySum += intensity;\n\n\t\tevents[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected});\n\t\ttotalEvents += 1;\n\n\t\tRaisedEvent (eventType, intensity, cells, toDistribute, affected);\n\t}\n\n\n\n\t/** Called by helperbit after the insurance period */\n\t/// Long term reward\n\tfunction raiseLongTermReward () onlyHB() {\n\t\tLongTermDistribution (0, 0);\n\t}\n}"
+  StructDefinition "User"
+     Source: "struct User {\n\t\taddress addr;\n\t\tuint amount;\n\t}"
+    VariableDeclaration "addr"
+       Type: address
+       Source: "address addr"
+      ElementaryTypeName address
+         Source: "address"
+    VariableDeclaration "amount"
+       Type: uint256
+       Source: "uint amount"
+      ElementaryTypeName uint
+         Source: "uint"
+  StructDefinition "Cell"
+     Source: "struct Cell {\n\t\tuint32 usercount;\n\t\tmapping (uint32 => User) users;\t\t// Users in the cell\n\t\tuint32 intensity;\t\t\t\t\t// Gained intensity by event in the cell during the period\n\t}"
+    VariableDeclaration "usercount"
+       Type: uint32
+       Source: "uint32 usercount"
+      ElementaryTypeName uint32
+         Source: "uint32"
+    VariableDeclaration "users"
+       Type: mapping(uint32 => struct User storage ref)
+       Source: "mapping (uint32 => User) users"
+      Mapping
+         Source: "mapping (uint32 => User)"
+        ElementaryTypeName uint32
+           Source: "uint32"
+        UserDefinedTypeName "User"
+           Source: "User"
+    VariableDeclaration "intensity"
+       Type: uint32
+       Source: "uint32 intensity"
+      ElementaryTypeName uint32
+         Source: "uint32"
+  EnumDefinition "EventType"
+    EnumValue "Earthquake"
+  StructDefinition "Event"
+     Source: "struct Event {\n\t\tEventType eventType;\n\t\tuint32 intensity;\n\t\tuint32[] cells;\n\t\tuint distributed;\n\t\tuint32 users;\n\t}"
+    VariableDeclaration "eventType"
+       Type: enum EventType
+       Source: "EventType eventType"
+      UserDefinedTypeName "EventType"
+         Source: "EventType"
+    VariableDeclaration "intensity"
+       Type: uint32
+       Source: "uint32 intensity"
+      ElementaryTypeName uint32
+         Source: "uint32"
+    VariableDeclaration "cells"
+       Type: uint32[] storage pointer
+       Source: "uint32[] cells"
+      ArrayTypeName
+         Source: "uint32[]"
+        ElementaryTypeName uint32
+           Source: "uint32"
+    VariableDeclaration "distributed"
+       Type: uint256
+       Source: "uint distributed"
+      ElementaryTypeName uint
+         Source: "uint"
+    VariableDeclaration "users"
+       Type: uint32
+       Source: "uint32 users"
+      ElementaryTypeName uint32
+         Source: "uint32"
+  EventDefinition "InsuringPeriodEnd"
+     Source: "event InsuringPeriodEnd (uint totalInsuredAmount, uint32 totalUsers);"
+    ParameterList
+       Source: "(uint totalInsuredAmount, uint32 totalUsers)"
+      VariableDeclaration "totalInsuredAmount"
+         Type: uint256
+         Source: "uint totalInsuredAmount"
+        ElementaryTypeName uint
+           Source: "uint"
+      VariableDeclaration "totalUsers"
+         Type: uint32
+         Source: "uint32 totalUsers"
+        ElementaryTypeName uint32
+           Source: "uint32"
+  EventDefinition "RaisedEvent"
+     Source: "event RaisedEvent (EventType eventType, uint32 intensity, uint32[] cells, uint distributed, uint32 affected);"
+    ParameterList
+       Source: "(EventType eventType, uint32 intensity, uint32[] cells, uint distributed, uint32 affected)"
+      VariableDeclaration "eventType"
+         Type: enum EventType
+         Source: "EventType eventType"
+        UserDefinedTypeName "EventType"
+           Source: "EventType"
+      VariableDeclaration "intensity"
+         Type: uint32
+         Source: "uint32 intensity"
+        ElementaryTypeName uint32
+           Source: "uint32"
+      VariableDeclaration "cells"
+         Type: uint32[] memory
+         Source: "uint32[] cells"
+        ArrayTypeName
+           Source: "uint32[]"
+          ElementaryTypeName uint32
+             Source: "uint32"
+      VariableDeclaration "distributed"
+         Type: uint256
+         Source: "uint distributed"
+        ElementaryTypeName uint
+           Source: "uint"
+      VariableDeclaration "affected"
+         Type: uint32
+         Source: "uint32 affected"
+        ElementaryTypeName uint32
+           Source: "uint32"
+  EventDefinition "LongTermDistribution"
+     Source: "event LongTermDistribution (uint distributed, uint affected);"
+    ParameterList
+       Source: "(uint distributed, uint affected)"
+      VariableDeclaration "distributed"
+         Type: uint256
+         Source: "uint distributed"
+        ElementaryTypeName uint
+           Source: "uint"
+      VariableDeclaration "affected"
+         Type: uint256
+         Source: "uint affected"
+        ElementaryTypeName uint
+           Source: "uint"
+  VariableDeclaration "totalInsuredAmount"
+     Type: uint256
+     Source: "uint public totalInsuredAmount"
+    ElementaryTypeName uint
+       Source: "uint"
+  VariableDeclaration "totalInsuredAmountShortTerm"
+     Type: uint256
+     Source: "uint public totalInsuredAmountShortTerm"
+    ElementaryTypeName uint
+       Source: "uint"
+  VariableDeclaration "totalInsuredAmountLongTerm"
+     Type: uint256
+     Source: "uint public totalInsuredAmountLongTerm"
+    ElementaryTypeName uint
+       Source: "uint"
+  VariableDeclaration "totalUsers"
+     Type: uint32
+     Source: "uint32 public totalUsers"
+    ElementaryTypeName uint32
+       Source: "uint32"
+  VariableDeclaration "world"
+     Type: mapping(uint32 => struct Cell storage ref)
+     Source: "mapping (uint32 => Cell) public world"
+    Mapping
+       Source: "mapping (uint32 => Cell)"
+      ElementaryTypeName uint32
+         Source: "uint32"
+      UserDefinedTypeName "Cell"
+         Source: "Cell"
+  VariableDeclaration "totalEvents"
+     Type: uint32
+     Source: "uint32 public totalEvents"
+    ElementaryTypeName uint32
+       Source: "uint32"
+  VariableDeclaration "events"
+     Type: mapping(uint32 => struct Event storage ref)
+     Source: "mapping (uint32 => Event) public events"
+    Mapping
+       Source: "mapping (uint32 => Event)"
+      ElementaryTypeName uint32
+         Source: "uint32"
+      UserDefinedTypeName "Event"
+         Source: "Event"
+  VariableDeclaration "intensitySum"
+     Type: uint32
+     Source: "uint32 public intensitySum"
+    ElementaryTypeName uint32
+       Source: "uint32"
+  VariableDeclaration "insuringPeriodActive"
+     Type: bool
+     Source: "bool public insuringPeriodActive"
+    ElementaryTypeName bool
+       Source: "bool"
+  VariableDeclaration "HELPERBIT_ADDRESS"
+     Type: address
+     Source: "address public HELPERBIT_ADDRESS"
+    ElementaryTypeName address
+       Source: "address"
+  VariableDeclaration "YEAR_INTENSITY"
+     Type: uint256
+     Source: "uint public YEAR_INTENSITY"
+    ElementaryTypeName uint
+       Source: "uint"
+  VariableDeclaration "SPLIT_SHORT_TERM"
+     Type: uint256
+     Source: "uint public SPLIT_SHORT_TERM"
+    ElementaryTypeName uint
+       Source: "uint"
+  VariableDeclaration "SPLIT_LONG_TERM"
+     Type: uint256
+     Source: "uint public SPLIT_LONG_TERM"
+    ElementaryTypeName uint
+       Source: "uint"
+  ModifierDefinition "onlyHB"
+     Source: "modifier onlyHB () {\n        if (msg.sender != HELPERBIT_ADDRESS)\n            throw;\n        _;\n    }"
+    ParameterList
+       Source: "()"
+    Block
+       Source: "{\n        if (msg.sender != HELPERBIT_ADDRESS)\n            throw;\n        _;\n    }"
+      IfStatement
+         Source: "if (msg.sender != HELPERBIT_ADDRESS)\n            throw"
+        BinaryOperation using operator !=
+           Type: bool
+           Source: "msg.sender != HELPERBIT_ADDRESS"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+          Identifier HELPERBIT_ADDRESS
+             Type: address
+             Source: "HELPERBIT_ADDRESS"
+        Throw
+           Source: "throw"
+      PlaceholderStatement
+         Source: "_"
+  ModifierDefinition "insuringPeriod"
+     Source: "modifier insuringPeriod () {\n        if (!insuringPeriodActive)\n            throw;\n        _;\n    }"
+    ParameterList
+       Source: "()"
+    Block
+       Source: "{\n        if (!insuringPeriodActive)\n            throw;\n        _;\n    }"
+      IfStatement
+         Source: "if (!insuringPeriodActive)\n            throw"
+        UnaryOperation (prefix) !
+           Type: bool
+           Source: "!insuringPeriodActive"
+          Identifier insuringPeriodActive
+             Type: bool
+             Source: "insuringPeriodActive"
+        Throw
+           Source: "throw"
+      PlaceholderStatement
+         Source: "_"
+  FunctionDefinition "InsurBit" - public
+     Source: "function InsurBit () {\n\t\tHELPERBIT_ADDRESS = msg.sender;\n\t\tYEAR_INTENSITY = 43013;\n\t\tSPLIT_SHORT_TERM = 100;\n\t\tSPLIT_LONG_TERM = 0;\n\n\t\ttotalUsers = 0;\n\t\ttotalInsuredAmount = 0;\n\t\ttotalInsuredAmountShortTerm = 0;\n\t\ttotalInsuredAmountLongTerm = 0;\n\n\t\tintensitySum = 0;\n\n\t\ttotalEvents = 0;\n\n\t\tinsuringPeriodActive = true;\n\t}"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    Block
+       Source: "{\n\t\tHELPERBIT_ADDRESS = msg.sender;\n\t\tYEAR_INTENSITY = 43013;\n\t\tSPLIT_SHORT_TERM = 100;\n\t\tSPLIT_LONG_TERM = 0;\n\n\t\ttotalUsers = 0;\n\t\ttotalInsuredAmount = 0;\n\t\ttotalInsuredAmountShortTerm = 0;\n\t\ttotalInsuredAmountLongTerm = 0;\n\n\t\tintensitySum = 0;\n\n\t\ttotalEvents = 0;\n\n\t\tinsuringPeriodActive = true;\n\t}"
+      ExpressionStatement
+         Source: "HELPERBIT_ADDRESS = msg.sender"
+        Assignment using operator =
+           Type: address
+           Source: "HELPERBIT_ADDRESS = msg.sender"
+          Identifier HELPERBIT_ADDRESS
+             Type: address
+             Source: "HELPERBIT_ADDRESS"
+          MemberAccess to member sender
+             Type: address
+             Source: "msg.sender"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+      ExpressionStatement
+         Source: "YEAR_INTENSITY = 43013"
+        Assignment using operator =
+           Type: uint256
+           Source: "YEAR_INTENSITY = 43013"
+          Identifier YEAR_INTENSITY
+             Type: uint256
+             Source: "YEAR_INTENSITY"
+          Literal, token: [no token] value: 43013
+             Type: int_const 43013
+             Source: "43013"
+      ExpressionStatement
+         Source: "SPLIT_SHORT_TERM = 100"
+        Assignment using operator =
+           Type: uint256
+           Source: "SPLIT_SHORT_TERM = 100"
+          Identifier SPLIT_SHORT_TERM
+             Type: uint256
+             Source: "SPLIT_SHORT_TERM"
+          Literal, token: [no token] value: 100
+             Type: int_const 100
+             Source: "100"
+      ExpressionStatement
+         Source: "SPLIT_LONG_TERM = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "SPLIT_LONG_TERM = 0"
+          Identifier SPLIT_LONG_TERM
+             Type: uint256
+             Source: "SPLIT_LONG_TERM"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "totalUsers = 0"
+        Assignment using operator =
+           Type: uint32
+           Source: "totalUsers = 0"
+          Identifier totalUsers
+             Type: uint32
+             Source: "totalUsers"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "totalInsuredAmount = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "totalInsuredAmount = 0"
+          Identifier totalInsuredAmount
+             Type: uint256
+             Source: "totalInsuredAmount"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "totalInsuredAmountShortTerm = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "totalInsuredAmountShortTerm = 0"
+          Identifier totalInsuredAmountShortTerm
+             Type: uint256
+             Source: "totalInsuredAmountShortTerm"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "totalInsuredAmountLongTerm = 0"
+        Assignment using operator =
+           Type: uint256
+           Source: "totalInsuredAmountLongTerm = 0"
+          Identifier totalInsuredAmountLongTerm
+             Type: uint256
+             Source: "totalInsuredAmountLongTerm"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "intensitySum = 0"
+        Assignment using operator =
+           Type: uint32
+           Source: "intensitySum = 0"
+          Identifier intensitySum
+             Type: uint32
+             Source: "intensitySum"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "totalEvents = 0"
+        Assignment using operator =
+           Type: uint32
+           Source: "totalEvents = 0"
+          Identifier totalEvents
+             Type: uint32
+             Source: "totalEvents"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+      ExpressionStatement
+         Source: "insuringPeriodActive = true"
+        Assignment using operator =
+           Type: bool
+           Source: "insuringPeriodActive = true"
+          Identifier insuringPeriodActive
+             Type: bool
+             Source: "insuringPeriodActive"
+          Literal, token: true value: true
+             Type: bool
+             Source: "true"
+  FunctionDefinition "insure" - public
+     Source: "function insure (uint32 cell, address user) onlyHB() insuringPeriod() {\n\t\ttotalInsuredAmount += msg.value;\n\t\ttotalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100;\n\t\ttotalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100;\n\t\ttotalUsers += 1;\n\n\n\t\t/* Initialize empty cell */\n\t\tif (world[cell].usercount == 0) {\n\t\t\tworld[cell] = Cell ({ usercount: 0, intensity: 0 });\n\t\t}\n\n\t\t/* Insert the new insured user */\n\t\tworld[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value });\n\t\tworld[cell].usercount += 1;\n\t}"
+    ParameterList
+       Source: "(uint32 cell, address user)"
+      VariableDeclaration "cell"
+         Type: uint32
+         Source: "uint32 cell"
+        ElementaryTypeName uint32
+           Source: "uint32"
+      VariableDeclaration "user"
+         Type: address
+         Source: "address user"
+        ElementaryTypeName address
+           Source: "address"
+    ParameterList
+       Source: ""
+    ModifierInvocation "onlyHB"
+       Source: "onlyHB()"
+      Identifier onlyHB
+         Type: modifier ()
+         Source: "onlyHB"
+    ModifierInvocation "insuringPeriod"
+       Source: "insuringPeriod()"
+      Identifier insuringPeriod
+         Type: modifier ()
+         Source: "insuringPeriod"
+    Block
+       Source: "{\n\t\ttotalInsuredAmount += msg.value;\n\t\ttotalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100;\n\t\ttotalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100;\n\t\ttotalUsers += 1;\n\n\n\t\t/* Initialize empty cell */\n\t\tif (world[cell].usercount == 0) {\n\t\t\tworld[cell] = Cell ({ usercount: 0, intensity: 0 });\n\t\t}\n\n\t\t/* Insert the new insured user */\n\t\tworld[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value });\n\t\tworld[cell].usercount += 1;\n\t}"
+      ExpressionStatement
+         Source: "totalInsuredAmount += msg.value"
+        Assignment using operator +=
+           Type: uint256
+           Source: "totalInsuredAmount += msg.value"
+          Identifier totalInsuredAmount
+             Type: uint256
+             Source: "totalInsuredAmount"
+          MemberAccess to member value
+             Type: uint256
+             Source: "msg.value"
+            Identifier msg
+               Type: msg
+               Source: "msg"
+      ExpressionStatement
+         Source: "totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100"
+        Assignment using operator +=
+           Type: uint256
+           Source: "totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100"
+          Identifier totalInsuredAmountShortTerm
+             Type: uint256
+             Source: "totalInsuredAmountShortTerm"
+          BinaryOperation using operator *
+             Type: uint256
+             Source: "msg.value / SPLIT_SHORT_TERM * 100"
+            BinaryOperation using operator /
+               Type: uint256
+               Source: "msg.value / SPLIT_SHORT_TERM"
+              MemberAccess to member value
+                 Type: uint256
+                 Source: "msg.value"
+                Identifier msg
+                   Type: msg
+                   Source: "msg"
+              Identifier SPLIT_SHORT_TERM
+                 Type: uint256
+                 Source: "SPLIT_SHORT_TERM"
+            Literal, token: [no token] value: 100
+               Type: int_const 100
+               Source: "100"
+      ExpressionStatement
+         Source: "totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100"
+        Assignment using operator +=
+           Type: uint256
+           Source: "totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100"
+          Identifier totalInsuredAmountLongTerm
+             Type: uint256
+             Source: "totalInsuredAmountLongTerm"
+          BinaryOperation using operator *
+             Type: uint256
+             Source: "msg.value / SPLIT_LONG_TERM * 100"
+            BinaryOperation using operator /
+               Type: uint256
+               Source: "msg.value / SPLIT_LONG_TERM"
+              MemberAccess to member value
+                 Type: uint256
+                 Source: "msg.value"
+                Identifier msg
+                   Type: msg
+                   Source: "msg"
+              Identifier SPLIT_LONG_TERM
+                 Type: uint256
+                 Source: "SPLIT_LONG_TERM"
+            Literal, token: [no token] value: 100
+               Type: int_const 100
+               Source: "100"
+      ExpressionStatement
+         Source: "totalUsers += 1"
+        Assignment using operator +=
+           Type: uint32
+           Source: "totalUsers += 1"
+          Identifier totalUsers
+             Type: uint32
+             Source: "totalUsers"
+          Literal, token: [no token] value: 1
+             Type: int_const 1
+             Source: "1"
+      IfStatement
+         Source: "if (world[cell].usercount == 0) {\n\t\t\tworld[cell] = Cell ({ usercount: 0, intensity: 0 });\n\t\t}"
+        BinaryOperation using operator ==
+           Type: bool
+           Source: "world[cell].usercount == 0"
+          MemberAccess to member usercount
+             Type: uint32
+             Source: "world[cell].usercount"
+            IndexAccess
+               Type: struct Cell storage ref
+               Source: "world[cell]"
+              Identifier world
+                 Type: mapping(uint32 => struct Cell storage ref)
+                 Source: "world"
+              Identifier cell
+                 Type: uint32
+                 Source: "cell"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+        Block
+           Source: "{\n\t\t\tworld[cell] = Cell ({ usercount: 0, intensity: 0 });\n\t\t}"
+          ExpressionStatement
+             Source: "world[cell] = Cell ({ usercount: 0, intensity: 0 })"
+            Assignment using operator =
+               Type: struct Cell storage ref
+               Source: "world[cell] = Cell ({ usercount: 0, intensity: 0 })"
+              IndexAccess
+                 Type: struct Cell storage ref
+                 Source: "world[cell]"
+                Identifier world
+                   Type: mapping(uint32 => struct Cell storage ref)
+                   Source: "world"
+                Identifier cell
+                   Type: uint32
+                   Source: "cell"
+              FunctionCall
+                 Type: struct Cell memory
+                 Source: "Cell ({ usercount: 0, intensity: 0 })"
+                Identifier Cell
+                   Type: type(struct Cell storage pointer)
+                   Source: "Cell"
+                Literal, token: [no token] value: 0
+                   Type: int_const 0
+                   Source: "0"
+                Literal, token: [no token] value: 0
+                   Type: int_const 0
+                   Source: "0"
+      ExpressionStatement
+         Source: "world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })"
+        Assignment using operator =
+           Type: struct User storage ref
+           Source: "world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })"
+          IndexAccess
+             Type: struct User storage ref
+             Source: "world[cell].users[world[cell].usercount]"
+            MemberAccess to member users
+               Type: mapping(uint32 => struct User storage ref)
+               Source: "world[cell].users"
+              IndexAccess
+                 Type: struct Cell storage ref
+                 Source: "world[cell]"
+                Identifier world
+                   Type: mapping(uint32 => struct Cell storage ref)
+                   Source: "world"
+                Identifier cell
+                   Type: uint32
+                   Source: "cell"
+            MemberAccess to member usercount
+               Type: uint32
+               Source: "world[cell].usercount"
+              IndexAccess
+                 Type: struct Cell storage ref
+                 Source: "world[cell]"
+                Identifier world
+                   Type: mapping(uint32 => struct Cell storage ref)
+                   Source: "world"
+                Identifier cell
+                   Type: uint32
+                   Source: "cell"
+          FunctionCall
+             Type: struct User memory
+             Source: "User ({ addr: user, amount: msg.value })"
+            Identifier User
+               Type: type(struct User storage pointer)
+               Source: "User"
+            Identifier user
+               Type: address
+               Source: "user"
+            MemberAccess to member value
+               Type: uint256
+               Source: "msg.value"
+              Identifier msg
+                 Type: msg
+                 Source: "msg"
+      ExpressionStatement
+         Source: "world[cell].usercount += 1"
+        Assignment using operator +=
+           Type: uint32
+           Source: "world[cell].usercount += 1"
+          MemberAccess to member usercount
+             Type: uint32
+             Source: "world[cell].usercount"
+            IndexAccess
+               Type: struct Cell storage ref
+               Source: "world[cell]"
+              Identifier world
+                 Type: mapping(uint32 => struct Cell storage ref)
+                 Source: "world"
+              Identifier cell
+                 Type: uint32
+                 Source: "cell"
+          Literal, token: [no token] value: 1
+             Type: int_const 1
+             Source: "1"
+  FunctionDefinition "endInsuringPeriod" - public
+     Source: "function endInsuringPeriod () onlyHB() {\n\t\t insuringPeriodActive = false;\n\t\t InsuringPeriodEnd (totalInsuredAmount, totalUsers);\n\t }"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    ModifierInvocation "onlyHB"
+       Source: "onlyHB()"
+      Identifier onlyHB
+         Type: modifier ()
+         Source: "onlyHB"
+    Block
+       Source: "{\n\t\t insuringPeriodActive = false;\n\t\t InsuringPeriodEnd (totalInsuredAmount, totalUsers);\n\t }"
+      ExpressionStatement
+         Source: "insuringPeriodActive = false"
+        Assignment using operator =
+           Type: bool
+           Source: "insuringPeriodActive = false"
+          Identifier insuringPeriodActive
+             Type: bool
+             Source: "insuringPeriodActive"
+          Literal, token: false value: false
+             Type: bool
+             Source: "false"
+      ExpressionStatement
+         Source: "InsuringPeriodEnd (totalInsuredAmount, totalUsers)"
+        FunctionCall
+           Type: tuple()
+           Source: "InsuringPeriodEnd (totalInsuredAmount, totalUsers)"
+          Identifier InsuringPeriodEnd
+             Type: function (uint256,uint32) returns ()
+             Source: "InsuringPeriodEnd"
+          Identifier totalInsuredAmount
+             Type: uint256
+             Source: "totalInsuredAmount"
+          Identifier totalUsers
+             Type: uint32
+             Source: "totalUsers"
+  FunctionDefinition "raiseEvent" - public
+     Source: "function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {\t\t\n\t\t/* Sum the total amount of insured users in the affected cells */\n\t\tuint total = 0;\n\n\t\tuint i;\n\t\tuint32 j;\n\t\tuint32 celln;\n\t\tuint32 affected;\n\n\t\tfor (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}\n\t\t}\n\n\t\t/* Evalute the value depending on intensity, excepted year intensity, bucketsize */\n\t\tuint toDistribute = intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm; \n\n\t\t/* Send the immediate reward */\n\t\tfor (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}\n\n\t\t\t/* Update the affected cell */\n\t\t\tworld[celln].intensity += intensity;\n\t\t}\n\n\t\tintensitySum += intensity;\n\n\t\tevents[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected});\n\t\ttotalEvents += 1;\n\n\t\tRaisedEvent (eventType, intensity, cells, toDistribute, affected);\n\t}"
+    ParameterList
+       Source: "(EventType eventType, uint32[] cells, uint16 intensity)"
+      VariableDeclaration "eventType"
+         Type: enum EventType
+         Source: "EventType eventType"
+        UserDefinedTypeName "EventType"
+           Source: "EventType"
+      VariableDeclaration "cells"
+         Type: uint32[] memory
+         Source: "uint32[] cells"
+        ArrayTypeName
+           Source: "uint32[]"
+          ElementaryTypeName uint32
+             Source: "uint32"
+      VariableDeclaration "intensity"
+         Type: uint16
+         Source: "uint16 intensity"
+        ElementaryTypeName uint16
+           Source: "uint16"
+    ParameterList
+       Source: ""
+    ModifierInvocation "onlyHB"
+       Source: "onlyHB()"
+      Identifier onlyHB
+         Type: modifier ()
+         Source: "onlyHB"
+    Block
+       Source: "{\t\t\n\t\t/* Sum the total amount of insured users in the affected cells */\n\t\tuint total = 0;\n\n\t\tuint i;\n\t\tuint32 j;\n\t\tuint32 celln;\n\t\tuint32 affected;\n\n\t\tfor (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}\n\t\t}\n\n\t\t/* Evalute the value depending on intensity, excepted year intensity, bucketsize */\n\t\tuint toDistribute = intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm; \n\n\t\t/* Send the immediate reward */\n\t\tfor (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}\n\n\t\t\t/* Update the affected cell */\n\t\t\tworld[celln].intensity += intensity;\n\t\t}\n\n\t\tintensitySum += intensity;\n\n\t\tevents[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected});\n\t\ttotalEvents += 1;\n\n\t\tRaisedEvent (eventType, intensity, cells, toDistribute, affected);\n\t}"
+      VariableDeclarationStatement
+         Source: "uint total = 0"
+        VariableDeclaration "total"
+           Type: uint256
+           Source: "uint total"
+          ElementaryTypeName uint
+             Source: "uint"
+        Literal, token: [no token] value: 0
+           Type: int_const 0
+           Source: "0"
+      VariableDeclarationStatement
+         Source: "uint i;"
+        VariableDeclaration "i"
+           Type: uint256
+           Source: "uint i"
+          ElementaryTypeName uint
+             Source: "uint"
+      VariableDeclarationStatement
+         Source: "uint32 j;"
+        VariableDeclaration "j"
+           Type: uint32
+           Source: "uint32 j"
+          ElementaryTypeName uint32
+             Source: "uint32"
+      VariableDeclarationStatement
+         Source: "uint32 celln;"
+        VariableDeclaration "celln"
+           Type: uint32
+           Source: "uint32 celln"
+          ElementaryTypeName uint32
+             Source: "uint32"
+      VariableDeclarationStatement
+         Source: "uint32 affected;"
+        VariableDeclaration "affected"
+           Type: uint32
+           Source: "uint32 affected"
+          ElementaryTypeName uint32
+             Source: "uint32"
+      ForStatement
+         Source: "for (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}\n\t\t}"
+        ExpressionStatement
+           Source: "i = 0"
+          Assignment using operator =
+             Type: uint256
+             Source: "i = 0"
+            Identifier i
+               Type: uint256
+               Source: "i"
+            Literal, token: [no token] value: 0
+               Type: int_const 0
+               Source: "0"
+        BinaryOperation using operator <
+           Type: bool
+           Source: "i < cells.length"
+          Identifier i
+             Type: uint256
+             Source: "i"
+          MemberAccess to member length
+             Type: uint256
+             Source: "cells.length"
+            Identifier cells
+               Type: uint32[] memory
+               Source: "cells"
+        ExpressionStatement
+           Source: "i++"
+          UnaryOperation (postfix) ++
+             Type: uint256
+             Source: "i++"
+            Identifier i
+               Type: uint256
+               Source: "i"
+        Block
+           Source: "{\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}\n\t\t}"
+          ExpressionStatement
+             Source: "celln = cells[i]"
+            Assignment using operator =
+               Type: uint32
+               Source: "celln = cells[i]"
+              Identifier celln
+                 Type: uint32
+                 Source: "celln"
+              IndexAccess
+                 Type: uint32
+                 Source: "cells[i]"
+                Identifier cells
+                   Type: uint32[] memory
+                   Source: "cells"
+                Identifier i
+                   Type: uint256
+                   Source: "i"
+          ForStatement
+             Source: "for (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}"
+            ExpressionStatement
+               Source: "j = 0"
+              Assignment using operator =
+                 Type: uint32
+                 Source: "j = 0"
+                Identifier j
+                   Type: uint32
+                   Source: "j"
+                Literal, token: [no token] value: 0
+                   Type: int_const 0
+                   Source: "0"
+            BinaryOperation using operator <
+               Type: bool
+               Source: "j < world[celln].usercount"
+              Identifier j
+                 Type: uint32
+                 Source: "j"
+              MemberAccess to member usercount
+                 Type: uint32
+                 Source: "world[celln].usercount"
+                IndexAccess
+                   Type: struct Cell storage ref
+                   Source: "world[celln]"
+                  Identifier world
+                     Type: mapping(uint32 => struct Cell storage ref)
+                     Source: "world"
+                  Identifier celln
+                     Type: uint32
+                     Source: "celln"
+            ExpressionStatement
+               Source: "j++"
+              UnaryOperation (postfix) ++
+                 Type: uint32
+                 Source: "j++"
+                Identifier j
+                   Type: uint32
+                   Source: "j"
+            Block
+               Source: "{\n\t\t\t\ttotal += world[celln].users[j].amount;\n\t\t\t\taffected += 1;\n\t\t\t}"
+              ExpressionStatement
+                 Source: "total += world[celln].users[j].amount"
+                Assignment using operator +=
+                   Type: uint256
+                   Source: "total += world[celln].users[j].amount"
+                  Identifier total
+                     Type: uint256
+                     Source: "total"
+                  MemberAccess to member amount
+                     Type: uint256
+                     Source: "world[celln].users[j].amount"
+                    IndexAccess
+                       Type: struct User storage ref
+                       Source: "world[celln].users[j]"
+                      MemberAccess to member users
+                         Type: mapping(uint32 => struct User storage ref)
+                         Source: "world[celln].users"
+                        IndexAccess
+                           Type: struct Cell storage ref
+                           Source: "world[celln]"
+                          Identifier world
+                             Type: mapping(uint32 => struct Cell storage ref)
+                             Source: "world"
+                          Identifier celln
+                             Type: uint32
+                             Source: "celln"
+                      Identifier j
+                         Type: uint32
+                         Source: "j"
+              ExpressionStatement
+                 Source: "affected += 1"
+                Assignment using operator +=
+                   Type: uint32
+                   Source: "affected += 1"
+                  Identifier affected
+                     Type: uint32
+                     Source: "affected"
+                  Literal, token: [no token] value: 1
+                     Type: int_const 1
+                     Source: "1"
+      VariableDeclarationStatement
+         Source: "uint toDistribute = intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm"
+        VariableDeclaration "toDistribute"
+           Type: uint256
+           Source: "uint toDistribute"
+          ElementaryTypeName uint
+             Source: "uint"
+        BinaryOperation using operator *
+           Type: uint256
+           Source: "intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm"
+          BinaryOperation using operator /
+             Type: uint256
+             Source: "intensity / YEAR_INTENSITY"
+            Identifier intensity
+               Type: uint16
+               Source: "intensity"
+            Identifier YEAR_INTENSITY
+               Type: uint256
+               Source: "YEAR_INTENSITY"
+          Identifier totalInsuredAmountShortTerm
+             Type: uint256
+             Source: "totalInsuredAmountShortTerm"
+      ForStatement
+         Source: "for (i = 0; i < cells.length; i++) {\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}\n\n\t\t\t/* Update the affected cell */\n\t\t\tworld[celln].intensity += intensity;\n\t\t}"
+        ExpressionStatement
+           Source: "i = 0"
+          Assignment using operator =
+             Type: uint256
+             Source: "i = 0"
+            Identifier i
+               Type: uint256
+               Source: "i"
+            Literal, token: [no token] value: 0
+               Type: int_const 0
+               Source: "0"
+        BinaryOperation using operator <
+           Type: bool
+           Source: "i < cells.length"
+          Identifier i
+             Type: uint256
+             Source: "i"
+          MemberAccess to member length
+             Type: uint256
+             Source: "cells.length"
+            Identifier cells
+               Type: uint32[] memory
+               Source: "cells"
+        ExpressionStatement
+           Source: "i++"
+          UnaryOperation (postfix) ++
+             Type: uint256
+             Source: "i++"
+            Identifier i
+               Type: uint256
+               Source: "i"
+        Block
+           Source: "{\n\t\t\tcelln = cells[i];\n\n\t\t\tfor (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}\n\n\t\t\t/* Update the affected cell */\n\t\t\tworld[celln].intensity += intensity;\n\t\t}"
+          ExpressionStatement
+             Source: "celln = cells[i]"
+            Assignment using operator =
+               Type: uint32
+               Source: "celln = cells[i]"
+              Identifier celln
+                 Type: uint32
+                 Source: "celln"
+              IndexAccess
+                 Type: uint32
+                 Source: "cells[i]"
+                Identifier cells
+                   Type: uint32[] memory
+                   Source: "cells"
+                Identifier i
+                   Type: uint256
+                   Source: "i"
+          ForStatement
+             Source: "for (j = 0; j < world[celln].usercount; j++) {\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}"
+            ExpressionStatement
+               Source: "j = 0"
+              Assignment using operator =
+                 Type: uint32
+                 Source: "j = 0"
+                Identifier j
+                   Type: uint32
+                   Source: "j"
+                Literal, token: [no token] value: 0
+                   Type: int_const 0
+                   Source: "0"
+            BinaryOperation using operator <
+               Type: bool
+               Source: "j < world[celln].usercount"
+              Identifier j
+                 Type: uint32
+                 Source: "j"
+              MemberAccess to member usercount
+                 Type: uint32
+                 Source: "world[celln].usercount"
+                IndexAccess
+                   Type: struct Cell storage ref
+                   Source: "world[celln]"
+                  Identifier world
+                     Type: mapping(uint32 => struct Cell storage ref)
+                     Source: "world"
+                  Identifier celln
+                     Type: uint32
+                     Source: "celln"
+            ExpressionStatement
+               Source: "j++"
+              UnaryOperation (postfix) ++
+                 Type: uint32
+                 Source: "j++"
+                Identifier j
+                   Type: uint32
+                   Source: "j"
+            Block
+               Source: "{\n\t\t\t\t/* Evalute the amount for this user */\n\t\t\t\tuint amount = toDistribute / world[celln].users[j].amount;\n\n\t\t\t\tif (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow;\n\t\t\t}"
+              VariableDeclarationStatement
+                 Source: "uint amount = toDistribute / world[celln].users[j].amount"
+                VariableDeclaration "amount"
+                   Type: uint256
+                   Source: "uint amount"
+                  ElementaryTypeName uint
+                     Source: "uint"
+                BinaryOperation using operator /
+                   Type: uint256
+                   Source: "toDistribute / world[celln].users[j].amount"
+                  Identifier toDistribute
+                     Type: uint256
+                     Source: "toDistribute"
+                  MemberAccess to member amount
+                     Type: uint256
+                     Source: "world[celln].users[j].amount"
+                    IndexAccess
+                       Type: struct User storage ref
+                       Source: "world[celln].users[j]"
+                      MemberAccess to member users
+                         Type: mapping(uint32 => struct User storage ref)
+                         Source: "world[celln].users"
+                        IndexAccess
+                           Type: struct Cell storage ref
+                           Source: "world[celln]"
+                          Identifier world
+                             Type: mapping(uint32 => struct Cell storage ref)
+                             Source: "world"
+                          Identifier celln
+                             Type: uint32
+                             Source: "celln"
+                      Identifier j
+                         Type: uint32
+                         Source: "j"
+              IfStatement
+                 Source: "if (!world[celln].users[j].addr.send (amount))\n\t\t\t\t\tthrow"
+                UnaryOperation (prefix) !
+                   Type: bool
+                   Source: "!world[celln].users[j].addr.send (amount)"
+                  FunctionCall
+                     Type: bool
+                     Source: "world[celln].users[j].addr.send (amount)"
+                    MemberAccess to member send
+                       Type: function (uint256) returns (bool)
+                       Source: "world[celln].users[j].addr.send"
+                      MemberAccess to member addr
+                         Type: address
+                         Source: "world[celln].users[j].addr"
+                        IndexAccess
+                           Type: struct User storage ref
+                           Source: "world[celln].users[j]"
+                          MemberAccess to member users
+                             Type: mapping(uint32 => struct User storage ref)
+                             Source: "world[celln].users"
+                            IndexAccess
+                               Type: struct Cell storage ref
+                               Source: "world[celln]"
+                              Identifier world
+                                 Type: mapping(uint32 => struct Cell storage ref)
+                                 Source: "world"
+                              Identifier celln
+                                 Type: uint32
+                                 Source: "celln"
+                          Identifier j
+                             Type: uint32
+                             Source: "j"
+                    Identifier amount
+                       Type: uint256
+                       Source: "amount"
+                Throw
+                   Source: "throw"
+          ExpressionStatement
+             Source: "world[celln].intensity += intensity"
+            Assignment using operator +=
+               Type: uint32
+               Source: "world[celln].intensity += intensity"
+              MemberAccess to member intensity
+                 Type: uint32
+                 Source: "world[celln].intensity"
+                IndexAccess
+                   Type: struct Cell storage ref
+                   Source: "world[celln]"
+                  Identifier world
+                     Type: mapping(uint32 => struct Cell storage ref)
+                     Source: "world"
+                  Identifier celln
+                     Type: uint32
+                     Source: "celln"
+              Identifier intensity
+                 Type: uint16
+                 Source: "intensity"
+      ExpressionStatement
+         Source: "intensitySum += intensity"
+        Assignment using operator +=
+           Type: uint32
+           Source: "intensitySum += intensity"
+          Identifier intensitySum
+             Type: uint32
+             Source: "intensitySum"
+          Identifier intensity
+             Type: uint16
+             Source: "intensity"
+      ExpressionStatement
+         Source: "events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})"
+        Assignment using operator =
+           Type: struct Event storage ref
+           Source: "events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})"
+          IndexAccess
+             Type: struct Event storage ref
+             Source: "events[totalEvents]"
+            Identifier events
+               Type: mapping(uint32 => struct Event storage ref)
+               Source: "events"
+            Identifier totalEvents
+               Type: uint32
+               Source: "totalEvents"
+          FunctionCall
+             Type: struct Event memory
+             Source: "Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})"
+            Identifier Event
+               Type: type(struct Event storage pointer)
+               Source: "Event"
+            Identifier eventType
+               Type: enum EventType
+               Source: "eventType"
+            Identifier intensity
+               Type: uint16
+               Source: "intensity"
+            Identifier cells
+               Type: uint32[] memory
+               Source: "cells"
+            Identifier toDistribute
+               Type: uint256
+               Source: "toDistribute"
+            Identifier affected
+               Type: uint32
+               Source: "affected"
+      ExpressionStatement
+         Source: "totalEvents += 1"
+        Assignment using operator +=
+           Type: uint32
+           Source: "totalEvents += 1"
+          Identifier totalEvents
+             Type: uint32
+             Source: "totalEvents"
+          Literal, token: [no token] value: 1
+             Type: int_const 1
+             Source: "1"
+      ExpressionStatement
+         Source: "RaisedEvent (eventType, intensity, cells, toDistribute, affected)"
+        FunctionCall
+           Type: tuple()
+           Source: "RaisedEvent (eventType, intensity, cells, toDistribute, affected)"
+          Identifier RaisedEvent
+             Type: function (enum EventType,uint32,uint32[] memory,uint256,uint32) returns ()
+             Source: "RaisedEvent"
+          Identifier eventType
+             Type: enum EventType
+             Source: "eventType"
+          Identifier intensity
+             Type: uint16
+             Source: "intensity"
+          Identifier cells
+             Type: uint32[] memory
+             Source: "cells"
+          Identifier toDistribute
+             Type: uint256
+             Source: "toDistribute"
+          Identifier affected
+             Type: uint32
+             Source: "affected"
+  FunctionDefinition "raiseLongTermReward" - public
+     Source: "function raiseLongTermReward () onlyHB() {\n\t\tLongTermDistribution (0, 0);\n\t}"
+    ParameterList
+       Source: "()"
+    ParameterList
+       Source: ""
+    ModifierInvocation "onlyHB"
+       Source: "onlyHB()"
+      Identifier onlyHB
+         Type: modifier ()
+         Source: "onlyHB"
+    Block
+       Source: "{\n\t\tLongTermDistribution (0, 0);\n\t}"
+      ExpressionStatement
+         Source: "LongTermDistribution (0, 0)"
+        FunctionCall
+           Type: tuple()
+           Source: "LongTermDistribution (0, 0)"
+          Identifier LongTermDistribution
+             Type: function (uint256,uint256) returns ()
+             Source: "LongTermDistribution"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"
+          Literal, token: [no token] value: 0
+             Type: int_const 0
+             Source: "0"

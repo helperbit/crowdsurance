@@ -1,0 +1,30 @@
+{
+  "name": "hexagon",
+  "version": "0.2.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helperbit/hexagon.git"
+  },
+  "keywords": [
+    "typescript",
+    "library",
+    "geometry",
+    "geojson"
+  ],
+  "author": "Davide Gessa (gessadavide@helperbit.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helperbit/hexagon/issues"
+  },
+  "homepage": "https://github.com/helperbit/hexagon#readme",
+  "dependencies": {
+    "@turf/turf": "^5.1.6",
+    "typescript": "^3.9.2"
+  }
+}

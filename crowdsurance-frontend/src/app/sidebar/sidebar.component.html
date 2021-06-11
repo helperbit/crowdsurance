@@ -1,0 +1,118 @@
+<!-- 
+  Helperbit: a p2p donation platform (crowdsurance)
+  Copyright (C) 2016-2021  Davide Gessa (gessadavide@gmail.com)
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>
+ -->
+
+<a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/">
+    <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fa fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">HB Crowdsurance</div>
+</a>
+
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" routerLink="/">
+        <i class="fa fa-fw fa-tachometer"></i>
+        <span>Dashboard</span></a>
+</li>
+
+<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" routerLink="/buy-cover">
+        <i class="fa fa-fw fa-dollar"></i>
+        <span>Buy cover</span></a>
+</li>
+<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" href="#">
+        <i class="fa fa-fw fa-line-chart"></i>
+        <span>Statistics</span></a>
+</li>
+
+<!-- Divider -->
+<hr *ngIf="currentUser" class="sidebar-divider">
+
+<div *ngIf="currentUser" class="sidebar-heading">
+    Profile
+</div>
+
+<li *ngIf="currentUser" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" href="#">
+        <i class="fa fa-fw fa-vcard"></i>
+        <span>Verification</span></a>
+</li>
+<li *ngIf="currentUser" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" href="#">
+        <i class="fa fa-fw fa-gear"></i>
+        <span>Settings</span></a>
+</li>
+
+<!-- <li *ngIf="!currentUser" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" routerLink="/login">
+        <i class="fa fa-fw fa-vcard"></i>
+        <span>Login</span></a>
+</li>
+<li *ngIf="!currentUser" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" routerLink="/register">
+        <i class="fa fa-fw fa-gear"></i>
+        <span>Register</span></a>
+</li> -->
+
+
+<hr class="sidebar-divider">
+
+<div class="sidebar-heading">
+    About
+</div>
+
+<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" href="#">
+        <i class="fa fa-fw fa-plug"></i>
+        <span>Service status</span></a>
+</li>
+<li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <a class="nav-link" href="#">
+        <i class="fa fa-fw fa-support"></i>
+        <span>FAQ</span></a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" target="_blank" href="https://github.com/helperbit">
+        <i class="fa fa-fw fa-github"></i>
+        <span>Contract & source</span></a>
+</li>
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<li class="nav-item node-status active">
+    <a class="nav-link online" *ngIf="nodeStatus && nodeStatus.online">
+        <i class="fa fa-fw fa-circle"></i>
+        <span>Node online [{{nodeStatus.level}}]</span>
+    </a>
+    <a class="nav-link offline" *ngIf="!nodeStatus || !nodeStatus.online">
+        <i class="fa fa-fw fa-circle"></i>
+        <span>Node offline</span>
+    </a>
+</li>
+
+
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>

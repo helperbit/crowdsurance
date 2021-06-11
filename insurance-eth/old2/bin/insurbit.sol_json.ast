@@ -1,0 +1,4642 @@
+{
+	"children" : 
+	[
+		{
+			"attributes" : 
+			{
+				"literals" : 
+				[
+					"solidity",
+					"^",
+					"0.4",
+					".0"
+				]
+			},
+			"id" : 8430432,
+			"name" : "PragmaDirective",
+			"src" : "1012:23:-1"
+		},
+		{
+			"attributes" : 
+			{
+				"fullyImplemented" : true,
+				"isLibrary" : false,
+				"linearizedBaseContracts" : 
+				[
+					8519616
+				],
+				"name" : "InsurBit"
+			},
+			"children" : 
+			[
+				{
+					"attributes" : 
+					{
+						"name" : "User"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "addr",
+								"type" : "address"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "address"
+									},
+									"id" : 8430592,
+									"name" : "ElementaryTypeName",
+									"src" : "1196:7:-1"
+								}
+							],
+							"id" : 8441824,
+							"name" : "VariableDeclaration",
+							"src" : "1196:12:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "amount",
+								"type" : "uint256"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint"
+									},
+									"id" : 8442000,
+									"name" : "ElementaryTypeName",
+									"src" : "1212:4:-1"
+								}
+							],
+							"id" : 8442112,
+							"name" : "VariableDeclaration",
+							"src" : "1212:11:-1"
+						}
+					],
+					"id" : 8442352,
+					"name" : "StructDefinition",
+					"src" : "1180:47:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "Cell"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "usercount",
+								"type" : "uint32"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint32"
+									},
+									"id" : 8442656,
+									"name" : "ElementaryTypeName",
+									"src" : "1274:6:-1"
+								}
+							],
+							"id" : 8451424,
+							"name" : "VariableDeclaration",
+							"src" : "1274:16:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "users",
+								"type" : "mapping(uint32 => struct User storage ref)"
+							},
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint32"
+											},
+											"id" : 8451648,
+											"name" : "ElementaryTypeName",
+											"src" : "1303:6:-1"
+										},
+										{
+											"attributes" : 
+											{
+												"name" : "User"
+											},
+											"id" : 8442560,
+											"name" : "UserDefinedTypeName",
+											"src" : "1313:4:-1"
+										}
+									],
+									"id" : 8451792,
+									"name" : "Mapping",
+									"src" : "1294:24:-1"
+								}
+							],
+							"id" : 8451936,
+							"name" : "VariableDeclaration",
+							"src" : "1294:30:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "intensity",
+								"type" : "uint32"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint32"
+									},
+									"id" : 8452288,
+									"name" : "ElementaryTypeName",
+									"src" : "1350:6:-1"
+								}
+							],
+							"id" : 8452368,
+							"name" : "VariableDeclaration",
+							"src" : "1350:16:-1"
+						}
+					],
+					"id" : 8452592,
+					"name" : "StructDefinition",
+					"src" : "1258:175:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "EventType"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "Earthquake"
+							},
+							"id" : 8452128,
+							"name" : "EnumValue",
+							"src" : "1476:10:-1"
+						}
+					],
+					"id" : 8452912,
+					"name" : "EnumDefinition",
+					"src" : "1459:29:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "Event"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "eventType",
+								"type" : "enum EventType"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "EventType"
+									},
+									"id" : 8453264,
+									"name" : "UserDefinedTypeName",
+									"src" : "1508:9:-1"
+								}
+							],
+							"id" : 8453360,
+							"name" : "VariableDeclaration",
+							"src" : "1508:19:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "intensity",
+								"type" : "uint32"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint32"
+									},
+									"id" : 8453760,
+									"name" : "ElementaryTypeName",
+									"src" : "1531:6:-1"
+								}
+							],
+							"id" : 8453872,
+							"name" : "VariableDeclaration",
+							"src" : "1531:16:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "cells",
+								"type" : "uint32[] storage pointer"
+							},
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint32"
+											},
+											"id" : 8454112,
+											"name" : "ElementaryTypeName",
+											"src" : "1551:6:-1"
+										}
+									],
+									"id" : 8453600,
+									"name" : "ArrayTypeName",
+									"src" : "1551:8:-1"
+								}
+							],
+							"id" : 8454192,
+							"name" : "VariableDeclaration",
+							"src" : "1551:14:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "distributed",
+								"type" : "uint256"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint"
+									},
+									"id" : 8454416,
+									"name" : "ElementaryTypeName",
+									"src" : "1569:4:-1"
+								}
+							],
+							"id" : 8454528,
+							"name" : "VariableDeclaration",
+							"src" : "1569:16:-1"
+						},
+						{
+							"attributes" : 
+							{
+								"name" : "users",
+								"type" : "uint32"
+							},
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint32"
+									},
+									"id" : 8454832,
+									"name" : "ElementaryTypeName",
+									"src" : "1589:6:-1"
+								}
+							],
+							"id" : 8454944,
+							"name" : "VariableDeclaration",
+							"src" : "1589:12:-1"
+						}
+					],
+					"id" : 8455408,
+					"name" : "StructDefinition",
+					"src" : "1491:114:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "InsuringPeriodEnd"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "totalInsuredAmount",
+										"type" : "uint256"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint"
+											},
+											"id" : 8455536,
+											"name" : "ElementaryTypeName",
+											"src" : "1781:4:-1"
+										}
+									],
+									"id" : 8455648,
+									"name" : "VariableDeclaration",
+									"src" : "1781:23:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "totalUsers",
+										"type" : "uint32"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint32"
+											},
+											"id" : 8455984,
+											"name" : "ElementaryTypeName",
+											"src" : "1806:6:-1"
+										}
+									],
+									"id" : 8456096,
+									"name" : "VariableDeclaration",
+									"src" : "1806:17:-1"
+								}
+							],
+							"id" : 8455824,
+							"name" : "ParameterList",
+							"src" : "1780:44:-1"
+						}
+					],
+					"id" : 8456288,
+					"name" : "EventDefinition",
+					"src" : "1756:69:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "RaisedEvent"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "eventType",
+										"type" : "enum EventType"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "EventType"
+											},
+											"id" : 8456800,
+											"name" : "UserDefinedTypeName",
+											"src" : "1873:9:-1"
+										}
+									],
+									"id" : 8456896,
+									"name" : "VariableDeclaration",
+									"src" : "1873:19:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "intensity",
+										"type" : "uint32"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint32"
+											},
+											"id" : 8452512,
+											"name" : "ElementaryTypeName",
+											"src" : "1894:6:-1"
+										}
+									],
+									"id" : 8457328,
+									"name" : "VariableDeclaration",
+									"src" : "1894:16:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "cells",
+										"type" : "uint32[] memory"
+									},
+									"children" : 
+									[
+										{
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint32"
+													},
+													"id" : 8457568,
+													"name" : "ElementaryTypeName",
+													"src" : "1912:6:-1"
+												}
+											],
+											"id" : 8457136,
+											"name" : "ArrayTypeName",
+											"src" : "1912:8:-1"
+										}
+									],
+									"id" : 8457648,
+									"name" : "VariableDeclaration",
+									"src" : "1912:14:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "distributed",
+										"type" : "uint256"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint"
+											},
+											"id" : 8457872,
+											"name" : "ElementaryTypeName",
+											"src" : "1928:4:-1"
+										}
+									],
+									"id" : 8457984,
+									"name" : "VariableDeclaration",
+									"src" : "1928:16:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "affected",
+										"type" : "uint32"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint32"
+											},
+											"id" : 8458288,
+											"name" : "ElementaryTypeName",
+											"src" : "1946:6:-1"
+										}
+									],
+									"id" : 8458400,
+									"name" : "VariableDeclaration",
+									"src" : "1946:15:-1"
+								}
+							],
+							"id" : 8458128,
+							"name" : "ParameterList",
+							"src" : "1872:90:-1"
+						}
+					],
+					"id" : 8458784,
+					"name" : "EventDefinition",
+					"src" : "1854:109:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "LongTermDistribution"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "distributed",
+										"type" : "uint256"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint"
+											},
+											"id" : 8458576,
+											"name" : "ElementaryTypeName",
+											"src" : "2029:4:-1"
+										}
+									],
+									"id" : 8458960,
+									"name" : "VariableDeclaration",
+									"src" : "2029:16:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "affected",
+										"type" : "uint256"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint"
+											},
+											"id" : 8459136,
+											"name" : "ElementaryTypeName",
+											"src" : "2047:4:-1"
+										}
+									],
+									"id" : 8459248,
+									"name" : "VariableDeclaration",
+									"src" : "2047:13:-1"
+								}
+							],
+							"id" : 8459808,
+							"name" : "ParameterList",
+							"src" : "2028:33:-1"
+						}
+					],
+					"id" : 8459904,
+					"name" : "EventDefinition",
+					"src" : "2001:61:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "totalInsuredAmount",
+						"type" : "uint256"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint"
+							},
+							"id" : 8459552,
+							"name" : "ElementaryTypeName",
+							"src" : "2231:4:-1"
+						}
+					],
+					"id" : 8460080,
+					"name" : "VariableDeclaration",
+					"src" : "2231:30:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "totalInsuredAmountShortTerm",
+						"type" : "uint256"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint"
+							},
+							"id" : 8459712,
+							"name" : "ElementaryTypeName",
+							"src" : "2264:4:-1"
+						}
+					],
+					"id" : 8460336,
+					"name" : "VariableDeclaration",
+					"src" : "2264:39:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "totalInsuredAmountLongTerm",
+						"type" : "uint256"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint"
+							},
+							"id" : 8456464,
+							"name" : "ElementaryTypeName",
+							"src" : "2306:4:-1"
+						}
+					],
+					"id" : 8460832,
+					"name" : "VariableDeclaration",
+					"src" : "2306:38:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "totalUsers",
+						"type" : "uint32"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint32"
+							},
+							"id" : 8461120,
+							"name" : "ElementaryTypeName",
+							"src" : "2390:6:-1"
+						}
+					],
+					"id" : 8461200,
+					"name" : "VariableDeclaration",
+					"src" : "2390:24:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "world",
+						"type" : "mapping(uint32 => struct Cell storage ref)"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint32"
+									},
+									"id" : 8461408,
+									"name" : "ElementaryTypeName",
+									"src" : "2467:6:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "Cell"
+									},
+									"id" : 8460976,
+									"name" : "UserDefinedTypeName",
+									"src" : "2477:4:-1"
+								}
+							],
+							"id" : 8461552,
+							"name" : "Mapping",
+							"src" : "2458:24:-1"
+						}
+					],
+					"id" : 8461696,
+					"name" : "VariableDeclaration",
+					"src" : "2458:37:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "totalEvents",
+						"type" : "uint32"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint32"
+							},
+							"id" : 8461984,
+							"name" : "ElementaryTypeName",
+							"src" : "2533:6:-1"
+						}
+					],
+					"id" : 8462096,
+					"name" : "VariableDeclaration",
+					"src" : "2533:25:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "events",
+						"type" : "mapping(uint32 => struct Event storage ref)"
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "uint32"
+									},
+									"id" : 8462304,
+									"name" : "ElementaryTypeName",
+									"src" : "2570:6:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "Event"
+									},
+									"id" : 8461840,
+									"name" : "UserDefinedTypeName",
+									"src" : "2580:5:-1"
+								}
+							],
+							"id" : 8462448,
+							"name" : "Mapping",
+							"src" : "2561:25:-1"
+						}
+					],
+					"id" : 8462592,
+					"name" : "VariableDeclaration",
+					"src" : "2561:39:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "intensitySum",
+						"type" : "uint32"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint32"
+							},
+							"id" : 8462880,
+							"name" : "ElementaryTypeName",
+							"src" : "2625:6:-1"
+						}
+					],
+					"id" : 8462992,
+					"name" : "VariableDeclaration",
+					"src" : "2625:26:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "insuringPeriodActive",
+						"type" : "bool"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "bool"
+							},
+							"id" : 8463136,
+							"name" : "ElementaryTypeName",
+							"src" : "2685:4:-1"
+						}
+					],
+					"id" : 8463648,
+					"name" : "VariableDeclaration",
+					"src" : "2685:32:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "HELPERBIT_ADDRESS",
+						"type" : "address"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "address"
+							},
+							"id" : 8463392,
+							"name" : "ElementaryTypeName",
+							"src" : "2880:7:-1"
+						}
+					],
+					"id" : 8463792,
+					"name" : "VariableDeclaration",
+					"src" : "2880:32:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "YEAR_INTENSITY",
+						"type" : "uint256"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint"
+							},
+							"id" : 8460480,
+							"name" : "ElementaryTypeName",
+							"src" : "2970:4:-1"
+						}
+					],
+					"id" : 8460592,
+					"name" : "VariableDeclaration",
+					"src" : "2970:26:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "SPLIT_SHORT_TERM",
+						"type" : "uint256"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint"
+							},
+							"id" : 8464464,
+							"name" : "ElementaryTypeName",
+							"src" : "3061:4:-1"
+						}
+					],
+					"id" : 8464576,
+					"name" : "VariableDeclaration",
+					"src" : "3061:28:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "SPLIT_LONG_TERM",
+						"type" : "uint256"
+					},
+					"children" : 
+					[
+						{
+							"attributes" : 
+							{
+								"name" : "uint"
+							},
+							"id" : 8464720,
+							"name" : "ElementaryTypeName",
+							"src" : "3092:4:-1"
+						}
+					],
+					"id" : 8465216,
+					"name" : "VariableDeclaration",
+					"src" : "3092:27:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "onlyHB"
+					},
+					"children" : 
+					[
+						{
+							"children" : [],
+							"id" : 8462736,
+							"name" : "ParameterList",
+							"src" : "3279:2:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "!=",
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"member_name" : "sender",
+														"type" : "address"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "msg",
+																"value" : "msg"
+															},
+															"id" : 8464960,
+															"name" : "Identifier",
+															"src" : "3296:3:-1"
+														}
+													],
+													"id" : 8465696,
+													"name" : "MemberAccess",
+													"src" : "3296:10:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "address",
+														"value" : "HELPERBIT_ADDRESS"
+													},
+													"id" : 8465824,
+													"name" : "Identifier",
+													"src" : "3310:17:-1"
+												}
+											],
+											"id" : 8430672,
+											"name" : "BinaryOperation",
+											"src" : "3296:31:-1"
+										},
+										{
+											"children" : [],
+											"id" : 8465904,
+											"name" : "Throw",
+											"src" : "3341:5:-1"
+										}
+									],
+									"id" : 8465984,
+									"name" : "IfStatement",
+									"src" : "3292:54:-1"
+								},
+								{
+									"id" : 8466144,
+									"name" : "PlaceholderStatement",
+									"src" : "3356:1:-1"
+								}
+							],
+							"id" : 8466272,
+							"name" : "Block",
+							"src" : "3282:82:-1"
+						}
+					],
+					"id" : 8466384,
+					"name" : "ModifierDefinition",
+					"src" : "3263:101:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"name" : "insuringPeriod"
+					},
+					"children" : 
+					[
+						{
+							"children" : [],
+							"id" : 8466576,
+							"name" : "ParameterList",
+							"src" : "3445:2:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "!",
+												"prefix" : true,
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "bool",
+														"value" : "insuringPeriodActive"
+													},
+													"id" : 8466848,
+													"name" : "Identifier",
+													"src" : "3463:20:-1"
+												}
+											],
+											"id" : 8466928,
+											"name" : "UnaryOperation",
+											"src" : "3462:21:-1"
+										},
+										{
+											"children" : [],
+											"id" : 8467024,
+											"name" : "Throw",
+											"src" : "3497:5:-1"
+										}
+									],
+									"id" : 8467104,
+									"name" : "IfStatement",
+									"src" : "3458:44:-1"
+								},
+								{
+									"id" : 8467264,
+									"name" : "PlaceholderStatement",
+									"src" : "3512:1:-1"
+								}
+							],
+							"id" : 8467424,
+							"name" : "Block",
+							"src" : "3448:72:-1"
+						}
+					],
+					"id" : 8467712,
+					"name" : "ModifierDefinition",
+					"src" : "3421:99:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "InsurBit",
+						"payable" : false,
+						"public" : true
+					},
+					"children" : 
+					[
+						{
+							"children" : [],
+							"id" : 8468000,
+							"name" : "ParameterList",
+							"src" : "3665:2:-1"
+						},
+						{
+							"children" : [],
+							"id" : 8468096,
+							"name" : "ParameterList",
+							"src" : "3668:0:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "address"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "address",
+														"value" : "HELPERBIT_ADDRESS"
+													},
+													"id" : 8468224,
+													"name" : "Identifier",
+													"src" : "3672:17:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"member_name" : "sender",
+														"type" : "address"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "msg",
+																"value" : "msg"
+															},
+															"id" : 8468384,
+															"name" : "Identifier",
+															"src" : "3692:3:-1"
+														}
+													],
+													"id" : 8468544,
+													"name" : "MemberAccess",
+													"src" : "3692:10:-1"
+												}
+											],
+											"id" : 8468640,
+											"name" : "Assignment",
+											"src" : "3672:30:-1"
+										}
+									],
+									"id" : 8468752,
+									"name" : "ExpressionStatement",
+									"src" : "3672:30:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "YEAR_INTENSITY"
+													},
+													"id" : 8468912,
+													"name" : "Identifier",
+													"src" : "3706:14:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "3433303133",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 43013",
+														"value" : "43013"
+													},
+													"id" : 8469136,
+													"name" : "Literal",
+													"src" : "3723:5:-1"
+												}
+											],
+											"id" : 8469232,
+											"name" : "Assignment",
+											"src" : "3706:22:-1"
+										}
+									],
+									"id" : 8469344,
+									"name" : "ExpressionStatement",
+									"src" : "3706:22:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "SPLIT_SHORT_TERM"
+													},
+													"id" : 8469488,
+													"name" : "Identifier",
+													"src" : "3732:16:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "313030",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 100",
+														"value" : "100"
+													},
+													"id" : 8469712,
+													"name" : "Literal",
+													"src" : "3751:3:-1"
+												}
+											],
+											"id" : 8469808,
+											"name" : "Assignment",
+											"src" : "3732:22:-1"
+										}
+									],
+									"id" : 8469920,
+									"name" : "ExpressionStatement",
+									"src" : "3732:22:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "SPLIT_LONG_TERM"
+													},
+													"id" : 8470128,
+													"name" : "Identifier",
+													"src" : "3758:15:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8470304,
+													"name" : "Literal",
+													"src" : "3776:1:-1"
+												}
+											],
+											"id" : 8470400,
+											"name" : "Assignment",
+											"src" : "3758:19:-1"
+										}
+									],
+									"id" : 8470512,
+									"name" : "ExpressionStatement",
+									"src" : "3758:19:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "totalUsers"
+													},
+													"id" : 8470640,
+													"name" : "Identifier",
+													"src" : "3782:10:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8470944,
+													"name" : "Literal",
+													"src" : "3795:1:-1"
+												}
+											],
+											"id" : 8471040,
+											"name" : "Assignment",
+											"src" : "3782:14:-1"
+										}
+									],
+									"id" : 8471152,
+									"name" : "ExpressionStatement",
+									"src" : "3782:14:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmount"
+													},
+													"id" : 8470016,
+													"name" : "Identifier",
+													"src" : "3800:18:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8471584,
+													"name" : "Literal",
+													"src" : "3821:1:-1"
+												}
+											],
+											"id" : 8471680,
+											"name" : "Assignment",
+											"src" : "3800:22:-1"
+										}
+									],
+									"id" : 8471792,
+									"name" : "ExpressionStatement",
+									"src" : "3800:22:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmountShortTerm"
+													},
+													"id" : 8471920,
+													"name" : "Identifier",
+													"src" : "3826:27:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8472160,
+													"name" : "Literal",
+													"src" : "3856:1:-1"
+												}
+											],
+											"id" : 8472256,
+											"name" : "Assignment",
+											"src" : "3826:31:-1"
+										}
+									],
+									"id" : 8472368,
+									"name" : "ExpressionStatement",
+									"src" : "3826:31:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmountLongTerm"
+													},
+													"id" : 8472496,
+													"name" : "Identifier",
+													"src" : "3861:26:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8472656,
+													"name" : "Literal",
+													"src" : "3890:1:-1"
+												}
+											],
+											"id" : 8472752,
+											"name" : "Assignment",
+											"src" : "3861:30:-1"
+										}
+									],
+									"id" : 8472864,
+									"name" : "ExpressionStatement",
+									"src" : "3861:30:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "intensitySum"
+													},
+													"id" : 8472992,
+													"name" : "Identifier",
+													"src" : "3896:12:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8473216,
+													"name" : "Literal",
+													"src" : "3911:1:-1"
+												}
+											],
+											"id" : 8473312,
+											"name" : "Assignment",
+											"src" : "3896:16:-1"
+										}
+									],
+									"id" : 8473424,
+									"name" : "ExpressionStatement",
+									"src" : "3896:16:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "totalEvents"
+													},
+													"id" : 8471280,
+													"name" : "Identifier",
+													"src" : "3917:11:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8473984,
+													"name" : "Literal",
+													"src" : "3931:1:-1"
+												}
+											],
+											"id" : 8474080,
+											"name" : "Assignment",
+											"src" : "3917:15:-1"
+										}
+									],
+									"id" : 8474192,
+									"name" : "ExpressionStatement",
+									"src" : "3917:15:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "bool",
+														"value" : "insuringPeriodActive"
+													},
+													"id" : 8474320,
+													"name" : "Identifier",
+													"src" : "3937:20:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "74727565",
+														"subdenomination" : null,
+														"token" : "true",
+														"type" : "bool",
+														"value" : "true"
+													},
+													"id" : 8474432,
+													"name" : "Literal",
+													"src" : "3960:4:-1"
+												}
+											],
+											"id" : 8474528,
+											"name" : "Assignment",
+											"src" : "3937:27:-1"
+										}
+									],
+									"id" : 8474640,
+									"name" : "ExpressionStatement",
+									"src" : "3937:27:-1"
+								}
+							],
+							"id" : 8474864,
+							"name" : "Block",
+							"src" : "3668:300:-1"
+						}
+					],
+					"id" : 8473520,
+					"name" : "FunctionDefinition",
+					"src" : "3647:321:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "insure",
+						"payable" : false,
+						"public" : true
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "cell",
+										"type" : "uint32"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint32"
+											},
+											"id" : 8474784,
+											"name" : "ElementaryTypeName",
+											"src" : "4299:6:-1"
+										}
+									],
+									"id" : 8476016,
+									"name" : "VariableDeclaration",
+									"src" : "4299:11:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "user",
+										"type" : "address"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "address"
+											},
+											"id" : 8476160,
+											"name" : "ElementaryTypeName",
+											"src" : "4312:7:-1"
+										}
+									],
+									"id" : 8476320,
+									"name" : "VariableDeclaration",
+									"src" : "4312:12:-1"
+								}
+							],
+							"id" : 8475248,
+							"name" : "ParameterList",
+							"src" : "4298:27:-1"
+						},
+						{
+							"children" : [],
+							"id" : 8477152,
+							"name" : "ParameterList",
+							"src" : "4352:0:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"type" : "modifier ()",
+										"value" : "onlyHB"
+									},
+									"id" : 8476512,
+									"name" : "Identifier",
+									"src" : "4326:6:-1"
+								}
+							],
+							"id" : 8476640,
+							"name" : "ModifierInvocation",
+							"src" : "4326:8:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"type" : "modifier ()",
+										"value" : "insuringPeriod"
+									},
+									"id" : 8476816,
+									"name" : "Identifier",
+									"src" : "4335:14:-1"
+								}
+							],
+							"id" : 8477040,
+							"name" : "ModifierInvocation",
+							"src" : "4335:16:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmount"
+													},
+													"id" : 8477296,
+													"name" : "Identifier",
+													"src" : "4356:18:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"member_name" : "value",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "msg",
+																"value" : "msg"
+															},
+															"id" : 8477456,
+															"name" : "Identifier",
+															"src" : "4378:3:-1"
+														}
+													],
+													"id" : 8477696,
+													"name" : "MemberAccess",
+													"src" : "4378:9:-1"
+												}
+											],
+											"id" : 8477792,
+											"name" : "Assignment",
+											"src" : "4356:31:-1"
+										}
+									],
+									"id" : 8477904,
+									"name" : "ExpressionStatement",
+									"src" : "4356:31:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmountShortTerm"
+													},
+													"id" : 8478064,
+													"name" : "Identifier",
+													"src" : "4391:27:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"operator" : "*",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"operator" : "/",
+																"type" : "uint256"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"member_name" : "value",
+																		"type" : "uint256"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "msg",
+																				"value" : "msg"
+																			},
+																			"id" : 8478224,
+																			"name" : "Identifier",
+																			"src" : "4422:3:-1"
+																		}
+																	],
+																	"id" : 8478384,
+																	"name" : "MemberAccess",
+																	"src" : "4422:9:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint256",
+																		"value" : "SPLIT_SHORT_TERM"
+																	},
+																	"id" : 8478512,
+																	"name" : "Identifier",
+																	"src" : "4434:16:-1"
+																}
+															],
+															"id" : 8478592,
+															"name" : "BinaryOperation",
+															"src" : "4422:28:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"hexvalue" : "313030",
+																"subdenomination" : null,
+																"token" : null,
+																"type" : "int_const 100",
+																"value" : "100"
+															},
+															"id" : 8478928,
+															"name" : "Literal",
+															"src" : "4453:3:-1"
+														}
+													],
+													"id" : 8479024,
+													"name" : "BinaryOperation",
+													"src" : "4422:34:-1"
+												}
+											],
+											"id" : 8479136,
+											"name" : "Assignment",
+											"src" : "4391:65:-1"
+										}
+									],
+									"id" : 8479248,
+									"name" : "ExpressionStatement",
+									"src" : "4391:65:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmountLongTerm"
+													},
+													"id" : 8479392,
+													"name" : "Identifier",
+													"src" : "4460:26:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"operator" : "*",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"operator" : "/",
+																"type" : "uint256"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"member_name" : "value",
+																		"type" : "uint256"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "msg",
+																				"value" : "msg"
+																			},
+																			"id" : 8479552,
+																			"name" : "Identifier",
+																			"src" : "4490:3:-1"
+																		}
+																	],
+																	"id" : 8479712,
+																	"name" : "MemberAccess",
+																	"src" : "4490:9:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint256",
+																		"value" : "SPLIT_LONG_TERM"
+																	},
+																	"id" : 8479840,
+																	"name" : "Identifier",
+																	"src" : "4502:15:-1"
+																}
+															],
+															"id" : 8479920,
+															"name" : "BinaryOperation",
+															"src" : "4490:27:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"hexvalue" : "313030",
+																"subdenomination" : null,
+																"token" : null,
+																"type" : "int_const 100",
+																"value" : "100"
+															},
+															"id" : 8480176,
+															"name" : "Literal",
+															"src" : "4520:3:-1"
+														}
+													],
+													"id" : 8480272,
+													"name" : "BinaryOperation",
+													"src" : "4490:33:-1"
+												}
+											],
+											"id" : 8480384,
+											"name" : "Assignment",
+											"src" : "4460:63:-1"
+										}
+									],
+									"id" : 8480496,
+									"name" : "ExpressionStatement",
+									"src" : "4460:63:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "totalUsers"
+													},
+													"id" : 8480704,
+													"name" : "Identifier",
+													"src" : "4527:10:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "31",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 1",
+														"value" : "1"
+													},
+													"id" : 8480816,
+													"name" : "Literal",
+													"src" : "4541:1:-1"
+												}
+											],
+											"id" : 8480912,
+											"name" : "Assignment",
+											"src" : "4527:15:-1"
+										}
+									],
+									"id" : 8481024,
+									"name" : "ExpressionStatement",
+									"src" : "4527:15:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "==",
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"member_name" : "usercount",
+														"type" : "uint32"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "struct Cell storage ref"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "mapping(uint32 => struct Cell storage ref)",
+																		"value" : "world"
+																	},
+																	"id" : 8481200,
+																	"name" : "Identifier",
+																	"src" : "4582:5:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32",
+																		"value" : "cell"
+																	},
+																	"id" : 8481312,
+																	"name" : "Identifier",
+																	"src" : "4588:4:-1"
+																}
+															],
+															"id" : 8481504,
+															"name" : "IndexAccess",
+															"src" : "4582:11:-1"
+														}
+													],
+													"id" : 8481632,
+													"name" : "MemberAccess",
+													"src" : "4582:21:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8481760,
+													"name" : "Literal",
+													"src" : "4607:1:-1"
+												}
+											],
+											"id" : 8481856,
+											"name" : "BinaryOperation",
+											"src" : "4582:26:-1"
+										},
+										{
+											"children" : 
+											[
+												{
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"operator" : "=",
+																"type" : "struct Cell storage ref"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "struct Cell storage ref"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "mapping(uint32 => struct Cell storage ref)",
+																				"value" : "world"
+																			},
+																			"id" : 8482096,
+																			"name" : "Identifier",
+																			"src" : "4615:5:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "cell"
+																			},
+																			"id" : 8482240,
+																			"name" : "Identifier",
+																			"src" : "4621:4:-1"
+																		}
+																	],
+																	"id" : 8482416,
+																	"name" : "IndexAccess",
+																	"src" : "4615:11:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "struct Cell memory",
+																		"type_conversion" : false
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "type(struct Cell storage pointer)",
+																				"value" : "Cell"
+																			},
+																			"id" : 8482544,
+																			"name" : "Identifier",
+																			"src" : "4629:4:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"hexvalue" : "30",
+																				"subdenomination" : null,
+																				"token" : null,
+																				"type" : "int_const 0",
+																				"value" : "0"
+																			},
+																			"id" : 8482944,
+																			"name" : "Literal",
+																			"src" : "4648:1:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"hexvalue" : "30",
+																				"subdenomination" : null,
+																				"token" : null,
+																				"type" : "int_const 0",
+																				"value" : "0"
+																			},
+																			"id" : 8483152,
+																			"name" : "Literal",
+																			"src" : "4662:1:-1"
+																		}
+																	],
+																	"id" : 8483296,
+																	"name" : "FunctionCall",
+																	"src" : "4629:37:-1"
+																}
+															],
+															"id" : 8483520,
+															"name" : "Assignment",
+															"src" : "4615:51:-1"
+														}
+													],
+													"id" : 8483632,
+													"name" : "ExpressionStatement",
+													"src" : "4615:51:-1"
+												}
+											],
+											"id" : 8483728,
+											"name" : "Block",
+											"src" : "4610:61:-1"
+										}
+									],
+									"id" : 8483840,
+									"name" : "IfStatement",
+									"src" : "4578:93:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "struct User storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "struct User storage ref"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"member_name" : "users",
+																"type" : "mapping(uint32 => struct User storage ref)"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "struct Cell storage ref"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "mapping(uint32 => struct Cell storage ref)",
+																				"value" : "world"
+																			},
+																			"id" : 8480592,
+																			"name" : "Identifier",
+																			"src" : "4711:5:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "cell"
+																			},
+																			"id" : 8484176,
+																			"name" : "Identifier",
+																			"src" : "4717:4:-1"
+																		}
+																	],
+																	"id" : 8484304,
+																	"name" : "IndexAccess",
+																	"src" : "4711:11:-1"
+																}
+															],
+															"id" : 8484480,
+															"name" : "MemberAccess",
+															"src" : "4711:17:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"member_name" : "usercount",
+																"type" : "uint32"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "struct Cell storage ref"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "mapping(uint32 => struct Cell storage ref)",
+																				"value" : "world"
+																			},
+																			"id" : 8484656,
+																			"name" : "Identifier",
+																			"src" : "4729:5:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "cell"
+																			},
+																			"id" : 8484768,
+																			"name" : "Identifier",
+																			"src" : "4735:4:-1"
+																		}
+																	],
+																	"id" : 8484960,
+																	"name" : "IndexAccess",
+																	"src" : "4729:11:-1"
+																}
+															],
+															"id" : 8485088,
+															"name" : "MemberAccess",
+															"src" : "4729:21:-1"
+														}
+													],
+													"id" : 8485184,
+													"name" : "IndexAccess",
+													"src" : "4711:40:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "struct User memory",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "type(struct User storage pointer)",
+																"value" : "User"
+															},
+															"id" : 8485312,
+															"name" : "Identifier",
+															"src" : "4754:4:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "address",
+																"value" : "user"
+															},
+															"id" : 8485632,
+															"name" : "Identifier",
+															"src" : "4768:4:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"member_name" : "value",
+																"type" : "uint256"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "msg",
+																		"value" : "msg"
+																	},
+																	"id" : 8485920,
+																	"name" : "Identifier",
+																	"src" : "4782:3:-1"
+																}
+															],
+															"id" : 8486032,
+															"name" : "MemberAccess",
+															"src" : "4782:9:-1"
+														}
+													],
+													"id" : 8486224,
+													"name" : "FunctionCall",
+													"src" : "4754:40:-1"
+												}
+											],
+											"id" : 8486400,
+											"name" : "Assignment",
+											"src" : "4711:83:-1"
+										}
+									],
+									"id" : 8486512,
+									"name" : "ExpressionStatement",
+									"src" : "4711:83:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"member_name" : "usercount",
+														"type" : "uint32"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "struct Cell storage ref"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "mapping(uint32 => struct Cell storage ref)",
+																		"value" : "world"
+																	},
+																	"id" : 8486608,
+																	"name" : "Identifier",
+																	"src" : "4798:5:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32",
+																		"value" : "cell"
+																	},
+																	"id" : 8486720,
+																	"name" : "Identifier",
+																	"src" : "4804:4:-1"
+																}
+															],
+															"id" : 8486912,
+															"name" : "IndexAccess",
+															"src" : "4798:11:-1"
+														}
+													],
+													"id" : 8487040,
+													"name" : "MemberAccess",
+													"src" : "4798:21:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "31",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 1",
+														"value" : "1"
+													},
+													"id" : 8487168,
+													"name" : "Literal",
+													"src" : "4823:1:-1"
+												}
+											],
+											"id" : 8487264,
+											"name" : "Assignment",
+											"src" : "4798:26:-1"
+										}
+									],
+									"id" : 8487376,
+									"name" : "ExpressionStatement",
+									"src" : "4798:26:-1"
+								}
+							],
+							"id" : 8487728,
+							"name" : "Block",
+							"src" : "4352:476:-1"
+						}
+					],
+					"id" : 8487968,
+					"name" : "FunctionDefinition",
+					"src" : "4282:546:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "endInsuringPeriod",
+						"payable" : false,
+						"public" : true
+					},
+					"children" : 
+					[
+						{
+							"children" : [],
+							"id" : 8484000,
+							"name" : "ParameterList",
+							"src" : "4914:2:-1"
+						},
+						{
+							"children" : [],
+							"id" : 8488576,
+							"name" : "ParameterList",
+							"src" : "4926:0:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"type" : "modifier ()",
+										"value" : "onlyHB"
+									},
+									"id" : 8488224,
+									"name" : "Identifier",
+									"src" : "4917:6:-1"
+								}
+							],
+							"id" : 8488432,
+							"name" : "ModifierInvocation",
+							"src" : "4917:8:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "bool",
+														"value" : "insuringPeriodActive"
+													},
+													"id" : 8488704,
+													"name" : "Identifier",
+													"src" : "4931:20:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "66616c7365",
+														"subdenomination" : null,
+														"token" : "false",
+														"type" : "bool",
+														"value" : "false"
+													},
+													"id" : 8488944,
+													"name" : "Literal",
+													"src" : "4954:5:-1"
+												}
+											],
+											"id" : 8489040,
+											"name" : "Assignment",
+											"src" : "4931:28:-1"
+										}
+									],
+									"id" : 8489152,
+									"name" : "ExpressionStatement",
+									"src" : "4931:28:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "function (uint256,uint32) returns ()",
+														"value" : "InsuringPeriodEnd"
+													},
+													"id" : 8489392,
+													"name" : "Identifier",
+													"src" : "4964:17:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmount"
+													},
+													"id" : 8489504,
+													"name" : "Identifier",
+													"src" : "4983:18:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "totalUsers"
+													},
+													"id" : 8489648,
+													"name" : "Identifier",
+													"src" : "5003:10:-1"
+												}
+											],
+											"id" : 8489728,
+											"name" : "FunctionCall",
+											"src" : "4964:50:-1"
+										}
+									],
+									"id" : 8489904,
+									"name" : "ExpressionStatement",
+									"src" : "4964:50:-1"
+								}
+							],
+							"id" : 8490144,
+							"name" : "Block",
+							"src" : "4926:93:-1"
+						}
+					],
+					"id" : 8490736,
+					"name" : "FunctionDefinition",
+					"src" : "4887:132:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "raiseEvent",
+						"payable" : false,
+						"public" : true
+					},
+					"children" : 
+					[
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"name" : "eventType",
+										"type" : "enum EventType"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "EventType"
+											},
+											"id" : 8491024,
+											"name" : "UserDefinedTypeName",
+											"src" : "5276:9:-1"
+										}
+									],
+									"id" : 8491120,
+									"name" : "VariableDeclaration",
+									"src" : "5276:19:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "cells",
+										"type" : "uint32[] memory"
+									},
+									"children" : 
+									[
+										{
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint32"
+													},
+													"id" : 8490064,
+													"name" : "ElementaryTypeName",
+													"src" : "5297:6:-1"
+												}
+											],
+											"id" : 8491296,
+											"name" : "ArrayTypeName",
+											"src" : "5297:8:-1"
+										}
+									],
+									"id" : 8491536,
+									"name" : "VariableDeclaration",
+									"src" : "5297:14:-1"
+								},
+								{
+									"attributes" : 
+									{
+										"name" : "intensity",
+										"type" : "uint16"
+									},
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "uint16"
+											},
+											"id" : 8491888,
+											"name" : "ElementaryTypeName",
+											"src" : "5313:6:-1"
+										}
+									],
+									"id" : 8491968,
+									"name" : "VariableDeclaration",
+									"src" : "5313:16:-1"
+								}
+							],
+							"id" : 8491728,
+							"name" : "ParameterList",
+							"src" : "5275:55:-1"
+						},
+						{
+							"children" : [],
+							"id" : 8492368,
+							"name" : "ParameterList",
+							"src" : "5340:0:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"type" : "modifier ()",
+										"value" : "onlyHB"
+									},
+									"id" : 8492112,
+									"name" : "Identifier",
+									"src" : "5331:6:-1"
+								}
+							],
+							"id" : 8492224,
+							"name" : "ModifierInvocation",
+							"src" : "5331:8:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "total",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint"
+													},
+													"id" : 8492464,
+													"name" : "ElementaryTypeName",
+													"src" : "5414:4:-1"
+												}
+											],
+											"id" : 8492624,
+											"name" : "VariableDeclaration",
+											"src" : "5414:10:-1"
+										},
+										{
+											"attributes" : 
+											{
+												"hexvalue" : "30",
+												"subdenomination" : null,
+												"token" : null,
+												"type" : "int_const 0",
+												"value" : "0"
+											},
+											"id" : 8492880,
+											"name" : "Literal",
+											"src" : "5427:1:-1"
+										}
+									],
+									"id" : 8492976,
+									"name" : "VariableDefinitionStatement",
+									"src" : "5414:14:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "i",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint"
+													},
+													"id" : 8493136,
+													"name" : "ElementaryTypeName",
+													"src" : "5433:4:-1"
+												}
+											],
+											"id" : 8493296,
+											"name" : "VariableDeclaration",
+											"src" : "5433:6:-1"
+										}
+									],
+									"id" : 8493472,
+									"name" : "VariableDefinitionStatement",
+									"src" : "5433:7:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "j",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint32"
+													},
+													"id" : 8493888,
+													"name" : "ElementaryTypeName",
+													"src" : "5443:6:-1"
+												}
+											],
+											"id" : 8493968,
+											"name" : "VariableDeclaration",
+											"src" : "5443:8:-1"
+										}
+									],
+									"id" : 8494112,
+									"name" : "VariableDefinitionStatement",
+									"src" : "5443:9:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "celln",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint32"
+													},
+													"id" : 8494352,
+													"name" : "ElementaryTypeName",
+													"src" : "5455:6:-1"
+												}
+											],
+											"id" : 8494432,
+											"name" : "VariableDeclaration",
+											"src" : "5455:12:-1"
+										}
+									],
+									"id" : 8494608,
+									"name" : "VariableDefinitionStatement",
+									"src" : "5455:13:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "affected",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint32"
+													},
+													"id" : 8494816,
+													"name" : "ElementaryTypeName",
+													"src" : "5471:6:-1"
+												}
+											],
+											"id" : 8494896,
+											"name" : "VariableDeclaration",
+											"src" : "5471:15:-1"
+										}
+									],
+									"id" : 8495072,
+									"name" : "VariableDefinitionStatement",
+									"src" : "5471:16:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"operator" : "=",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint256",
+																"value" : "i"
+															},
+															"id" : 8494272,
+															"name" : "Identifier",
+															"src" : "5496:1:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"hexvalue" : "30",
+																"subdenomination" : null,
+																"token" : null,
+																"type" : "int_const 0",
+																"value" : "0"
+															},
+															"id" : 8493680,
+															"name" : "Literal",
+															"src" : "5500:1:-1"
+														}
+													],
+													"id" : 8495504,
+													"name" : "Assignment",
+													"src" : "5496:5:-1"
+												}
+											],
+											"id" : 8495616,
+											"name" : "ExpressionStatement",
+											"src" : "5496:5:-1"
+										},
+										{
+											"attributes" : 
+											{
+												"operator" : "<",
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "i"
+													},
+													"id" : 8495792,
+													"name" : "Identifier",
+													"src" : "5503:1:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"member_name" : "length",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint32[] memory",
+																"value" : "cells"
+															},
+															"id" : 8495952,
+															"name" : "Identifier",
+															"src" : "5507:5:-1"
+														}
+													],
+													"id" : 8496112,
+													"name" : "MemberAccess",
+													"src" : "5507:12:-1"
+												}
+											],
+											"id" : 8496208,
+											"name" : "BinaryOperation",
+											"src" : "5503:16:-1"
+										},
+										{
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"operator" : "++",
+														"prefix" : false,
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint256",
+																"value" : "i"
+															},
+															"id" : 8496352,
+															"name" : "Identifier",
+															"src" : "5521:1:-1"
+														}
+													],
+													"id" : 8496432,
+													"name" : "UnaryOperation",
+													"src" : "5521:3:-1"
+												}
+											],
+											"id" : 8496528,
+											"name" : "ExpressionStatement",
+											"src" : "5521:3:-1"
+										},
+										{
+											"children" : 
+											[
+												{
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"operator" : "=",
+																"type" : "uint32"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32",
+																		"value" : "celln"
+																	},
+																	"id" : 8496752,
+																	"name" : "Identifier",
+																	"src" : "5531:5:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32[] memory",
+																				"value" : "cells"
+																			},
+																			"id" : 8496912,
+																			"name" : "Identifier",
+																			"src" : "5539:5:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint256",
+																				"value" : "i"
+																			},
+																			"id" : 8497024,
+																			"name" : "Identifier",
+																			"src" : "5545:1:-1"
+																		}
+																	],
+																	"id" : 8497152,
+																	"name" : "IndexAccess",
+																	"src" : "5539:8:-1"
+																}
+															],
+															"id" : 8497248,
+															"name" : "Assignment",
+															"src" : "5531:16:-1"
+														}
+													],
+													"id" : 8497360,
+													"name" : "ExpressionStatement",
+													"src" : "5531:16:-1"
+												},
+												{
+													"children" : 
+													[
+														{
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"operator" : "=",
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "j"
+																			},
+																			"id" : 8497568,
+																			"name" : "Identifier",
+																			"src" : "5558:1:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"hexvalue" : "30",
+																				"subdenomination" : null,
+																				"token" : null,
+																				"type" : "int_const 0",
+																				"value" : "0"
+																			},
+																			"id" : 8497728,
+																			"name" : "Literal",
+																			"src" : "5562:1:-1"
+																		}
+																	],
+																	"id" : 8497824,
+																	"name" : "Assignment",
+																	"src" : "5558:5:-1"
+																}
+															],
+															"id" : 8497936,
+															"name" : "ExpressionStatement",
+															"src" : "5558:5:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"operator" : "<",
+																"type" : "bool"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32",
+																		"value" : "j"
+																	},
+																	"id" : 8498112,
+																	"name" : "Identifier",
+																	"src" : "5565:1:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"member_name" : "usercount",
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "struct Cell storage ref"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "mapping(uint32 => struct Cell storage ref)",
+																						"value" : "world"
+																					},
+																					"id" : 8498272,
+																					"name" : "Identifier",
+																					"src" : "5569:5:-1"
+																				},
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "uint32",
+																						"value" : "celln"
+																					},
+																					"id" : 8498384,
+																					"name" : "Identifier",
+																					"src" : "5575:5:-1"
+																				}
+																			],
+																			"id" : 8498512,
+																			"name" : "IndexAccess",
+																			"src" : "5569:12:-1"
+																		}
+																	],
+																	"id" : 8498640,
+																	"name" : "MemberAccess",
+																	"src" : "5569:22:-1"
+																}
+															],
+															"id" : 8498736,
+															"name" : "BinaryOperation",
+															"src" : "5565:26:-1"
+														},
+														{
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"operator" : "++",
+																		"prefix" : false,
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "j"
+																			},
+																			"id" : 8498880,
+																			"name" : "Identifier",
+																			"src" : "5593:1:-1"
+																		}
+																	],
+																	"id" : 8498960,
+																	"name" : "UnaryOperation",
+																	"src" : "5593:3:-1"
+																}
+															],
+															"id" : 8499056,
+															"name" : "ExpressionStatement",
+															"src" : "5593:3:-1"
+														},
+														{
+															"children" : 
+															[
+																{
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"operator" : "+=",
+																				"type" : "uint256"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "uint256",
+																						"value" : "total"
+																					},
+																					"id" : 8499280,
+																					"name" : "Identifier",
+																					"src" : "5604:5:-1"
+																				},
+																				{
+																					"attributes" : 
+																					{
+																						"member_name" : "amount",
+																						"type" : "uint256"
+																					},
+																					"children" : 
+																					[
+																						{
+																							"attributes" : 
+																							{
+																								"type" : "struct User storage ref"
+																							},
+																							"children" : 
+																							[
+																								{
+																									"attributes" : 
+																									{
+																										"member_name" : "users",
+																										"type" : "mapping(uint32 => struct User storage ref)"
+																									},
+																									"children" : 
+																									[
+																										{
+																											"attributes" : 
+																											{
+																												"type" : "struct Cell storage ref"
+																											},
+																											"children" : 
+																											[
+																												{
+																													"attributes" : 
+																													{
+																														"type" : "mapping(uint32 => struct Cell storage ref)",
+																														"value" : "world"
+																													},
+																													"id" : 8499440,
+																													"name" : "Identifier",
+																													"src" : "5613:5:-1"
+																												},
+																												{
+																													"attributes" : 
+																													{
+																														"type" : "uint32",
+																														"value" : "celln"
+																													},
+																													"id" : 8499552,
+																													"name" : "Identifier",
+																													"src" : "5619:5:-1"
+																												}
+																											],
+																											"id" : 8499680,
+																											"name" : "IndexAccess",
+																											"src" : "5613:12:-1"
+																										}
+																									],
+																									"id" : 8499856,
+																									"name" : "MemberAccess",
+																									"src" : "5613:18:-1"
+																								},
+																								{
+																									"attributes" : 
+																									{
+																										"type" : "uint32",
+																										"value" : "j"
+																									},
+																									"id" : 8499984,
+																									"name" : "Identifier",
+																									"src" : "5632:1:-1"
+																								}
+																							],
+																							"id" : 8500112,
+																							"name" : "IndexAccess",
+																							"src" : "5613:21:-1"
+																						}
+																					],
+																					"id" : 8500288,
+																					"name" : "MemberAccess",
+																					"src" : "5613:28:-1"
+																				}
+																			],
+																			"id" : 8500384,
+																			"name" : "Assignment",
+																			"src" : "5604:37:-1"
+																		}
+																	],
+																	"id" : 8500496,
+																	"name" : "ExpressionStatement",
+																	"src" : "5604:37:-1"
+																},
+																{
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"operator" : "+=",
+																				"type" : "uint32"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "uint32",
+																						"value" : "affected"
+																					},
+																					"id" : 8500704,
+																					"name" : "Identifier",
+																					"src" : "5647:8:-1"
+																				},
+																				{
+																					"attributes" : 
+																					{
+																						"hexvalue" : "31",
+																						"subdenomination" : null,
+																						"token" : null,
+																						"type" : "int_const 1",
+																						"value" : "1"
+																					},
+																					"id" : 8500816,
+																					"name" : "Literal",
+																					"src" : "5659:1:-1"
+																				}
+																			],
+																			"id" : 8500912,
+																			"name" : "Assignment",
+																			"src" : "5647:13:-1"
+																		}
+																	],
+																	"id" : 8501024,
+																	"name" : "ExpressionStatement",
+																	"src" : "5647:13:-1"
+																}
+															],
+															"id" : 8501216,
+															"name" : "Block",
+															"src" : "5598:68:-1"
+														}
+													],
+													"id" : 8501328,
+													"name" : "ForStatement",
+													"src" : "5553:113:-1"
+												}
+											],
+											"id" : 8501584,
+											"name" : "Block",
+											"src" : "5526:144:-1"
+										}
+									],
+									"id" : 8501696,
+									"name" : "ForStatement",
+									"src" : "5491:179:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"name" : "toDistribute",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"name" : "uint"
+													},
+													"id" : 8501840,
+													"name" : "ElementaryTypeName",
+													"src" : "5760:4:-1"
+												}
+											],
+											"id" : 8501984,
+											"name" : "VariableDeclaration",
+											"src" : "5760:17:-1"
+										},
+										{
+											"attributes" : 
+											{
+												"operator" : "*",
+												"type" : "uint256"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"operator" : "/",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint16",
+																"value" : "intensity"
+															},
+															"id" : 8502224,
+															"name" : "Identifier",
+															"src" : "5780:9:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "uint256",
+																"value" : "YEAR_INTENSITY"
+															},
+															"id" : 8502480,
+															"name" : "Identifier",
+															"src" : "5792:14:-1"
+														}
+													],
+													"id" : 8502560,
+													"name" : "BinaryOperation",
+													"src" : "5780:26:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "totalInsuredAmountShortTerm"
+													},
+													"id" : 8502704,
+													"name" : "Identifier",
+													"src" : "5809:27:-1"
+												}
+											],
+											"id" : 8502784,
+											"name" : "BinaryOperation",
+											"src" : "5780:56:-1"
+										}
+									],
+									"id" : 8502896,
+									"name" : "VariableDefinitionStatement",
+									"src" : "5760:76:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"operator" : "=",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint256",
+																"value" : "i"
+															},
+															"id" : 8503104,
+															"name" : "Identifier",
+															"src" : "5881:1:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"hexvalue" : "30",
+																"subdenomination" : null,
+																"token" : null,
+																"type" : "int_const 0",
+																"value" : "0"
+															},
+															"id" : 8503264,
+															"name" : "Literal",
+															"src" : "5885:1:-1"
+														}
+													],
+													"id" : 8503360,
+													"name" : "Assignment",
+													"src" : "5881:5:-1"
+												}
+											],
+											"id" : 8503472,
+											"name" : "ExpressionStatement",
+											"src" : "5881:5:-1"
+										},
+										{
+											"attributes" : 
+											{
+												"operator" : "<",
+												"type" : "bool"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "i"
+													},
+													"id" : 8503648,
+													"name" : "Identifier",
+													"src" : "5888:1:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"member_name" : "length",
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint32[] memory",
+																"value" : "cells"
+															},
+															"id" : 8503808,
+															"name" : "Identifier",
+															"src" : "5892:5:-1"
+														}
+													],
+													"id" : 8503968,
+													"name" : "MemberAccess",
+													"src" : "5892:12:-1"
+												}
+											],
+											"id" : 8504064,
+											"name" : "BinaryOperation",
+											"src" : "5888:16:-1"
+										},
+										{
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"operator" : "++",
+														"prefix" : false,
+														"type" : "uint256"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "uint256",
+																"value" : "i"
+															},
+															"id" : 8504208,
+															"name" : "Identifier",
+															"src" : "5906:1:-1"
+														}
+													],
+													"id" : 8504288,
+													"name" : "UnaryOperation",
+													"src" : "5906:3:-1"
+												}
+											],
+											"id" : 8504384,
+											"name" : "ExpressionStatement",
+											"src" : "5906:3:-1"
+										},
+										{
+											"children" : 
+											[
+												{
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"operator" : "=",
+																"type" : "uint32"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32",
+																		"value" : "celln"
+																	},
+																	"id" : 8504608,
+																	"name" : "Identifier",
+																	"src" : "5916:5:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32[] memory",
+																				"value" : "cells"
+																			},
+																			"id" : 8504768,
+																			"name" : "Identifier",
+																			"src" : "5924:5:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint256",
+																				"value" : "i"
+																			},
+																			"id" : 8504880,
+																			"name" : "Identifier",
+																			"src" : "5930:1:-1"
+																		}
+																	],
+																	"id" : 8505008,
+																	"name" : "IndexAccess",
+																	"src" : "5924:8:-1"
+																}
+															],
+															"id" : 8505104,
+															"name" : "Assignment",
+															"src" : "5916:16:-1"
+														}
+													],
+													"id" : 8505216,
+													"name" : "ExpressionStatement",
+													"src" : "5916:16:-1"
+												},
+												{
+													"children" : 
+													[
+														{
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"operator" : "=",
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "j"
+																			},
+																			"id" : 8505424,
+																			"name" : "Identifier",
+																			"src" : "5943:1:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"hexvalue" : "30",
+																				"subdenomination" : null,
+																				"token" : null,
+																				"type" : "int_const 0",
+																				"value" : "0"
+																			},
+																			"id" : 8505584,
+																			"name" : "Literal",
+																			"src" : "5947:1:-1"
+																		}
+																	],
+																	"id" : 8505680,
+																	"name" : "Assignment",
+																	"src" : "5943:5:-1"
+																}
+															],
+															"id" : 8505792,
+															"name" : "ExpressionStatement",
+															"src" : "5943:5:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"operator" : "<",
+																"type" : "bool"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint32",
+																		"value" : "j"
+																	},
+																	"id" : 8505968,
+																	"name" : "Identifier",
+																	"src" : "5950:1:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"member_name" : "usercount",
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "struct Cell storage ref"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "mapping(uint32 => struct Cell storage ref)",
+																						"value" : "world"
+																					},
+																					"id" : 8506128,
+																					"name" : "Identifier",
+																					"src" : "5954:5:-1"
+																				},
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "uint32",
+																						"value" : "celln"
+																					},
+																					"id" : 8506240,
+																					"name" : "Identifier",
+																					"src" : "5960:5:-1"
+																				}
+																			],
+																			"id" : 8506368,
+																			"name" : "IndexAccess",
+																			"src" : "5954:12:-1"
+																		}
+																	],
+																	"id" : 8506496,
+																	"name" : "MemberAccess",
+																	"src" : "5954:22:-1"
+																}
+															],
+															"id" : 8506592,
+															"name" : "BinaryOperation",
+															"src" : "5950:26:-1"
+														},
+														{
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"operator" : "++",
+																		"prefix" : false,
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "uint32",
+																				"value" : "j"
+																			},
+																			"id" : 8506736,
+																			"name" : "Identifier",
+																			"src" : "5978:1:-1"
+																		}
+																	],
+																	"id" : 8506816,
+																	"name" : "UnaryOperation",
+																	"src" : "5978:3:-1"
+																}
+															],
+															"id" : 8506912,
+															"name" : "ExpressionStatement",
+															"src" : "5978:3:-1"
+														},
+														{
+															"children" : 
+															[
+																{
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"name" : "amount",
+																				"type" : "uint256"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"name" : "uint"
+																					},
+																					"id" : 8507056,
+																					"name" : "ElementaryTypeName",
+																					"src" : "6032:4:-1"
+																				}
+																			],
+																			"id" : 8507280,
+																			"name" : "VariableDeclaration",
+																			"src" : "6032:11:-1"
+																		},
+																		{
+																			"attributes" : 
+																			{
+																				"operator" : "/",
+																				"type" : "uint256"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "uint256",
+																						"value" : "toDistribute"
+																					},
+																					"id" : 8507488,
+																					"name" : "Identifier",
+																					"src" : "6046:12:-1"
+																				},
+																				{
+																					"attributes" : 
+																					{
+																						"member_name" : "amount",
+																						"type" : "uint256"
+																					},
+																					"children" : 
+																					[
+																						{
+																							"attributes" : 
+																							{
+																								"type" : "struct User storage ref"
+																							},
+																							"children" : 
+																							[
+																								{
+																									"attributes" : 
+																									{
+																										"member_name" : "users",
+																										"type" : "mapping(uint32 => struct User storage ref)"
+																									},
+																									"children" : 
+																									[
+																										{
+																											"attributes" : 
+																											{
+																												"type" : "struct Cell storage ref"
+																											},
+																											"children" : 
+																											[
+																												{
+																													"attributes" : 
+																													{
+																														"type" : "mapping(uint32 => struct Cell storage ref)",
+																														"value" : "world"
+																													},
+																													"id" : 8507648,
+																													"name" : "Identifier",
+																													"src" : "6061:5:-1"
+																												},
+																												{
+																													"attributes" : 
+																													{
+																														"type" : "uint32",
+																														"value" : "celln"
+																													},
+																													"id" : 8507760,
+																													"name" : "Identifier",
+																													"src" : "6067:5:-1"
+																												}
+																											],
+																											"id" : 8507888,
+																											"name" : "IndexAccess",
+																											"src" : "6061:12:-1"
+																										}
+																									],
+																									"id" : 8508064,
+																									"name" : "MemberAccess",
+																									"src" : "6061:18:-1"
+																								},
+																								{
+																									"attributes" : 
+																									{
+																										"type" : "uint32",
+																										"value" : "j"
+																									},
+																									"id" : 8508192,
+																									"name" : "Identifier",
+																									"src" : "6080:1:-1"
+																								}
+																							],
+																							"id" : 8508320,
+																							"name" : "IndexAccess",
+																							"src" : "6061:21:-1"
+																						}
+																					],
+																					"id" : 8508496,
+																					"name" : "MemberAccess",
+																					"src" : "6061:28:-1"
+																				}
+																			],
+																			"id" : 8508592,
+																			"name" : "BinaryOperation",
+																			"src" : "6046:43:-1"
+																		}
+																	],
+																	"id" : 8508704,
+																	"name" : "VariableDefinitionStatement",
+																	"src" : "6032:57:-1"
+																},
+																{
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"operator" : "!",
+																				"prefix" : true,
+																				"type" : "bool"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "bool",
+																						"type_conversion" : false
+																					},
+																					"children" : 
+																					[
+																						{
+																							"attributes" : 
+																							{
+																								"member_name" : "send",
+																								"type" : "function (uint256) returns (bool)"
+																							},
+																							"children" : 
+																							[
+																								{
+																									"attributes" : 
+																									{
+																										"member_name" : "addr",
+																										"type" : "address"
+																									},
+																									"children" : 
+																									[
+																										{
+																											"attributes" : 
+																											{
+																												"type" : "struct User storage ref"
+																											},
+																											"children" : 
+																											[
+																												{
+																													"attributes" : 
+																													{
+																														"member_name" : "users",
+																														"type" : "mapping(uint32 => struct User storage ref)"
+																													},
+																													"children" : 
+																													[
+																														{
+																															"attributes" : 
+																															{
+																																"type" : "struct Cell storage ref"
+																															},
+																															"children" : 
+																															[
+																																{
+																																	"attributes" : 
+																																	{
+																																		"type" : "mapping(uint32 => struct Cell storage ref)",
+																																		"value" : "world"
+																																	},
+																																	"id" : 8508944,
+																																	"name" : "Identifier",
+																																	"src" : "6101:5:-1"
+																																},
+																																{
+																																	"attributes" : 
+																																	{
+																																		"type" : "uint32",
+																																		"value" : "celln"
+																																	},
+																																	"id" : 8509056,
+																																	"name" : "Identifier",
+																																	"src" : "6107:5:-1"
+																																}
+																															],
+																															"id" : 8509184,
+																															"name" : "IndexAccess",
+																															"src" : "6101:12:-1"
+																														}
+																													],
+																													"id" : 8509360,
+																													"name" : "MemberAccess",
+																													"src" : "6101:18:-1"
+																												},
+																												{
+																													"attributes" : 
+																													{
+																														"type" : "uint32",
+																														"value" : "j"
+																													},
+																													"id" : 8509488,
+																													"name" : "Identifier",
+																													"src" : "6120:1:-1"
+																												}
+																											],
+																											"id" : 8509616,
+																											"name" : "IndexAccess",
+																											"src" : "6101:21:-1"
+																										}
+																									],
+																									"id" : 8509792,
+																									"name" : "MemberAccess",
+																									"src" : "6101:26:-1"
+																								}
+																							],
+																							"id" : 8509968,
+																							"name" : "MemberAccess",
+																							"src" : "6101:31:-1"
+																						},
+																						{
+																							"attributes" : 
+																							{
+																								"type" : "uint256",
+																								"value" : "amount"
+																							},
+																							"id" : 8510096,
+																							"name" : "Identifier",
+																							"src" : "6134:6:-1"
+																						}
+																					],
+																					"id" : 8510256,
+																					"name" : "FunctionCall",
+																					"src" : "6101:40:-1"
+																				}
+																			],
+																			"id" : 8510416,
+																			"name" : "UnaryOperation",
+																			"src" : "6100:41:-1"
+																		},
+																		{
+																			"children" : [],
+																			"id" : 8510512,
+																			"name" : "Throw",
+																			"src" : "6148:5:-1"
+																		}
+																	],
+																	"id" : 8510592,
+																	"name" : "IfStatement",
+																	"src" : "6096:57:-1"
+																}
+															],
+															"id" : 8510720,
+															"name" : "Block",
+															"src" : "5983:176:-1"
+														}
+													],
+													"id" : 8510880,
+													"name" : "ForStatement",
+													"src" : "5938:221:-1"
+												},
+												{
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"operator" : "+=",
+																"type" : "uint32"
+															},
+															"children" : 
+															[
+																{
+																	"attributes" : 
+																	{
+																		"member_name" : "intensity",
+																		"type" : "uint32"
+																	},
+																	"children" : 
+																	[
+																		{
+																			"attributes" : 
+																			{
+																				"type" : "struct Cell storage ref"
+																			},
+																			"children" : 
+																			[
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "mapping(uint32 => struct Cell storage ref)",
+																						"value" : "world"
+																					},
+																					"id" : 8511120,
+																					"name" : "Identifier",
+																					"src" : "6198:5:-1"
+																				},
+																				{
+																					"attributes" : 
+																					{
+																						"type" : "uint32",
+																						"value" : "celln"
+																					},
+																					"id" : 8511200,
+																					"name" : "Identifier",
+																					"src" : "6204:5:-1"
+																				}
+																			],
+																			"id" : 8511440,
+																			"name" : "IndexAccess",
+																			"src" : "6198:12:-1"
+																		}
+																	],
+																	"id" : 8511648,
+																	"name" : "MemberAccess",
+																	"src" : "6198:22:-1"
+																},
+																{
+																	"attributes" : 
+																	{
+																		"type" : "uint16",
+																		"value" : "intensity"
+																	},
+																	"id" : 8511776,
+																	"name" : "Identifier",
+																	"src" : "6224:9:-1"
+																}
+															],
+															"id" : 8511856,
+															"name" : "Assignment",
+															"src" : "6198:35:-1"
+														}
+													],
+													"id" : 8511968,
+													"name" : "ExpressionStatement",
+													"src" : "6198:35:-1"
+												}
+											],
+											"id" : 8512208,
+											"name" : "Block",
+											"src" : "5911:327:-1"
+										}
+									],
+									"id" : 8512384,
+									"name" : "ForStatement",
+									"src" : "5876:362:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "intensitySum"
+													},
+													"id" : 8512128,
+													"name" : "Identifier",
+													"src" : "6242:12:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint16",
+														"value" : "intensity"
+													},
+													"id" : 8512624,
+													"name" : "Identifier",
+													"src" : "6258:9:-1"
+												}
+											],
+											"id" : 8512704,
+											"name" : "Assignment",
+											"src" : "6242:25:-1"
+										}
+									],
+									"id" : 8512816,
+									"name" : "ExpressionStatement",
+									"src" : "6242:25:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "=",
+												"type" : "struct Event storage ref"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "struct Event storage ref"
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "mapping(uint32 => struct Event storage ref)",
+																"value" : "events"
+															},
+															"id" : 8513184,
+															"name" : "Identifier",
+															"src" : "6272:6:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "uint32",
+																"value" : "totalEvents"
+															},
+															"id" : 8513296,
+															"name" : "Identifier",
+															"src" : "6279:11:-1"
+														}
+													],
+													"id" : 8513376,
+													"name" : "IndexAccess",
+													"src" : "6272:19:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "struct Event memory",
+														"type_conversion" : false
+													},
+													"children" : 
+													[
+														{
+															"attributes" : 
+															{
+																"type" : "type(struct Event storage pointer)",
+																"value" : "Event"
+															},
+															"id" : 8513504,
+															"name" : "Identifier",
+															"src" : "6294:5:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "enum EventType",
+																"value" : "eventType"
+															},
+															"id" : 8513920,
+															"name" : "Identifier",
+															"src" : "6313:9:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "uint16",
+																"value" : "intensity"
+															},
+															"id" : 8514176,
+															"name" : "Identifier",
+															"src" : "6335:9:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "uint32[] memory",
+																"value" : "cells"
+															},
+															"id" : 8514528,
+															"name" : "Identifier",
+															"src" : "6353:5:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "uint256",
+																"value" : "toDistribute"
+															},
+															"id" : 8514816,
+															"name" : "Identifier",
+															"src" : "6373:12:-1"
+														},
+														{
+															"attributes" : 
+															{
+																"type" : "uint32",
+																"value" : "affected"
+															},
+															"id" : 8514352,
+															"name" : "Identifier",
+															"src" : "6394:8:-1"
+														}
+													],
+													"id" : 8515360,
+													"name" : "FunctionCall",
+													"src" : "6294:110:-1"
+												}
+											],
+											"id" : 8514928,
+											"name" : "Assignment",
+											"src" : "6272:132:-1"
+										}
+									],
+									"id" : 8515104,
+									"name" : "ExpressionStatement",
+									"src" : "6272:132:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"operator" : "+=",
+												"type" : "uint32"
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "totalEvents"
+													},
+													"id" : 8514608,
+													"name" : "Identifier",
+													"src" : "6408:11:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "31",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 1",
+														"value" : "1"
+													},
+													"id" : 8515744,
+													"name" : "Literal",
+													"src" : "6423:1:-1"
+												}
+											],
+											"id" : 8515840,
+											"name" : "Assignment",
+											"src" : "6408:16:-1"
+										}
+									],
+									"id" : 8515952,
+									"name" : "ExpressionStatement",
+									"src" : "6408:16:-1"
+								},
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "function (enum EventType,uint32,uint32[] memory,uint256,uint32) returns ()",
+														"value" : "RaisedEvent"
+													},
+													"id" : 8516144,
+													"name" : "Identifier",
+													"src" : "6429:11:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "enum EventType",
+														"value" : "eventType"
+													},
+													"id" : 8516320,
+													"name" : "Identifier",
+													"src" : "6442:9:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint16",
+														"value" : "intensity"
+													},
+													"id" : 8516464,
+													"name" : "Identifier",
+													"src" : "6453:9:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint32[] memory",
+														"value" : "cells"
+													},
+													"id" : 8516656,
+													"name" : "Identifier",
+													"src" : "6464:5:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint256",
+														"value" : "toDistribute"
+													},
+													"id" : 8516848,
+													"name" : "Identifier",
+													"src" : "6471:12:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"type" : "uint32",
+														"value" : "affected"
+													},
+													"id" : 8516960,
+													"name" : "Identifier",
+													"src" : "6485:8:-1"
+												}
+											],
+											"id" : 8517184,
+											"name" : "FunctionCall",
+											"src" : "6429:65:-1"
+										}
+									],
+									"id" : 8517040,
+									"name" : "ExpressionStatement",
+									"src" : "6429:65:-1"
+								}
+							],
+							"id" : 8517584,
+							"name" : "Block",
+							"src" : "5340:1158:-1"
+						}
+					],
+					"id" : 8512912,
+					"name" : "FunctionDefinition",
+					"src" : "5255:1243:-1"
+				},
+				{
+					"attributes" : 
+					{
+						"constant" : false,
+						"name" : "raiseLongTermReward",
+						"payable" : false,
+						"public" : true
+					},
+					"children" : 
+					[
+						{
+							"children" : [],
+							"id" : 8517904,
+							"name" : "ParameterList",
+							"src" : "6609:2:-1"
+						},
+						{
+							"children" : [],
+							"id" : 8518384,
+							"name" : "ParameterList",
+							"src" : "6621:0:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"attributes" : 
+									{
+										"type" : "modifier ()",
+										"value" : "onlyHB"
+									},
+									"id" : 8518032,
+									"name" : "Identifier",
+									"src" : "6612:6:-1"
+								}
+							],
+							"id" : 8518240,
+							"name" : "ModifierInvocation",
+							"src" : "6612:8:-1"
+						},
+						{
+							"children" : 
+							[
+								{
+									"children" : 
+									[
+										{
+											"attributes" : 
+											{
+												"type" : "tuple()",
+												"type_conversion" : false
+											},
+											"children" : 
+											[
+												{
+													"attributes" : 
+													{
+														"type" : "function (uint256,uint256) returns ()",
+														"value" : "LongTermDistribution"
+													},
+													"id" : 8518512,
+													"name" : "Identifier",
+													"src" : "6625:20:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8518672,
+													"name" : "Literal",
+													"src" : "6647:1:-1"
+												},
+												{
+													"attributes" : 
+													{
+														"hexvalue" : "30",
+														"subdenomination" : null,
+														"token" : null,
+														"type" : "int_const 0",
+														"value" : "0"
+													},
+													"id" : 8518832,
+													"name" : "Literal",
+													"src" : "6650:1:-1"
+												}
+											],
+											"id" : 8518976,
+											"name" : "FunctionCall",
+											"src" : "6625:27:-1"
+										}
+									],
+									"id" : 8519152,
+									"name" : "ExpressionStatement",
+									"src" : "6625:27:-1"
+								}
+							],
+							"id" : 8519248,
+							"name" : "Block",
+							"src" : "6621:35:-1"
+						}
+					],
+					"id" : 8519392,
+					"name" : "FunctionDefinition",
+					"src" : "6580:76:-1"
+				}
+			],
+			"id" : 8519616,
+			"name" : "ContractDefinition",
+			"src" : "1037:5621:-1"
+		}
+	],
+	"name" : "SourceUnit"
+}

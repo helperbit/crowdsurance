@@ -1,0 +1,10 @@
+(executable
+ (name crwds_1)
+ (preprocess (pps ppx_typerep_conv))
+ (libraries zarith ptime typerep)
+ (modules SCaml crwds_1)
+)
+
+(env
+  (dev
+    (flags (:standard -warn-error -A))))

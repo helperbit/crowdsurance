@@ -1,0 +1,1129 @@
+module Crowsurance_storage
+  use archetype.Lib
+  
+  use list.List as L
+  
+  type _asset =
+   | AUser
+   | AWcell
+   | AEvent_cell
+   | AEvent
+  
+  type _entry =
+   | EStart
+   | EEndInsuring
+   | EEndInsured
+   | EInsureUser
+   | EVerifyUser
+   | EWithdraw
+   | ETriggerEvent
+  
+  type _field =
+   | FContract_manager
+   | FEvent_oracle
+   | FVerify_oracle
+   | FMin_premium
+   | FMax_mag
+   | FMin_mag
+   | FInsuring_duration
+   | FInsured_duration
+   | FInsuring_deadline
+   | FExpiration
+   | FInitial_balance
+   | FElapsed_balance
+   | FInsured_users
+   | FAddr
+   | FCell
+   | FBal
+   | FPremium
+   | FVerified
+   | FIdx
+   | FUsers
+   | FCid
+   | FEid
+   | FEtype
+   | FMag
+   | FCells
+   | FAffected
+  
+  clone archetype.Trace as Tr with type _asset = _asset,
+                                   type _entry = _entry,
+                                   type _field = _field
+  
+  type state =
+   | Creation
+   | Insuring
+   | Insured
+   | Expired
+  
+  type event_type =
+   | Earthquake
+   | Flood
+   | Wildfire
+   | Draught
+   | Hurricane
+   | Eruption
+  
+  let function cmp_event_type (e1 : event_type) (e2 : event_type) : bool
+  =  match (e1 , e2) with
+     | Eruption,Eruption -> true
+     |Hurricane,Hurricane -> true
+     |Draught,Draught -> true
+     |Wildfire,Wildfire -> true
+     |Flood,Flood -> true
+     |Earthquake,Earthquake -> true
+     | _, _ -> false 
+     end
+  
+  type user = {
+    addr : address;
+    cell : int;
+    bal : tez;
+    premium : tez;
+    verified : bool 
+  }
+  
+  let function eq_user (a1 : user) (a2 : user) : bool
+  =  ((((((((a1.addr = a2.addr) && (a1.cell = a2.cell))) && (a1.bal = a2.bal))) && (a1.premium = a2.premium))) && ((a1.verified && a2.verified) || ((not a1.verified) && (not a2.verified))))
+  
+  let mk_default_user () : user
+  =  {
+       addr = 0;
+       cell = 0;
+       bal = 0;
+       premium = 0;
+       verified = true
+     }
+  
+  clone archetype.AssetCollection as User with type t = user,
+                                               val fkey = addr,
+                                               val feq = eq_user
+  
+  type wcell = {
+    idx : int;
+    users : User.view 
+  }
+  
+  let function eq_wcell (a1 : wcell) (a2 : wcell) : bool
+  =  ((a1.idx = a2.idx) && (User.eq_view a1.users a2.users))
+  
+  let mk_default_wcell () : wcell
+  =  {
+       idx = 0;
+       users = L.Nil
+     }
+  
+  clone archetype.AssetCollection as Wcell with type t = wcell,
+                                                val fkey = idx,
+                                                val feq = eq_wcell
+  
+  type event_cell = {
+    cid : int 
+  }
+  
+  let function eq_event_cell (a1 : event_cell) (a2 : event_cell) : bool
+  =  a1.cid = a2.cid
+  
+  let mk_default_event_cell () : event_cell
+  =  {
+       cid = 0
+     }
+  
+  clone archetype.AssetCollection as Event_cell with type t = event_cell,
+                                                     val fkey = cid,
+                                                     val feq = eq_event_cell
+  
+  type event = {
+    eid : astring;
+    etype : event_type;
+    mag : (int, int);
+    cells : Event_cell.view;
+    affected : User.view 
+  }
+  
+  let function eq_event (a1 : event) (a2 : event) : bool
+  =  ((((((((a1.eid = a2.eid) && (cmp_event_type a1.etype a2.etype))) && (((fst a1.mag = fst a2.mag) && (snd a1.mag = snd a2.mag))))) && (Event_cell.eq_view a1.cells a2.cells))) && (User.eq_view a1.affected a2.affected))
+  
+  let mk_default_event () : event
+  =  {
+       eid = 0;
+       etype = Earthquake;
+       mag = (0 , 0);
+       cells = L.Nil;
+       affected = L.Nil
+     }
+  
+  clone archetype.AssetCollection as Event with type t = event,
+                                                val fkey = eid,
+                                                val feq = eq_event
+  
+  lemma user_extensionality:
+    forall a1 a2 : user.
+    eq_user a1 a2 ->
+    a1 = a2 
+  
+  lemma wcell_extensionality:
+    forall a1 a2 : wcell.
+    eq_wcell a1 a2 ->
+    a1 = a2 
+  
+  lemma event_cell_extensionality:
+    forall a1 a2 : event_cell.
+    eq_event_cell a1 a2 ->
+    a1 = a2 
+  
+  lemma event_extensionality:
+    forall a1 a2 : event.
+    eq_event a1 a2 ->
+    a1 = a2 
+  
+  let function get_user_sum1 (a : user) : int
+  =  a.premium
+  
+  clone archetype.Sum as UserSum1 with type collection = User.collection,
+                                       type t = user,
+                                       val field = get_user_sum1,
+                                       val get = User.get
+  
+  let function get_user_sum2 (a : user) : int
+  =  a.bal
+  
+  clone archetype.Sum as UserSum2 with type collection = User.collection,
+                                       type t = user,
+                                       val field = get_user_sum2,
+                                       val get = User.get
+  
+  type _storage = {
+    mutable contract_manager : role;
+    mutable event_oracle : role;
+    mutable verify_oracle : role;
+    mutable min_premium : tez;
+    mutable max_mag : (int, int);
+    mutable min_mag : (int, int);
+    mutable insuring_duration : int;
+    mutable insured_duration : int;
+    mutable insuring_deadline : int;
+    mutable expiration : int;
+    mutable initial_balance : tez;
+    mutable elapsed_balance : tez;
+    mutable insured_users : int;
+    mutable state : state;
+    mutable _user_assets : User.collection;
+    mutable _user_assets_added : User.collection;
+    mutable _user_assets_removed : User.collection;
+    mutable _wcell_assets : Wcell.collection;
+    mutable _wcell_assets_added : Wcell.collection;
+    mutable _wcell_assets_removed : Wcell.collection;
+    mutable _event_cell_assets : Event_cell.collection;
+    mutable _event_cell_assets_added : Event_cell.collection;
+    mutable _event_cell_assets_removed : Event_cell.collection;
+    mutable _event_assets : Event.collection;
+    mutable _event_assets_added : Event.collection;
+    mutable _event_assets_removed : Event.collection;
+    mutable _ops : transfers;
+    mutable _balance : tez;
+    _transferred : tez;
+    _caller : address;
+    _source : address;
+    _now : date;
+    _entry : option _entry;
+    mutable _tr : Tr._traces 
+  } invariant {
+    [@expl:u0]
+    forall a : user.
+    User.mem a _user_assets ->
+    cell a > 0  
+  }
+  invariant {
+    [@expl:u1]
+    forall a : user.
+    User.mem a _user_assets ->
+    premium a > min_premium  
+  }
+  invariant {
+    [@expl:wc0]
+    forall a : wcell.
+    Wcell.mem a _wcell_assets ->
+    idx a > 0  
+  }
+  invariant {
+    [@expl:ec0]
+    forall a : event_cell.
+    Event_cell.mem a _event_cell_assets ->
+    cid a > 0  
+  }
+  invariant {
+    [@expl:e0]
+    forall a : event.
+    Event.mem a _event_assets ->
+    Event_cell.card (cells a) > 0  
+  }
+  invariant {
+    [@expl:e1]
+    forall a : event.
+    Event.mem a _event_assets ->
+    ((mag a > min_mag) && (mag a < max_mag))   
+  } by {
+    contract_manager = 4309215344538093075353519628317427755437575864680413196053360876911153883298366414414011496975139163599827585196029310967223363439625456742174123044014663;
+    event_oracle = 4309215344538093075353519628317427755437575864680413196053360876911153883298366414414011496975139163599827585196029310967223363439625456742174123044014663;
+    verify_oracle = 4309215344538093075353519628317427755437575864680413196053360876911153883298366414414011496975139163599827585196029310967223363439625456742174123044014663;
+    min_premium = 1000000;
+    max_mag = (12 , 1);
+    min_mag = (5 , 1);
+    insuring_duration = 604800;
+    insured_duration = 2419200;
+    insuring_deadline = 0;
+    expiration = 0;
+    initial_balance = 0;
+    elapsed_balance = 0;
+    insured_users = 0;
+    state = Creation;
+    _user_assets = User.empty;
+    _user_assets_added = User.empty;
+    _user_assets_removed = User.empty;
+    _wcell_assets = Wcell.empty;
+    _wcell_assets_added = Wcell.empty;
+    _wcell_assets_removed = Wcell.empty;
+    _event_cell_assets = Event_cell.empty;
+    _event_cell_assets_added = Event_cell.empty;
+    _event_cell_assets_removed = Event_cell.empty;
+    _event_assets = Event.empty;
+    _event_assets_added = Event.empty;
+    _event_assets_removed = Event.empty;
+    _ops = L.Nil;
+    _balance = 0;
+    _transferred = 0;
+    _caller = 0;
+    _source = 0;
+    _now = 0;
+    _entry = None;
+    _tr = L.Nil 
+  }
+  
+  val _s : _storage
+  
+  let transfer (a : int) (t : address) : unit
+  ensures {
+    [@expl:transfer_post_1]
+    _s._balance = (old _s)._balance - a  
+  }
+  =  _s._ops <- L.Cons (mk_transfer t a) _s._ops;
+     _s._balance <- _s._balance - a
+  
+  let call (t : address) : unit
+  =  _s._ops <- L.Cons (mk_call t) _s._ops
+  
+  let nth_user (v : User.view) (i : int) : user
+  raises { NotFound }
+  ensures {
+    [@expl:nth_user_post_1]
+    User.mem result _s._user_assets  
+  }
+  =  match User.nth i v with
+     | Some k -> match User.get _s._user_assets k with
+                 | Some v -> v
+                 | _ -> raise NotFound 
+                 end
+     | _ -> raise NotFound 
+     end
+  
+  let get_user (k : address) : user
+  raises { NotFound ->
+           not (User.contains k (old _s)._user_assets)  }
+  ensures {
+    [@expl:get_user_post_1]
+    User.mem result _s._user_assets 
+  }
+  ensures {
+    [@expl:get_user_post_2]
+    result.addr = k  
+  }
+  =  match User.get _s._user_assets k with
+     | Some e -> e
+     | _ -> raise NotFound 
+     end
+  
+  let set_user (old_asset : user) (new_asset : user) : unit
+  raises { NotFound ->
+           not (User.contains old_asset.addr (old _s)._user_assets)  }
+  requires {
+    [@expl:require_set_user_u0]
+    cell new_asset > 0 
+  }
+  requires {
+   [@expl:require_set_user_u1]
+   premium new_asset > _s.min_premium  
+  }
+  ensures {
+    [@expl:set_user_post1]
+    match User.get _s._user_assets old_asset.addr with
+    | Some e -> cell e = cell new_asset
+    | _ -> false 
+    end 
+  }
+  ensures {
+    [@expl:set_user_post2]
+    match User.get _s._user_assets old_asset.addr with
+    | Some e -> bal e = bal new_asset
+    | _ -> false 
+    end 
+  }
+  ensures {
+    [@expl:set_user_post3]
+    match User.get _s._user_assets old_asset.addr with
+    | Some e -> premium e = premium new_asset
+    | _ -> false 
+    end 
+  }
+  ensures {
+    [@expl:set_user_post4]
+    match User.get _s._user_assets old_asset.addr with
+    | Some e -> verified e = verified new_asset
+    | _ -> false 
+    end 
+  }
+  ensures {
+    [@expl:set_user_sum_post]
+    UserSum1.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets = ((UserSum1.sum (User.to_view _s._user_assets) _s._user_assets) - (get_user_sum1 new_asset)) + (get_user_sum1 old_asset) 
+  }
+  ensures {
+    [@expl:set_user_sum_post]
+    UserSum2.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets = ((UserSum2.sum (User.to_view _s._user_assets) _s._user_assets) - (get_user_sum2 new_asset)) + (get_user_sum2 old_asset) 
+  }
+  ensures {
+    [@expl:set_user_count]
+    User.card _s._user_assets = User.card (old _s)._user_assets  
+  }
+  =  if not (User.contains old_asset.addr _s._user_assets) then 
+       raise NotFound 
+     else 
+       _s._user_assets <- User.set _s._user_assets old_asset.addr new_asset 
+  
+  let add_user (new_asset : user) : unit
+  raises { KeyExist ->
+           not (User.contains new_asset.addr (old _s)._user_assets)  }
+  requires {
+    [@expl:require_add_user_u0]
+    cell new_asset > 0 
+  }
+  requires {
+   [@expl:require_add_user_u1]
+   premium new_asset > _s.min_premium  
+  }
+  ensures {
+    [@expl:add_user_post_1]
+    User.mem new_asset _s._user_assets 
+  }
+  ensures {
+    [@expl:add_user_post_2]
+    User.(==) _s._user_assets (User.union (old _s)._user_assets (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_user_post_3]
+    User.(==) _s._user_assets_added (User.union (old _s)._user_assets_added (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_user_post_4]
+    User.is_empty (User.inter (old _s)._user_assets_added (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_user_sum_post]
+    UserSum1.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum1.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets) + (get_user_sum1 new_asset) 
+  }
+  ensures {
+    [@expl:add_user_sum_post]
+    UserSum2.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum2.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets) + (get_user_sum2 new_asset) 
+  }
+  ensures {
+    [@expl:add_user_count]
+    User.card _s._user_assets = (User.card (old _s)._user_assets) + 1  
+  }
+  =  if not (User.contains new_asset.addr _s._user_assets) then 
+       raise KeyExist 
+     else 
+       (_s._user_assets <- User.add _s._user_assets new_asset;
+        _s._user_assets_added <- User.add _s._user_assets_added new_asset) 
+  
+  let select_user_1 (v : User.view) (c : User.collection) : User.view
+  ensures {
+    [@expl:select_user_1_post_1]
+    forall k : key.
+    L.mem k result ->
+    exists a : user.
+    a.addr = k /\ User.mem a c /\ a.verified  
+  }
+  ensures {
+    [@expl:select_user_1_post_2]
+    forall k : key.
+    L.mem k result ->
+    L.mem k v   
+  }
+  =  let rec internal_select (l : User.view) : User.view
+     variant { l }
+     =  match l with
+        | L.Nil -> L.Nil
+        | L.Cons k tl -> 
+          match User.get c k with
+          | Some a -> if a.verified then 
+                        L.Cons k (internal_select tl) 
+                      else 
+                        internal_select tl 
+          | _ -> internal_select tl 
+          end
+        end in
+     internal_select v
+  
+  let function select_user_2 (v : User.view) (c : User.collection) : User.view
+  ensures {
+    [@expl:select_user_2_post_1]
+    forall k : key.
+    L.mem k result ->
+    exists a : user.
+    a.addr = k /\ User.mem a c /\ not a.verified  
+  }
+  ensures {
+    [@expl:select_user_2_post_2]
+    forall k : key.
+    L.mem k result ->
+    L.mem k v   
+  }
+  =  let rec internal_select (l : User.view) : User.view
+     variant { l }
+     =  match l with
+        | L.Nil -> L.Nil
+        | L.Cons k tl -> 
+          match User.get c k with
+          | Some a -> if not a.verified then 
+                        L.Cons k (internal_select tl) 
+                      else 
+                        internal_select tl 
+          | _ -> internal_select tl 
+          end
+        end in
+     internal_select v
+  
+  let function select_user_3 (_caller : address) (v : User.view) (c : User.collection) : User.view
+  ensures {
+    [@expl:select_user_3_post_1]
+    forall k : key.
+    L.mem k result ->
+    exists a : user.
+    a.addr = k /\ User.mem a c /\ a.addr = _caller  
+  }
+  ensures {
+    [@expl:select_user_3_post_2]
+    forall k : key.
+    L.mem k result ->
+    L.mem k v   
+  }
+  =  let rec internal_select (l : User.view) : User.view
+     variant { l }
+     =  match l with
+        | L.Nil -> L.Nil
+        | L.Cons k tl -> 
+          match User.get c k with
+          | Some a -> if a.addr = _caller then 
+                        L.Cons k (internal_select tl) 
+                      else 
+                        internal_select tl 
+          | _ -> internal_select tl 
+          end
+        end in
+     internal_select v
+  
+  let contains_user (k : address) : bool
+  ensures {
+    [@expl:user_contains_1]
+    result = User.contains k _s._user_assets  
+  }
+  =  User.contains k _s._user_assets
+  
+  let get_wcell (k : int) : wcell
+  raises { NotFound ->
+           not (Wcell.contains k (old _s)._wcell_assets)  }
+  ensures {
+    [@expl:get_wcell_post_1]
+    Wcell.mem result _s._wcell_assets 
+  }
+  ensures {
+    [@expl:get_wcell_post_2]
+    result.idx = k  
+  }
+  =  match Wcell.get _s._wcell_assets k with
+     | Some e -> e
+     | _ -> raise NotFound 
+     end
+  
+  let add_wcell (new_asset : wcell) : unit
+  raises { KeyExist ->
+           not (Wcell.contains new_asset.idx (old _s)._wcell_assets)  }
+  requires {
+    [@expl:require_add_wcell_wc0]
+    idx new_asset > 0  
+  }
+  ensures {
+    [@expl:add_wcell_post_1]
+    Wcell.mem new_asset _s._wcell_assets 
+  }
+  ensures {
+    [@expl:add_wcell_post_2]
+    Wcell.(==) _s._wcell_assets (Wcell.union (old _s)._wcell_assets (Wcell.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_wcell_post_3]
+    Wcell.(==) _s._wcell_assets_added (Wcell.union (old _s)._wcell_assets_added (Wcell.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_wcell_post_4]
+    Wcell.is_empty (Wcell.inter (old _s)._wcell_assets_added (Wcell.singleton new_asset))  
+  }
+  =  if not (Wcell.contains new_asset.idx _s._wcell_assets) then 
+       raise KeyExist 
+     else 
+       (_s._wcell_assets <- Wcell.add _s._wcell_assets new_asset;
+        _s._wcell_assets_added <- Wcell.add _s._wcell_assets_added new_asset) 
+  
+  let add_wcell_users (asset : wcell) (new_asset : user) : unit
+  raises { NotFound ->
+           not (Wcell.contains asset.idx (old _s)._wcell_assets)  }
+  requires {
+    [@expl:require_add_wcell_users_u0]
+    cell new_asset > 0 
+  }
+  requires {
+   [@expl:require_add_wcell_users_u1]
+   premium new_asset > _s.min_premium  
+  }
+  ensures {
+    [@expl:add_wcell_users_post_1]
+    User.mem new_asset _s._user_assets 
+  }
+  ensures {
+    [@expl:add_wcell_users_post_2]
+    User.(==) _s._user_assets (User.union (old _s)._user_assets (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_wcell_users_post_3]
+    User.(==) _s._user_assets_added (User.union (old _s)._user_assets_added (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_wcell_users_post_4]
+    User.is_empty (User.inter (old _s)._user_assets_added (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_user_sum_post]
+    UserSum1.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum1.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets) + (get_user_sum1 new_asset) 
+  }
+  ensures {
+    [@expl:add_user_sum_post]
+    UserSum2.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum2.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets) + (get_user_sum2 new_asset) 
+  }
+  ensures {
+    [@expl:add_user_count]
+    User.card _s._user_assets = (User.card (old _s)._user_assets) + 1  
+  }
+  =  if not (Wcell.contains asset.idx _s._wcell_assets) then 
+       raise NotFound 
+     else 
+       let wcell_users = users asset in
+       let new_wcell_users = L.Cons (addr new_asset) wcell_users in
+       let new_asset = { asset with
+         users = new_wcell_users
+       } in
+       _s._wcell_assets <- Wcell.set _s._wcell_assets (idx asset) new_asset 
+  
+  let contains_wcell (k : int) : bool
+  ensures {
+    [@expl:wcell_contains_1]
+    result = Wcell.contains k _s._wcell_assets  
+  }
+  =  Wcell.contains k _s._wcell_assets
+  
+  let nth_event_cell (v : Event_cell.view) (i : int) : event_cell
+  raises { NotFound }
+  ensures {
+    [@expl:nth_event_cell_post_1]
+    Event_cell.mem result _s._event_cell_assets  
+  }
+  =  match Event_cell.nth i v with
+     | Some k -> match Event_cell.get _s._event_cell_assets k with
+                 | Some v -> v
+                 | _ -> raise NotFound 
+                 end
+     | _ -> raise NotFound 
+     end
+  
+  let get_event_cell (k : int) : event_cell
+  raises { NotFound ->
+           not (Event_cell.contains k (old _s)._event_cell_assets)  }
+  ensures {
+    [@expl:get_event_cell_post_1]
+    Event_cell.mem result _s._event_cell_assets 
+  }
+  ensures {
+    [@expl:get_event_cell_post_2]
+    result.cid = k  
+  }
+  =  match Event_cell.get _s._event_cell_assets k with
+     | Some e -> e
+     | _ -> raise NotFound 
+     end
+  
+  let add_event (new_asset : event) : unit
+  raises { KeyExist ->
+           not (Event.contains new_asset.eid (old _s)._event_assets)  }
+  requires {
+    [@expl:require_add_event_e0]
+    Event_cell.card (cells new_asset) > 0 
+  }
+  requires {
+   [@expl:require_add_event_e1]
+   ((mag new_asset > _s.min_mag) && (mag new_asset < _s.max_mag))  
+  }
+  ensures {
+    [@expl:add_event_post_1]
+    Event.mem new_asset _s._event_assets 
+  }
+  ensures {
+    [@expl:add_event_post_2]
+    Event.(==) _s._event_assets (Event.union (old _s)._event_assets (Event.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_event_post_3]
+    Event.(==) _s._event_assets_added (Event.union (old _s)._event_assets_added (Event.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_event_post_4]
+    Event.is_empty (Event.inter (old _s)._event_assets_added (Event.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_event_count]
+    Event.card _s._event_assets = (Event.card (old _s)._event_assets) + 1  
+  }
+  =  if not (Event.contains new_asset.eid _s._event_assets) then 
+       raise KeyExist 
+     else 
+       (_s._event_assets <- Event.add _s._event_assets new_asset;
+        _s._event_assets_added <- Event.add _s._event_assets_added new_asset) 
+  
+  let add_event_affected (asset : event) (new_asset : user) : unit
+  raises { NotFound ->
+           not (Event.contains asset.eid (old _s)._event_assets)  }
+  requires {
+    [@expl:require_add_event_affected_u0]
+    cell new_asset > 0 
+  }
+  requires {
+   [@expl:require_add_event_affected_u1]
+   premium new_asset > _s.min_premium  
+  }
+  ensures {
+    [@expl:add_event_affected_post_1]
+    User.mem new_asset _s._user_assets 
+  }
+  ensures {
+    [@expl:add_event_affected_post_2]
+    User.(==) _s._user_assets (User.union (old _s)._user_assets (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_event_affected_post_3]
+    User.(==) _s._user_assets_added (User.union (old _s)._user_assets_added (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_event_affected_post_4]
+    User.is_empty (User.inter (old _s)._user_assets_added (User.singleton new_asset)) 
+  }
+  ensures {
+    [@expl:add_user_sum_post]
+    UserSum1.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum1.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets) + (get_user_sum1 new_asset) 
+  }
+  ensures {
+    [@expl:add_user_sum_post]
+    UserSum2.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum2.sum (User.to_view (old _s)._user_assets) (old _s)._user_assets) + (get_user_sum2 new_asset) 
+  }
+  ensures {
+    [@expl:add_user_count]
+    User.card _s._user_assets = (User.card (old _s)._user_assets) + 1  
+  }
+  =  if not (Event.contains asset.eid _s._event_assets) then 
+       raise NotFound 
+     else 
+       let event_affected = affected asset in
+       let new_event_affected = L.Cons (addr new_asset) event_affected in
+       let new_asset = { asset with
+         affected = new_event_affected
+       } in
+       _s._event_assets <- Event.set _s._event_assets (eid asset) new_asset 
+  
+  let contains_event (k : astring) : bool
+  ensures {
+    [@expl:event_contains_1]
+    result = Event.contains k _s._event_assets  
+  }
+  =  Event.contains k _s._event_assets
+end
+module Crowsurance
+  use archetype.Lib
+  
+  use list.List as L
+  
+  use Crowsurance_storage
+  
+  let start () : unit
+  raises { InvalidCaller }
+  raises { InvalidState }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some EStart 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  =  try
+       if not (_s._caller = _s.contract_manager) then raise InvalidCaller;
+       match _s.state with
+       | Creation -> _s.insuring_deadline <- (_s._now) + _s.insuring_duration;
+                     _s.expiration <- ((_s._now) + _s.insuring_duration) + _s.insured_duration;
+                     _s.state <- Insuring
+       | _ -> raise InvalidState 
+       end
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+  
+  let endInsuring () : unit
+  raises { InvalidCaller }
+  raises { InvalidState }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some EEndInsuring 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  =  try
+       if not (_s._caller = _s.contract_manager) then raise InvalidCaller;
+       match _s.state with
+       | Insuring -> if _s._now >= _s.insuring_deadline then (let vrf = select_user_1 (User.to_view _s._user_assets) _s._user_assets in
+                                                              (_s.elapsed_balance <- UserSum1.sum vrf _s._user_assets;
+                                                               _s.initial_balance <- _s.elapsed_balance;
+                                                               _s.insured_users <- User.length vrf);
+                                                              _s.state <- Insured)
+       | _ -> raise InvalidState 
+       end
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+  
+  let endInsured () : unit
+  raises { InvalidCaller }
+  raises { InvalidState }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some EEndInsured 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  =  try
+       if not (_s._caller = _s.contract_manager) then raise InvalidCaller;
+       match _s.state with
+       | Insured -> if _s._now >= _s.expiration then _s.state <- Expired
+       | _ -> raise InvalidState 
+       end
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+  
+  let insureUser (pos : int) : unit
+  raises { InvalidCondition }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some EInsureUser 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  ensures {
+    [@expl:ip0]
+    User.card _s._user_assets = (User.card (old _s)._user_assets) + 1  
+  }
+  =  try
+       if not (match _s.state with
+               | Insuring -> true
+               | _ -> false 
+               end) then raise InvalidCondition;
+       if not (_s._transferred >= _s.min_premium) then raise InvalidCondition;
+       if not (not (contains_user (_s._caller))) then raise InvalidCondition;
+       add_user ({
+         addr = _s._caller;
+         cell = pos;
+         bal = 0;
+         premium = _s._transferred;
+         verified = false
+       });
+       _s._tr <- L.Cons (Tr.TrAdd_ AUser) _s._tr
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+  
+  let verifyUser (uaddr : address) (wc : int) : unit
+  raises { InvalidCaller }
+  raises { InvalidCondition }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some EVerifyUser 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  ensures {
+    [@expl:vp0]
+    User.length (select_user_2 (User.to_view _s._user_assets) _s._user_assets) = (User.length (select_user_2 (User.to_view (old _s)._user_assets) _s._user_assets)) - 1 
+  }
+  ensures {
+    [@expl:vp1]
+    Wcell.contains wc _s._wcell_assets  
+  }
+  =  try
+       if not (_s._caller = _s.verify_oracle) then raise InvalidCaller;
+       if not (match _s.state with
+               | Insuring -> true
+               | _ -> false 
+               end) then raise InvalidCondition;
+       if not (contains_user uaddr) then raise InvalidCondition;
+       if not ((get_user uaddr).cell = wc) then raise InvalidCondition;
+       if not (not (contains_wcell wc) || ((contains_wcell wc) && (not (contains_user uaddr)))) then raise InvalidCondition;
+       let u = get_user uaddr in
+       (let k_ = uaddr in
+        let user_ = get_user k_ in
+        let user_ = {
+          addr = user_.addr;
+          cell = user_.cell;
+          bal = user_.bal;
+          premium = user_.premium;
+          verified = true
+        } in
+        (set_user (get_user k_) user_;
+         _s._tr <- L.Cons (Tr.TrUpdate_ FVerified) _s._tr);
+        if contains_wcell u.cell then (add_wcell ({
+                                         idx = u.cell;
+                                         users = L.Nil
+                                       });
+                                       _s._tr <- L.Cons (Tr.TrAdd_ AWcell) _s._tr);
+        add_wcell_users (get_wcell u.cell) (get_user uaddr);
+        _s._tr <- L.Cons (Tr.TrUpdate_ FUsers) _s._tr;
+        _s._tr <- L.Cons (Tr.TrAdd_ AUser) _s._tr)
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+  
+  let withdraw () : unit
+  raises { InvalidCondition }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some EWithdraw 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  ensures {
+    [@expl:wp0]
+    UserSum2.sum (select_user_3 (_s._caller) (User.to_view _s._user_assets) _s._user_assets) _s._user_assets = 0 
+  }
+  ensures {
+    [@expl:wp1]
+    UserSum2.sum (User.to_view _s._user_assets) _s._user_assets = (UserSum2.sum (User.to_view (old _s)._user_assets) _s._user_assets) - (UserSum2.sum (select_user_3 (_s._caller) (User.to_view (old _s)._user_assets) _s._user_assets) _s._user_assets) 
+  }
+  ensures {
+    [@expl:wp2]
+    _s._balance = _s._balance - (UserSum2.sum (select_user_3 (_s._caller) (User.to_view (old _s)._user_assets) _s._user_assets) _s._user_assets)  
+  }
+  =  try
+       if not (match _s.state with
+               | Expired -> true
+               | _ -> false 
+               end) then raise InvalidCondition;
+       if not (contains_user (_s._caller)) then raise InvalidCondition;
+       if not (get_user (_s._caller)).verified then raise InvalidCondition;
+       if not ((get_user (_s._caller)).bal > 0) then raise InvalidCondition;
+       if not (_s._balance >= (get_user (_s._caller)).bal) then raise InvalidCondition;
+       let k_ = _s._caller in
+       let user_ = get_user k_ in
+       let user_ = {
+         addr = user_.addr;
+         cell = user_.cell;
+         bal = 0;
+         premium = user_.premium;
+         verified = user_.verified
+       } in
+       (set_user (get_user k_) user_;
+        _s._tr <- L.Cons (Tr.TrUpdate_ FBal) _s._tr);
+       transfer (get_user (_s._caller)).bal (_s._caller)
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+  
+  let triggerEvent (ed : astring) (emg : (int, int)) (et : event_type) (cl : Event_cell.collection) : unit
+  raises { InvalidCaller }
+  raises { InvalidCondition }
+  requires {
+    [@expl:entry_require]
+    _s._entry = Some ETriggerEvent 
+  }
+  requires {
+   [@expl:empty_trace]
+   _s._tr = L.Nil  
+  }
+  ensures {
+    [@expl:tp0]
+    Event.card _s._event_assets = (Event.card (old _s)._event_assets) + 1 
+  }
+  ensures {
+    [@expl:tp1]
+    _s.elapsed_balance >= 0  
+  }
+  =  try
+       if not (_s._caller = _s.event_oracle) then raise InvalidCaller;
+       if not (match _s.state with
+               | Insured -> true
+               | _ -> false 
+               end) then raise InvalidCondition;
+       if not (Event_cell.length cl > 0) then raise InvalidCondition;
+       if not (not (contains_event ed)) then raise InvalidCondition;
+       if not (((rat_cmp OpCmpGt emg _s.min_mag) && (rat_cmp OpCmpLt emg _s.max_mag))) then raise InvalidCondition;
+       let ev = {
+         eid = ed;
+         etype = et;
+         mag = emg;
+         cells = cl;
+         affected = L.Nil
+       } in
+       (for _i_loop_triggerEvent_1 = 0 to Event_cell.length cl do
+        invariant {
+          [@expl:wc0_loop_triggerEvent_1]
+          forall a : wcell.
+          Wcell.mem a _s._wcell_assets ->
+          idx a > 0  
+        }
+        invariant {
+          [@expl:ec0_loop_triggerEvent_1]
+          forall a : event_cell.
+          Event_cell.mem a _s._event_cell_assets ->
+          cid a > 0  
+        }
+        invariant {
+          [@expl:e0_loop_triggerEvent_1]
+          forall a : event.
+          Event.mem a _s._event_assets ->
+          Event_cell.card (cells a) > 0  
+        }
+        invariant {
+          [@expl:e1_loop_triggerEvent_1]
+          forall a : event.
+          Event.mem a _s._event_assets ->
+          ((mag a > _s.min_mag) && (mag a < _s.max_mag))   
+        } 
+          let c = nth_event_cell cl _i_loop_triggerEvent_1 in
+          for _i_loop_triggerEvent_0 = 0 to User.length (get_wcell c.cid).users do
+          invariant {
+            [@expl:wc0_loop_triggerEvent_0]
+            forall a : wcell.
+            Wcell.mem a _s._wcell_assets ->
+            idx a > 0  
+          }
+          invariant {
+            [@expl:ec0_loop_triggerEvent_0]
+            forall a : event_cell.
+            Event_cell.mem a _s._event_cell_assets ->
+            cid a > 0  
+          }
+          invariant {
+            [@expl:e0_loop_triggerEvent_0]
+            forall a : event.
+            Event.mem a _s._event_assets ->
+            Event_cell.card (cells a) > 0  
+          }
+          invariant {
+            [@expl:e1_loop_triggerEvent_0]
+            forall a : event.
+            Event.mem a _s._event_assets ->
+            ((mag a > _s.min_mag) && (mag a < _s.max_mag))   
+          } 
+            let ac = nth_user (get_wcell c.cid).users _i_loop_triggerEvent_0 in
+            (add_event_affected ev ac;
+             _s._tr <- L.Cons (Tr.TrUpdate_ FAffected) _s._tr;
+             _s._tr <- L.Cons (Tr.TrAdd_ AUser) _s._tr)
+          done
+        done;
+        for _i_loop_triggerEvent_2 = 0 to User.length ev.affected do
+        invariant {
+          [@expl:u0_loop_triggerEvent_2]
+          forall a : user.
+          User.mem a _s._user_assets ->
+          cell a > 0  
+        }
+        invariant {
+          [@expl:u1_loop_triggerEvent_2]
+          forall a : user.
+          User.mem a _s._user_assets ->
+          premium a > _s.min_premium  
+        }
+        invariant {
+          [@expl:wc0_loop_triggerEvent_2]
+          forall a : wcell.
+          Wcell.mem a _s._wcell_assets ->
+          idx a > 0  
+        }
+        invariant {
+          [@expl:ec0_loop_triggerEvent_2]
+          forall a : event_cell.
+          Event_cell.mem a _s._event_cell_assets ->
+          cid a > 0  
+        }
+        invariant {
+          [@expl:e0_loop_triggerEvent_2]
+          forall a : event.
+          Event.mem a _s._event_assets ->
+          Event_cell.card (cells a) > 0  
+        }
+        invariant {
+          [@expl:e1_loop_triggerEvent_2]
+          forall a : event.
+          Event.mem a _s._event_assets ->
+          ((mag a > _s.min_mag) && (mag a < _s.max_mag))   
+        } 
+          let iu = nth_user ev.affected _i_loop_triggerEvent_2 in
+          (let nbal = iu.bal + iu.premium in
+           (let user_ = iu in
+            let user_ = {
+              addr = user_.addr;
+              cell = user_.cell;
+              bal = nbal;
+              premium = user_.premium;
+              verified = user_.verified
+            } in
+            (set_user iu user_;
+             _s._tr <- L.Cons (Tr.TrUpdate_ FBal) _s._tr);
+            _s.elapsed_balance <- _s.elapsed_balance - nbal))
+        done;
+        add_event ev;
+        _s._tr <- L.Cons (Tr.TrAdd_ AEvent) _s._tr)
+     with 
+     | NotFound -> assert { [@expl:security_s0] false }
+     | KeyExist -> assert { [@expl:security_s0] false }
+     end
+end
+

@@ -1,0 +1,16 @@
+(* oracles and manager *)
+let contract_manager  : address = "tz15P69BXJYAURaznhvN1k1KmuhR6P52hw6x"
+let event_oracle      : address = "tz15P69BXJYAURaznhvN1k1KmuhR6P52hw6x"
+let verify_oracle 		: address = "tz15P69BXJYAURaznhvN1k1KmuhR6P52hw6x"
+
+(* minium premium *)
+let min_premium		    : tez = 1tz
+
+(* max and mig magnitude *)
+let max_mag			      : rat = (12, 0)
+let min_mag			      : rat = (5, 0)
+
+(* contract durations *)
+let one_day           : nat = 86_400
+let insuring_duration	: nat = one_day * 7
+let insured_duration	: nat = one_day * 28

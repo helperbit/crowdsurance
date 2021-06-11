@@ -1,0 +1,41 @@
+let rat_gte (a, b: rat * rat) =
+  let (na, va) = a in 
+  let (nb, vb) = b in 
+  na >= nb || (na = nb && va >= vb) 
+  [@@inline]
+
+let rat_lte (a, b: rat * rat) = rat_gte (b, a) [@@inline]
+
+
+(* returns only a new storage *)
+let rets (s: storage) = ([]: operation list), s [@@inline]
+
+(* unroll an option value *)
+let unroll_user_opt (o: user option) : user = match o with 
+    Some v  -> v 
+  | None    -> (failwith "no user": user)
+  [@@inline]
+
+let sender_contract : unit contract = 
+  match (Tezos.get_contract_opt Tezos.sender : unit contract option) with
+    Some contract -> contract
+  | None          -> (failwith "no contract" : unit contract)
+  [@@inline]
+
+let in_expired (s: storage): bool =
+  match s.current_phase with | Expired -> true | Insuring -> false | Insured -> false | Creation -> false
+
+let in_insuring (s: storage): bool =
+  match s.current_phase with | Insuring -> true | Expired -> false | Insured -> false | Creation -> false
+      
+let in_insured (s: storage): bool =
+  match s.current_phase with | Insured -> true | Insuring -> false | Expired -> false | Creation -> false
+      
+let called_by (a: address): bool = 
+  a = Tezos.sender
+
+let after (d: date): bool =
+  Tezos.now >= d
+
+let has_amount (m: tez): bool =
+  Tezos.amount >= m

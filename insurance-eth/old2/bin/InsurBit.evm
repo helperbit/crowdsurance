@@ -1,0 +1,2895 @@
+.code:
+  PUSH1 0x60		contract InsurBit {...
+  PUSH1 0x40		contract InsurBit {...
+  MSTORE			contract InsurBit {...
+tag1: 
+  JUMPDEST		function InsurBit () {...
+  CALLER			msg.sender
+  PUSH1 0x7		HELPERBIT_ADDRESS
+  PUSH1 0x5		HELPERBIT_ADDRESS
+  PUSH2 0x100		HELPERBIT_ADDRESS = msg.sender
+  EXP			HELPERBIT_ADDRESS = msg.sender
+  DUP2			HELPERBIT_ADDRESS = msg.sender
+  SLOAD			HELPERBIT_ADDRESS = msg.sender
+  DUP2			HELPERBIT_ADDRESS = msg.sender
+  PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		HELPERBIT_ADDRESS = msg.sender
+  MUL			HELPERBIT_ADDRESS = msg.sender
+  NOT			HELPERBIT_ADDRESS = msg.sender
+  AND			HELPERBIT_ADDRESS = msg.sender
+  SWAP1			HELPERBIT_ADDRESS = msg.sender
+  DUP4			HELPERBIT_ADDRESS = msg.sender
+  PUSH13 0x1000000000000000000000000		HELPERBIT_ADDRESS = msg.sender
+  SWAP1			HELPERBIT_ADDRESS = msg.sender
+  DUP2			HELPERBIT_ADDRESS = msg.sender
+  MUL			HELPERBIT_ADDRESS = msg.sender
+  DIV			HELPERBIT_ADDRESS = msg.sender
+  MUL			HELPERBIT_ADDRESS = msg.sender
+  OR			HELPERBIT_ADDRESS = msg.sender
+  SWAP1			HELPERBIT_ADDRESS = msg.sender
+  SSTORE			HELPERBIT_ADDRESS = msg.sender
+  POP			HELPERBIT_ADDRESS = msg.sender
+  PUSH2 0xA805		43013
+  PUSH1 0x8		YEAR_INTENSITY
+  PUSH1 0x0		YEAR_INTENSITY
+  POP			YEAR_INTENSITY = 43013
+  DUP2			YEAR_INTENSITY = 43013
+  SWAP1			YEAR_INTENSITY = 43013
+  SSTORE			YEAR_INTENSITY = 43013
+  POP			YEAR_INTENSITY = 43013
+  PUSH1 0x64		100
+  PUSH1 0x9		SPLIT_SHORT_TERM
+  PUSH1 0x0		SPLIT_SHORT_TERM
+  POP			SPLIT_SHORT_TERM = 100
+  DUP2			SPLIT_SHORT_TERM = 100
+  SWAP1			SPLIT_SHORT_TERM = 100
+  SSTORE			SPLIT_SHORT_TERM = 100
+  POP			SPLIT_SHORT_TERM = 100
+  PUSH1 0x0		0
+  PUSH1 0xA		SPLIT_LONG_TERM
+  PUSH1 0x0		SPLIT_LONG_TERM
+  POP			SPLIT_LONG_TERM = 0
+  DUP2			SPLIT_LONG_TERM = 0
+  SWAP1			SPLIT_LONG_TERM = 0
+  SSTORE			SPLIT_LONG_TERM = 0
+  POP			SPLIT_LONG_TERM = 0
+  PUSH1 0x0		0
+  PUSH1 0x3		totalUsers
+  PUSH1 0x0		totalUsers
+  PUSH2 0x100		totalUsers = 0
+  EXP			totalUsers = 0
+  DUP2			totalUsers = 0
+  SLOAD			totalUsers = 0
+  DUP2			totalUsers = 0
+  PUSH4 0xFFFFFFFF		totalUsers = 0
+  MUL			totalUsers = 0
+  NOT			totalUsers = 0
+  AND			totalUsers = 0
+  SWAP1			totalUsers = 0
+  DUP4			totalUsers = 0
+  PUSH29 0x100000000000000000000000000000000000000000000000000000000		totalUsers = 0
+  SWAP1			totalUsers = 0
+  DUP2			totalUsers = 0
+  MUL			totalUsers = 0
+  DIV			totalUsers = 0
+  MUL			totalUsers = 0
+  OR			totalUsers = 0
+  SWAP1			totalUsers = 0
+  SSTORE			totalUsers = 0
+  POP			totalUsers = 0
+  PUSH1 0x0		0
+  PUSH1 0x0		totalInsuredAmount
+  PUSH1 0x0		totalInsuredAmount
+  POP			totalInsuredAmount = 0
+  DUP2			totalInsuredAmount = 0
+  SWAP1			totalInsuredAmount = 0
+  SSTORE			totalInsuredAmount = 0
+  POP			totalInsuredAmount = 0
+  PUSH1 0x0		0
+  PUSH1 0x1		totalInsuredAmountShortTerm
+  PUSH1 0x0		totalInsuredAmountShortTerm
+  POP			totalInsuredAmountShortTerm = 0
+  DUP2			totalInsuredAmountShortTerm = 0
+  SWAP1			totalInsuredAmountShortTerm = 0
+  SSTORE			totalInsuredAmountShortTerm = 0
+  POP			totalInsuredAmountShortTerm = 0
+  PUSH1 0x0		0
+  PUSH1 0x2		totalInsuredAmountLongTerm
+  PUSH1 0x0		totalInsuredAmountLongTerm
+  POP			totalInsuredAmountLongTerm = 0
+  DUP2			totalInsuredAmountLongTerm = 0
+  SWAP1			totalInsuredAmountLongTerm = 0
+  SSTORE			totalInsuredAmountLongTerm = 0
+  POP			totalInsuredAmountLongTerm = 0
+  PUSH1 0x0		0
+  PUSH1 0x7		intensitySum
+  PUSH1 0x0		intensitySum
+  PUSH2 0x100		intensitySum = 0
+  EXP			intensitySum = 0
+  DUP2			intensitySum = 0
+  SLOAD			intensitySum = 0
+  DUP2			intensitySum = 0
+  PUSH4 0xFFFFFFFF		intensitySum = 0
+  MUL			intensitySum = 0
+  NOT			intensitySum = 0
+  AND			intensitySum = 0
+  SWAP1			intensitySum = 0
+  DUP4			intensitySum = 0
+  PUSH29 0x100000000000000000000000000000000000000000000000000000000		intensitySum = 0
+  SWAP1			intensitySum = 0
+  DUP2			intensitySum = 0
+  MUL			intensitySum = 0
+  DIV			intensitySum = 0
+  MUL			intensitySum = 0
+  OR			intensitySum = 0
+  SWAP1			intensitySum = 0
+  SSTORE			intensitySum = 0
+  POP			intensitySum = 0
+  PUSH1 0x0		0
+  PUSH1 0x5		totalEvents
+  PUSH1 0x0		totalEvents
+  PUSH2 0x100		totalEvents = 0
+  EXP			totalEvents = 0
+  DUP2			totalEvents = 0
+  SLOAD			totalEvents = 0
+  DUP2			totalEvents = 0
+  PUSH4 0xFFFFFFFF		totalEvents = 0
+  MUL			totalEvents = 0
+  NOT			totalEvents = 0
+  AND			totalEvents = 0
+  SWAP1			totalEvents = 0
+  DUP4			totalEvents = 0
+  PUSH29 0x100000000000000000000000000000000000000000000000000000000		totalEvents = 0
+  SWAP1			totalEvents = 0
+  DUP2			totalEvents = 0
+  MUL			totalEvents = 0
+  DIV			totalEvents = 0
+  MUL			totalEvents = 0
+  OR			totalEvents = 0
+  SWAP1			totalEvents = 0
+  SSTORE			totalEvents = 0
+  POP			totalEvents = 0
+  PUSH1 0x1		true
+  PUSH1 0x7		insuringPeriodActive
+  PUSH1 0x4		insuringPeriodActive
+  PUSH2 0x100		insuringPeriodActive = true
+  EXP			insuringPeriodActive = true
+  DUP2			insuringPeriodActive = true
+  SLOAD			insuringPeriodActive = true
+  DUP2			insuringPeriodActive = true
+  PUSH1 0xFF		insuringPeriodActive = true
+  MUL			insuringPeriodActive = true
+  NOT			insuringPeriodActive = true
+  AND			insuringPeriodActive = true
+  SWAP1			insuringPeriodActive = true
+  DUP4			insuringPeriodActive = true
+  PUSH32 0x100000000000000000000000000000000000000000000000000000000000000		insuringPeriodActive = true
+  SWAP1			insuringPeriodActive = true
+  DUP2			insuringPeriodActive = true
+  MUL			insuringPeriodActive = true
+  DIV			insuringPeriodActive = true
+  MUL			insuringPeriodActive = true
+  OR			insuringPeriodActive = true
+  SWAP1			insuringPeriodActive = true
+  SSTORE			insuringPeriodActive = true
+  POP			insuringPeriodActive = true
+tag2: 
+  JUMPDEST		function InsurBit () {...
+  PUSH #[$00000000…00000000]		contract InsurBit {...
+  DUP1			contract InsurBit {...
+  PUSH [$00000000…00000000]		contract InsurBit {...
+  PUSH1 0x0		contract InsurBit {...
+  CODECOPY			contract InsurBit {...
+  PUSH1 0x0		contract InsurBit {...
+  RETURN			contract InsurBit {...
+.data:
+  0: 
+  .code:
+    PUSH1 0x60		contract InsurBit {...
+    PUSH1 0x40		contract InsurBit {...
+    MSTORE			contract InsurBit {...
+    CALLDATASIZE			contract InsurBit {...
+    ISZERO			contract InsurBit {...
+    PUSH [tag1]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    PUSH1 0x0		contract InsurBit {...
+    CALLDATALOAD			contract InsurBit {...
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		contract InsurBit {...
+    SWAP1			contract InsurBit {...
+    DIV			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x744FB03		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag2]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xE48617C		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag3]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x1472D53F		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag4]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x18B95C18		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag5]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x2192E7C8		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag6]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x38C2422B		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag7]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x5884BC03		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag8]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x694E9419		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag9]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x71EFE927		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag10]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0x9E06FDA8		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag11]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xA834DA14		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag12]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xAA5E4303		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag13]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xB876DEC6		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag14]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xBA870686		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag15]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xBFF1F9E1		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag16]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xE630BCF0		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag17]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    DUP1			contract InsurBit {...
+    PUSH4 0xF263A494		contract InsurBit {...
+    EQ			contract InsurBit {...
+    PUSH [tag18]		contract InsurBit {...
+    JUMPI			contract InsurBit {...
+    PUSH [tag1]		contract InsurBit {...
+    JUMP			contract InsurBit {...
+  tag1: 
+    JUMPDEST		contract InsurBit {...
+    PUSH [ErrorTag]		contract InsurBit {...
+    JUMP			contract InsurBit {...
+  tag2: 
+    JUMPDEST		uint public SPLIT_SHORT_TERM
+    CALLVALUE			uint public SPLIT_SHORT_TERM
+    PUSH [ErrorTag]		uint public SPLIT_SHORT_TERM
+    JUMPI			uint public SPLIT_SHORT_TERM
+    PUSH [tag19]		uint public SPLIT_SHORT_TERM
+    PUSH1 0x4		uint public SPLIT_SHORT_TERM
+    DUP1			uint public SPLIT_SHORT_TERM
+    POP			uint public SPLIT_SHORT_TERM
+    POP			uint public SPLIT_SHORT_TERM
+    PUSH [tag20]		uint public SPLIT_SHORT_TERM
+    JUMP			uint public SPLIT_SHORT_TERM
+  tag19: 
+    JUMPDEST		uint public SPLIT_SHORT_TERM
+    PUSH1 0x40		uint public SPLIT_SHORT_TERM
+    MLOAD			uint public SPLIT_SHORT_TERM
+    DUP1			uint public SPLIT_SHORT_TERM
+    DUP3			uint public SPLIT_SHORT_TERM
+    DUP2			uint public SPLIT_SHORT_TERM
+    MSTORE			uint public SPLIT_SHORT_TERM
+    PUSH1 0x20		uint public SPLIT_SHORT_TERM
+    ADD			uint public SPLIT_SHORT_TERM
+    SWAP2			uint public SPLIT_SHORT_TERM
+    POP			uint public SPLIT_SHORT_TERM
+    POP			uint public SPLIT_SHORT_TERM
+    PUSH1 0x40		uint public SPLIT_SHORT_TERM
+    MLOAD			uint public SPLIT_SHORT_TERM
+    DUP1			uint public SPLIT_SHORT_TERM
+    SWAP2			uint public SPLIT_SHORT_TERM
+    SUB			uint public SPLIT_SHORT_TERM
+    SWAP1			uint public SPLIT_SHORT_TERM
+    RETURN			uint public SPLIT_SHORT_TERM
+  tag3: 
+    JUMPDEST		uint public SPLIT_LONG_TERM
+    CALLVALUE			uint public SPLIT_LONG_TERM
+    PUSH [ErrorTag]		uint public SPLIT_LONG_TERM
+    JUMPI			uint public SPLIT_LONG_TERM
+    PUSH [tag21]		uint public SPLIT_LONG_TERM
+    PUSH1 0x4		uint public SPLIT_LONG_TERM
+    DUP1			uint public SPLIT_LONG_TERM
+    POP			uint public SPLIT_LONG_TERM
+    POP			uint public SPLIT_LONG_TERM
+    PUSH [tag22]		uint public SPLIT_LONG_TERM
+    JUMP			uint public SPLIT_LONG_TERM
+  tag21: 
+    JUMPDEST		uint public SPLIT_LONG_TERM
+    PUSH1 0x40		uint public SPLIT_LONG_TERM
+    MLOAD			uint public SPLIT_LONG_TERM
+    DUP1			uint public SPLIT_LONG_TERM
+    DUP3			uint public SPLIT_LONG_TERM
+    DUP2			uint public SPLIT_LONG_TERM
+    MSTORE			uint public SPLIT_LONG_TERM
+    PUSH1 0x20		uint public SPLIT_LONG_TERM
+    ADD			uint public SPLIT_LONG_TERM
+    SWAP2			uint public SPLIT_LONG_TERM
+    POP			uint public SPLIT_LONG_TERM
+    POP			uint public SPLIT_LONG_TERM
+    PUSH1 0x40		uint public SPLIT_LONG_TERM
+    MLOAD			uint public SPLIT_LONG_TERM
+    DUP1			uint public SPLIT_LONG_TERM
+    SWAP2			uint public SPLIT_LONG_TERM
+    SUB			uint public SPLIT_LONG_TERM
+    SWAP1			uint public SPLIT_LONG_TERM
+    RETURN			uint public SPLIT_LONG_TERM
+  tag4: 
+    JUMPDEST		mapping (uint32 => Event) public events
+    CALLVALUE			mapping (uint32 => Event) public events
+    PUSH [ErrorTag]		mapping (uint32 => Event) public events
+    JUMPI			mapping (uint32 => Event) public events
+    PUSH [tag23]		mapping (uint32 => Event) public events
+    PUSH1 0x4		mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    CALLDATALOAD			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    PUSH1 0x20		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    SWAP2			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    PUSH [tag24]		mapping (uint32 => Event) public events
+    JUMP			mapping (uint32 => Event) public events
+  tag23: 
+    JUMPDEST		mapping (uint32 => Event) public events
+    PUSH1 0x40		mapping (uint32 => Event) public events
+    MLOAD			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    DUP6			mapping (uint32 => Event) public events
+    DUP2			mapping (uint32 => Event) public events
+    MSTORE			mapping (uint32 => Event) public events
+    PUSH1 0x20		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    DUP5			mapping (uint32 => Event) public events
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Event) public events
+    AND			mapping (uint32 => Event) public events
+    DUP2			mapping (uint32 => Event) public events
+    MSTORE			mapping (uint32 => Event) public events
+    PUSH1 0x20		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    DUP4			mapping (uint32 => Event) public events
+    DUP2			mapping (uint32 => Event) public events
+    MSTORE			mapping (uint32 => Event) public events
+    PUSH1 0x20		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    DUP3			mapping (uint32 => Event) public events
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Event) public events
+    AND			mapping (uint32 => Event) public events
+    DUP2			mapping (uint32 => Event) public events
+    MSTORE			mapping (uint32 => Event) public events
+    PUSH1 0x20		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    SWAP5			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    PUSH1 0x40		mapping (uint32 => Event) public events
+    MLOAD			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    SWAP2			mapping (uint32 => Event) public events
+    SUB			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    RETURN			mapping (uint32 => Event) public events
+  tag5: 
+    JUMPDEST		mapping (uint32 => Cell) public world
+    CALLVALUE			mapping (uint32 => Cell) public world
+    PUSH [ErrorTag]		mapping (uint32 => Cell) public world
+    JUMPI			mapping (uint32 => Cell) public world
+    PUSH [tag25]		mapping (uint32 => Cell) public world
+    PUSH1 0x4		mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    CALLDATALOAD			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    PUSH1 0x20		mapping (uint32 => Cell) public world
+    ADD			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    SWAP2			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    PUSH [tag26]		mapping (uint32 => Cell) public world
+    JUMP			mapping (uint32 => Cell) public world
+  tag25: 
+    JUMPDEST		mapping (uint32 => Cell) public world
+    PUSH1 0x40		mapping (uint32 => Cell) public world
+    MLOAD			mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    DUP4			mapping (uint32 => Cell) public world
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Cell) public world
+    AND			mapping (uint32 => Cell) public world
+    DUP2			mapping (uint32 => Cell) public world
+    MSTORE			mapping (uint32 => Cell) public world
+    PUSH1 0x20		mapping (uint32 => Cell) public world
+    ADD			mapping (uint32 => Cell) public world
+    DUP3			mapping (uint32 => Cell) public world
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Cell) public world
+    AND			mapping (uint32 => Cell) public world
+    DUP2			mapping (uint32 => Cell) public world
+    MSTORE			mapping (uint32 => Cell) public world
+    PUSH1 0x20		mapping (uint32 => Cell) public world
+    ADD			mapping (uint32 => Cell) public world
+    SWAP3			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    PUSH1 0x40		mapping (uint32 => Cell) public world
+    MLOAD			mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    SWAP2			mapping (uint32 => Cell) public world
+    SUB			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    RETURN			mapping (uint32 => Cell) public world
+  tag6: 
+    JUMPDEST		uint public totalInsuredAmountShortTerm
+    CALLVALUE			uint public totalInsuredAmountShortTerm
+    PUSH [ErrorTag]		uint public totalInsuredAmountShortTerm
+    JUMPI			uint public totalInsuredAmountShortTerm
+    PUSH [tag27]		uint public totalInsuredAmountShortTerm
+    PUSH1 0x4		uint public totalInsuredAmountShortTerm
+    DUP1			uint public totalInsuredAmountShortTerm
+    POP			uint public totalInsuredAmountShortTerm
+    POP			uint public totalInsuredAmountShortTerm
+    PUSH [tag28]		uint public totalInsuredAmountShortTerm
+    JUMP			uint public totalInsuredAmountShortTerm
+  tag27: 
+    JUMPDEST		uint public totalInsuredAmountShortTerm
+    PUSH1 0x40		uint public totalInsuredAmountShortTerm
+    MLOAD			uint public totalInsuredAmountShortTerm
+    DUP1			uint public totalInsuredAmountShortTerm
+    DUP3			uint public totalInsuredAmountShortTerm
+    DUP2			uint public totalInsuredAmountShortTerm
+    MSTORE			uint public totalInsuredAmountShortTerm
+    PUSH1 0x20		uint public totalInsuredAmountShortTerm
+    ADD			uint public totalInsuredAmountShortTerm
+    SWAP2			uint public totalInsuredAmountShortTerm
+    POP			uint public totalInsuredAmountShortTerm
+    POP			uint public totalInsuredAmountShortTerm
+    PUSH1 0x40		uint public totalInsuredAmountShortTerm
+    MLOAD			uint public totalInsuredAmountShortTerm
+    DUP1			uint public totalInsuredAmountShortTerm
+    SWAP2			uint public totalInsuredAmountShortTerm
+    SUB			uint public totalInsuredAmountShortTerm
+    SWAP1			uint public totalInsuredAmountShortTerm
+    RETURN			uint public totalInsuredAmountShortTerm
+  tag7: 
+    JUMPDEST		function endInsuringPeriod () onlyHB() {...
+    CALLVALUE			function endInsuringPeriod () onlyHB() {...
+    PUSH [ErrorTag]		function endInsuringPeriod () onlyHB() {...
+    JUMPI			function endInsuringPeriod () onlyHB() {...
+    PUSH [tag29]		function endInsuringPeriod () onlyHB() {...
+    PUSH1 0x4		function endInsuringPeriod () onlyHB() {...
+    DUP1			function endInsuringPeriod () onlyHB() {...
+    POP			function endInsuringPeriod () onlyHB() {...
+    POP			function endInsuringPeriod () onlyHB() {...
+    PUSH [tag30]		function endInsuringPeriod () onlyHB() {...
+    JUMP			function endInsuringPeriod () onlyHB() {...
+  tag29: 
+    JUMPDEST		function endInsuringPeriod () onlyHB() {...
+    STOP			function endInsuringPeriod () onlyHB() {...
+  tag8: 
+    JUMPDEST		uint public totalInsuredAmount
+    CALLVALUE			uint public totalInsuredAmount
+    PUSH [ErrorTag]		uint public totalInsuredAmount
+    JUMPI			uint public totalInsuredAmount
+    PUSH [tag31]		uint public totalInsuredAmount
+    PUSH1 0x4		uint public totalInsuredAmount
+    DUP1			uint public totalInsuredAmount
+    POP			uint public totalInsuredAmount
+    POP			uint public totalInsuredAmount
+    PUSH [tag32]		uint public totalInsuredAmount
+    JUMP			uint public totalInsuredAmount
+  tag31: 
+    JUMPDEST		uint public totalInsuredAmount
+    PUSH1 0x40		uint public totalInsuredAmount
+    MLOAD			uint public totalInsuredAmount
+    DUP1			uint public totalInsuredAmount
+    DUP3			uint public totalInsuredAmount
+    DUP2			uint public totalInsuredAmount
+    MSTORE			uint public totalInsuredAmount
+    PUSH1 0x20		uint public totalInsuredAmount
+    ADD			uint public totalInsuredAmount
+    SWAP2			uint public totalInsuredAmount
+    POP			uint public totalInsuredAmount
+    POP			uint public totalInsuredAmount
+    PUSH1 0x40		uint public totalInsuredAmount
+    MLOAD			uint public totalInsuredAmount
+    DUP1			uint public totalInsuredAmount
+    SWAP2			uint public totalInsuredAmount
+    SUB			uint public totalInsuredAmount
+    SWAP1			uint public totalInsuredAmount
+    RETURN			uint public totalInsuredAmount
+  tag9: 
+    JUMPDEST		uint public YEAR_INTENSITY
+    CALLVALUE			uint public YEAR_INTENSITY
+    PUSH [ErrorTag]		uint public YEAR_INTENSITY
+    JUMPI			uint public YEAR_INTENSITY
+    PUSH [tag33]		uint public YEAR_INTENSITY
+    PUSH1 0x4		uint public YEAR_INTENSITY
+    DUP1			uint public YEAR_INTENSITY
+    POP			uint public YEAR_INTENSITY
+    POP			uint public YEAR_INTENSITY
+    PUSH [tag34]		uint public YEAR_INTENSITY
+    JUMP			uint public YEAR_INTENSITY
+  tag33: 
+    JUMPDEST		uint public YEAR_INTENSITY
+    PUSH1 0x40		uint public YEAR_INTENSITY
+    MLOAD			uint public YEAR_INTENSITY
+    DUP1			uint public YEAR_INTENSITY
+    DUP3			uint public YEAR_INTENSITY
+    DUP2			uint public YEAR_INTENSITY
+    MSTORE			uint public YEAR_INTENSITY
+    PUSH1 0x20		uint public YEAR_INTENSITY
+    ADD			uint public YEAR_INTENSITY
+    SWAP2			uint public YEAR_INTENSITY
+    POP			uint public YEAR_INTENSITY
+    POP			uint public YEAR_INTENSITY
+    PUSH1 0x40		uint public YEAR_INTENSITY
+    MLOAD			uint public YEAR_INTENSITY
+    DUP1			uint public YEAR_INTENSITY
+    SWAP2			uint public YEAR_INTENSITY
+    SUB			uint public YEAR_INTENSITY
+    SWAP1			uint public YEAR_INTENSITY
+    RETURN			uint public YEAR_INTENSITY
+  tag10: 
+    JUMPDEST		function raiseLongTermReward () onlyHB() {...
+    CALLVALUE			function raiseLongTermReward () onlyHB() {...
+    PUSH [ErrorTag]		function raiseLongTermReward () onlyHB() {...
+    JUMPI			function raiseLongTermReward () onlyHB() {...
+    PUSH [tag35]		function raiseLongTermReward () onlyHB() {...
+    PUSH1 0x4		function raiseLongTermReward () onlyHB() {...
+    DUP1			function raiseLongTermReward () onlyHB() {...
+    POP			function raiseLongTermReward () onlyHB() {...
+    POP			function raiseLongTermReward () onlyHB() {...
+    PUSH [tag36]		function raiseLongTermReward () onlyHB() {...
+    JUMP			function raiseLongTermReward () onlyHB() {...
+  tag35: 
+    JUMPDEST		function raiseLongTermReward () onlyHB() {...
+    STOP			function raiseLongTermReward () onlyHB() {...
+  tag11: 
+    JUMPDEST		uint32 public intensitySum
+    CALLVALUE			uint32 public intensitySum
+    PUSH [ErrorTag]		uint32 public intensitySum
+    JUMPI			uint32 public intensitySum
+    PUSH [tag37]		uint32 public intensitySum
+    PUSH1 0x4		uint32 public intensitySum
+    DUP1			uint32 public intensitySum
+    POP			uint32 public intensitySum
+    POP			uint32 public intensitySum
+    PUSH [tag38]		uint32 public intensitySum
+    JUMP			uint32 public intensitySum
+  tag37: 
+    JUMPDEST		uint32 public intensitySum
+    PUSH1 0x40		uint32 public intensitySum
+    MLOAD			uint32 public intensitySum
+    DUP1			uint32 public intensitySum
+    DUP3			uint32 public intensitySum
+    PUSH4 0xFFFFFFFF		uint32 public intensitySum
+    AND			uint32 public intensitySum
+    DUP2			uint32 public intensitySum
+    MSTORE			uint32 public intensitySum
+    PUSH1 0x20		uint32 public intensitySum
+    ADD			uint32 public intensitySum
+    SWAP2			uint32 public intensitySum
+    POP			uint32 public intensitySum
+    POP			uint32 public intensitySum
+    PUSH1 0x40		uint32 public intensitySum
+    MLOAD			uint32 public intensitySum
+    DUP1			uint32 public intensitySum
+    SWAP2			uint32 public intensitySum
+    SUB			uint32 public intensitySum
+    SWAP1			uint32 public intensitySum
+    RETURN			uint32 public intensitySum
+  tag12: 
+    JUMPDEST		address public HELPERBIT_ADDRESS
+    CALLVALUE			address public HELPERBIT_ADDRESS
+    PUSH [ErrorTag]		address public HELPERBIT_ADDRESS
+    JUMPI			address public HELPERBIT_ADDRESS
+    PUSH [tag39]		address public HELPERBIT_ADDRESS
+    PUSH1 0x4		address public HELPERBIT_ADDRESS
+    DUP1			address public HELPERBIT_ADDRESS
+    POP			address public HELPERBIT_ADDRESS
+    POP			address public HELPERBIT_ADDRESS
+    PUSH [tag40]		address public HELPERBIT_ADDRESS
+    JUMP			address public HELPERBIT_ADDRESS
+  tag39: 
+    JUMPDEST		address public HELPERBIT_ADDRESS
+    PUSH1 0x40		address public HELPERBIT_ADDRESS
+    MLOAD			address public HELPERBIT_ADDRESS
+    DUP1			address public HELPERBIT_ADDRESS
+    DUP3			address public HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		address public HELPERBIT_ADDRESS
+    AND			address public HELPERBIT_ADDRESS
+    DUP2			address public HELPERBIT_ADDRESS
+    MSTORE			address public HELPERBIT_ADDRESS
+    PUSH1 0x20		address public HELPERBIT_ADDRESS
+    ADD			address public HELPERBIT_ADDRESS
+    SWAP2			address public HELPERBIT_ADDRESS
+    POP			address public HELPERBIT_ADDRESS
+    POP			address public HELPERBIT_ADDRESS
+    PUSH1 0x40		address public HELPERBIT_ADDRESS
+    MLOAD			address public HELPERBIT_ADDRESS
+    DUP1			address public HELPERBIT_ADDRESS
+    SWAP2			address public HELPERBIT_ADDRESS
+    SUB			address public HELPERBIT_ADDRESS
+    SWAP1			address public HELPERBIT_ADDRESS
+    RETURN			address public HELPERBIT_ADDRESS
+  tag13: 
+    JUMPDEST		uint public totalInsuredAmountLongTerm
+    CALLVALUE			uint public totalInsuredAmountLongTerm
+    PUSH [ErrorTag]		uint public totalInsuredAmountLongTerm
+    JUMPI			uint public totalInsuredAmountLongTerm
+    PUSH [tag41]		uint public totalInsuredAmountLongTerm
+    PUSH1 0x4		uint public totalInsuredAmountLongTerm
+    DUP1			uint public totalInsuredAmountLongTerm
+    POP			uint public totalInsuredAmountLongTerm
+    POP			uint public totalInsuredAmountLongTerm
+    PUSH [tag42]		uint public totalInsuredAmountLongTerm
+    JUMP			uint public totalInsuredAmountLongTerm
+  tag41: 
+    JUMPDEST		uint public totalInsuredAmountLongTerm
+    PUSH1 0x40		uint public totalInsuredAmountLongTerm
+    MLOAD			uint public totalInsuredAmountLongTerm
+    DUP1			uint public totalInsuredAmountLongTerm
+    DUP3			uint public totalInsuredAmountLongTerm
+    DUP2			uint public totalInsuredAmountLongTerm
+    MSTORE			uint public totalInsuredAmountLongTerm
+    PUSH1 0x20		uint public totalInsuredAmountLongTerm
+    ADD			uint public totalInsuredAmountLongTerm
+    SWAP2			uint public totalInsuredAmountLongTerm
+    POP			uint public totalInsuredAmountLongTerm
+    POP			uint public totalInsuredAmountLongTerm
+    PUSH1 0x40		uint public totalInsuredAmountLongTerm
+    MLOAD			uint public totalInsuredAmountLongTerm
+    DUP1			uint public totalInsuredAmountLongTerm
+    SWAP2			uint public totalInsuredAmountLongTerm
+    SUB			uint public totalInsuredAmountLongTerm
+    SWAP1			uint public totalInsuredAmountLongTerm
+    RETURN			uint public totalInsuredAmountLongTerm
+  tag14: 
+    JUMPDEST		bool public insuringPeriodActive
+    CALLVALUE			bool public insuringPeriodActive
+    PUSH [ErrorTag]		bool public insuringPeriodActive
+    JUMPI			bool public insuringPeriodActive
+    PUSH [tag43]		bool public insuringPeriodActive
+    PUSH1 0x4		bool public insuringPeriodActive
+    DUP1			bool public insuringPeriodActive
+    POP			bool public insuringPeriodActive
+    POP			bool public insuringPeriodActive
+    PUSH [tag44]		bool public insuringPeriodActive
+    JUMP			bool public insuringPeriodActive
+  tag43: 
+    JUMPDEST		bool public insuringPeriodActive
+    PUSH1 0x40		bool public insuringPeriodActive
+    MLOAD			bool public insuringPeriodActive
+    DUP1			bool public insuringPeriodActive
+    DUP3			bool public insuringPeriodActive
+    ISZERO			bool public insuringPeriodActive
+    ISZERO			bool public insuringPeriodActive
+    DUP2			bool public insuringPeriodActive
+    MSTORE			bool public insuringPeriodActive
+    PUSH1 0x20		bool public insuringPeriodActive
+    ADD			bool public insuringPeriodActive
+    SWAP2			bool public insuringPeriodActive
+    POP			bool public insuringPeriodActive
+    POP			bool public insuringPeriodActive
+    PUSH1 0x40		bool public insuringPeriodActive
+    MLOAD			bool public insuringPeriodActive
+    DUP1			bool public insuringPeriodActive
+    SWAP2			bool public insuringPeriodActive
+    SUB			bool public insuringPeriodActive
+    SWAP1			bool public insuringPeriodActive
+    RETURN			bool public insuringPeriodActive
+  tag15: 
+    JUMPDEST		uint32 public totalEvents
+    CALLVALUE			uint32 public totalEvents
+    PUSH [ErrorTag]		uint32 public totalEvents
+    JUMPI			uint32 public totalEvents
+    PUSH [tag45]		uint32 public totalEvents
+    PUSH1 0x4		uint32 public totalEvents
+    DUP1			uint32 public totalEvents
+    POP			uint32 public totalEvents
+    POP			uint32 public totalEvents
+    PUSH [tag46]		uint32 public totalEvents
+    JUMP			uint32 public totalEvents
+  tag45: 
+    JUMPDEST		uint32 public totalEvents
+    PUSH1 0x40		uint32 public totalEvents
+    MLOAD			uint32 public totalEvents
+    DUP1			uint32 public totalEvents
+    DUP3			uint32 public totalEvents
+    PUSH4 0xFFFFFFFF		uint32 public totalEvents
+    AND			uint32 public totalEvents
+    DUP2			uint32 public totalEvents
+    MSTORE			uint32 public totalEvents
+    PUSH1 0x20		uint32 public totalEvents
+    ADD			uint32 public totalEvents
+    SWAP2			uint32 public totalEvents
+    POP			uint32 public totalEvents
+    POP			uint32 public totalEvents
+    PUSH1 0x40		uint32 public totalEvents
+    MLOAD			uint32 public totalEvents
+    DUP1			uint32 public totalEvents
+    SWAP2			uint32 public totalEvents
+    SUB			uint32 public totalEvents
+    SWAP1			uint32 public totalEvents
+    RETURN			uint32 public totalEvents
+  tag16: 
+    JUMPDEST		uint32 public totalUsers
+    CALLVALUE			uint32 public totalUsers
+    PUSH [ErrorTag]		uint32 public totalUsers
+    JUMPI			uint32 public totalUsers
+    PUSH [tag47]		uint32 public totalUsers
+    PUSH1 0x4		uint32 public totalUsers
+    DUP1			uint32 public totalUsers
+    POP			uint32 public totalUsers
+    POP			uint32 public totalUsers
+    PUSH [tag48]		uint32 public totalUsers
+    JUMP			uint32 public totalUsers
+  tag47: 
+    JUMPDEST		uint32 public totalUsers
+    PUSH1 0x40		uint32 public totalUsers
+    MLOAD			uint32 public totalUsers
+    DUP1			uint32 public totalUsers
+    DUP3			uint32 public totalUsers
+    PUSH4 0xFFFFFFFF		uint32 public totalUsers
+    AND			uint32 public totalUsers
+    DUP2			uint32 public totalUsers
+    MSTORE			uint32 public totalUsers
+    PUSH1 0x20		uint32 public totalUsers
+    ADD			uint32 public totalUsers
+    SWAP2			uint32 public totalUsers
+    POP			uint32 public totalUsers
+    POP			uint32 public totalUsers
+    PUSH1 0x40		uint32 public totalUsers
+    MLOAD			uint32 public totalUsers
+    DUP1			uint32 public totalUsers
+    SWAP2			uint32 public totalUsers
+    SUB			uint32 public totalUsers
+    SWAP1			uint32 public totalUsers
+    RETURN			uint32 public totalUsers
+  tag17: 
+    JUMPDEST		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    CALLVALUE			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH [ErrorTag]		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    JUMPI			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH [tag49]		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x4		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    CALLDATALOAD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    CALLDATALOAD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP3			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    CALLDATALOAD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    MUL			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x40		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    MLOAD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x40		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    MSTORE			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP4			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP3			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    MSTORE			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP4			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP4			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    MUL			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP3			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP5			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    CALLDATACOPY			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP3			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    DUP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    CALLDATALOAD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x20		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    ADD			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP2			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    SWAP1			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH [tag50]		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    JUMP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+  tag49: 
+    JUMPDEST		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    STOP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+  tag18: 
+    JUMPDEST		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    CALLVALUE			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH [ErrorTag]		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    JUMPI			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH [tag51]		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH1 0x4		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    DUP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    DUP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    CALLDATALOAD			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH1 0x20		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    ADD			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP2			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    DUP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    CALLDATALOAD			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH1 0x20		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    ADD			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP2			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    SWAP1			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    POP			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    POP			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH [tag52]		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    JUMP			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+  tag51: 
+    JUMPDEST		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    STOP			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+  tag20: 
+    JUMPDEST		uint public SPLIT_SHORT_TERM
+    PUSH1 0x9		uint public SPLIT_SHORT_TERM
+    PUSH1 0x0		uint public SPLIT_SHORT_TERM
+    POP			uint public SPLIT_SHORT_TERM
+    SLOAD			uint public SPLIT_SHORT_TERM
+    DUP2			uint public SPLIT_SHORT_TERM
+    JUMP	[out]		uint public SPLIT_SHORT_TERM
+  tag22: 
+    JUMPDEST		uint public SPLIT_LONG_TERM
+    PUSH1 0xA		uint public SPLIT_LONG_TERM
+    PUSH1 0x0		uint public SPLIT_LONG_TERM
+    POP			uint public SPLIT_LONG_TERM
+    SLOAD			uint public SPLIT_LONG_TERM
+    DUP2			uint public SPLIT_LONG_TERM
+    JUMP	[out]		uint public SPLIT_LONG_TERM
+  tag24: 
+    JUMPDEST		mapping (uint32 => Event) public events
+    PUSH1 0x6		mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    PUSH1 0x20		mapping (uint32 => Event) public events
+    MSTORE			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    MSTORE			mapping (uint32 => Event) public events
+    PUSH1 0x40		mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    SHA3			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    SWAP2			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    SLOAD			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    PUSH2 0x100		mapping (uint32 => Event) public events
+    EXP			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    DIV			mapping (uint32 => Event) public events
+    PUSH1 0xFF		mapping (uint32 => Event) public events
+    AND			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    PUSH1 0x1		mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    SLOAD			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    PUSH2 0x100		mapping (uint32 => Event) public events
+    EXP			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    DIV			mapping (uint32 => Event) public events
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Event) public events
+    AND			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    PUSH1 0x2		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    SLOAD			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    DUP1			mapping (uint32 => Event) public events
+    PUSH1 0x3		mapping (uint32 => Event) public events
+    ADD			mapping (uint32 => Event) public events
+    PUSH1 0x0		mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    SLOAD			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    PUSH2 0x100		mapping (uint32 => Event) public events
+    EXP			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    DIV			mapping (uint32 => Event) public events
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Event) public events
+    AND			mapping (uint32 => Event) public events
+    SWAP1			mapping (uint32 => Event) public events
+    POP			mapping (uint32 => Event) public events
+    DUP5			mapping (uint32 => Event) public events
+    JUMP	[out]		mapping (uint32 => Event) public events
+  tag26: 
+    JUMPDEST		mapping (uint32 => Cell) public world
+    PUSH1 0x4		mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    PUSH1 0x20		mapping (uint32 => Cell) public world
+    MSTORE			mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    MSTORE			mapping (uint32 => Cell) public world
+    PUSH1 0x40		mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    SHA3			mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    SWAP2			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    ADD			mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    SLOAD			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    PUSH2 0x100		mapping (uint32 => Cell) public world
+    EXP			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    DIV			mapping (uint32 => Cell) public world
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Cell) public world
+    AND			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    DUP1			mapping (uint32 => Cell) public world
+    PUSH1 0x2		mapping (uint32 => Cell) public world
+    ADD			mapping (uint32 => Cell) public world
+    PUSH1 0x0		mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    SLOAD			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    PUSH2 0x100		mapping (uint32 => Cell) public world
+    EXP			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    DIV			mapping (uint32 => Cell) public world
+    PUSH4 0xFFFFFFFF		mapping (uint32 => Cell) public world
+    AND			mapping (uint32 => Cell) public world
+    SWAP1			mapping (uint32 => Cell) public world
+    POP			mapping (uint32 => Cell) public world
+    DUP3			mapping (uint32 => Cell) public world
+    JUMP	[out]		mapping (uint32 => Cell) public world
+  tag28: 
+    JUMPDEST		uint public totalInsuredAmountShortTerm
+    PUSH1 0x1		uint public totalInsuredAmountShortTerm
+    PUSH1 0x0		uint public totalInsuredAmountShortTerm
+    POP			uint public totalInsuredAmountShortTerm
+    SLOAD			uint public totalInsuredAmountShortTerm
+    DUP2			uint public totalInsuredAmountShortTerm
+    JUMP	[out]		uint public totalInsuredAmountShortTerm
+  tag30: 
+    JUMPDEST		function endInsuringPeriod () onlyHB() {...
+    PUSH1 0x7		HELPERBIT_ADDRESS
+    PUSH1 0x5		HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    SLOAD			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    PUSH2 0x100		HELPERBIT_ADDRESS
+    EXP			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    DIV			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		HELPERBIT_ADDRESS
+    AND			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    CALLER			msg.sender
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    EQ			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [tag54]		if (msg.sender != HELPERBIT_ADDRESS)...
+    JUMPI			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [ErrorTag]		throw
+    JUMP			throw
+  tag54: 
+    JUMPDEST		if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH1 0x0		false
+    PUSH1 0x7		insuringPeriodActive
+    PUSH1 0x4		insuringPeriodActive
+    PUSH2 0x100		insuringPeriodActive = false
+    EXP			insuringPeriodActive = false
+    DUP2			insuringPeriodActive = false
+    SLOAD			insuringPeriodActive = false
+    DUP2			insuringPeriodActive = false
+    PUSH1 0xFF		insuringPeriodActive = false
+    MUL			insuringPeriodActive = false
+    NOT			insuringPeriodActive = false
+    AND			insuringPeriodActive = false
+    SWAP1			insuringPeriodActive = false
+    DUP4			insuringPeriodActive = false
+    PUSH32 0x100000000000000000000000000000000000000000000000000000000000000		insuringPeriodActive = false
+    SWAP1			insuringPeriodActive = false
+    DUP2			insuringPeriodActive = false
+    MUL			insuringPeriodActive = false
+    DIV			insuringPeriodActive = false
+    MUL			insuringPeriodActive = false
+    OR			insuringPeriodActive = false
+    SWAP1			insuringPeriodActive = false
+    SSTORE			insuringPeriodActive = false
+    POP			insuringPeriodActive = false
+    PUSH32 0xA9E8B0AA5A5DC979A350D2DE77D68547C3ED1B368504827E023A90DB1AF7FF7B		InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    PUSH1 0x0		totalInsuredAmount
+    PUSH1 0x0		totalInsuredAmount
+    POP			totalInsuredAmount
+    SLOAD			totalInsuredAmount
+    PUSH1 0x3		totalUsers
+    PUSH1 0x0		totalUsers
+    SWAP1			totalUsers
+    SLOAD			totalUsers
+    SWAP1			totalUsers
+    PUSH2 0x100		totalUsers
+    EXP			totalUsers
+    SWAP1			totalUsers
+    DIV			totalUsers
+    PUSH4 0xFFFFFFFF		totalUsers
+    AND			totalUsers
+    PUSH1 0x40		InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    MLOAD			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    DUP1			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    DUP4			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    DUP2			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    MSTORE			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    PUSH1 0x20		InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    ADD			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    DUP3			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    PUSH4 0xFFFFFFFF		InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    AND			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    DUP2			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    MSTORE			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    PUSH1 0x20		InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    ADD			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    SWAP3			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    POP			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    POP			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    POP			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    PUSH1 0x40		InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    MLOAD			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    DUP1			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    SWAP2			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    SUB			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    SWAP1			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+    LOG1			InsuringPeriodEnd (totalInsuredAmount, totalUsers)
+  tag55: 
+    JUMPDEST		_
+  tag53: 
+    JUMPDEST		function endInsuringPeriod () onlyHB() {...
+    JUMP	[out]		function endInsuringPeriod () onlyHB() {...
+  tag32: 
+    JUMPDEST		uint public totalInsuredAmount
+    PUSH1 0x0		uint public totalInsuredAmount
+    PUSH1 0x0		uint public totalInsuredAmount
+    POP			uint public totalInsuredAmount
+    SLOAD			uint public totalInsuredAmount
+    DUP2			uint public totalInsuredAmount
+    JUMP	[out]		uint public totalInsuredAmount
+  tag34: 
+    JUMPDEST		uint public YEAR_INTENSITY
+    PUSH1 0x8		uint public YEAR_INTENSITY
+    PUSH1 0x0		uint public YEAR_INTENSITY
+    POP			uint public YEAR_INTENSITY
+    SLOAD			uint public YEAR_INTENSITY
+    DUP2			uint public YEAR_INTENSITY
+    JUMP	[out]		uint public YEAR_INTENSITY
+  tag36: 
+    JUMPDEST		function raiseLongTermReward () onlyHB() {...
+    PUSH1 0x7		HELPERBIT_ADDRESS
+    PUSH1 0x5		HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    SLOAD			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    PUSH2 0x100		HELPERBIT_ADDRESS
+    EXP			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    DIV			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		HELPERBIT_ADDRESS
+    AND			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    CALLER			msg.sender
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    EQ			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [tag57]		if (msg.sender != HELPERBIT_ADDRESS)...
+    JUMPI			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [ErrorTag]		throw
+    JUMP			throw
+  tag57: 
+    JUMPDEST		if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH32 0x25FBA8CA02A8143CCDB6E384D21BA35E7F2C37AD2AC908B48D231415C6EE2749		LongTermDistribution (0, 0)
+    PUSH1 0x0		0
+    PUSH1 0x0		0
+    PUSH1 0x40		LongTermDistribution (0, 0)
+    MLOAD			LongTermDistribution (0, 0)
+    DUP1			LongTermDistribution (0, 0)
+    DUP4			LongTermDistribution (0, 0)
+    DUP2			LongTermDistribution (0, 0)
+    MSTORE			LongTermDistribution (0, 0)
+    PUSH1 0x20		LongTermDistribution (0, 0)
+    ADD			LongTermDistribution (0, 0)
+    DUP3			LongTermDistribution (0, 0)
+    DUP2			LongTermDistribution (0, 0)
+    MSTORE			LongTermDistribution (0, 0)
+    PUSH1 0x20		LongTermDistribution (0, 0)
+    ADD			LongTermDistribution (0, 0)
+    SWAP3			LongTermDistribution (0, 0)
+    POP			LongTermDistribution (0, 0)
+    POP			LongTermDistribution (0, 0)
+    POP			LongTermDistribution (0, 0)
+    PUSH1 0x40		LongTermDistribution (0, 0)
+    MLOAD			LongTermDistribution (0, 0)
+    DUP1			LongTermDistribution (0, 0)
+    SWAP2			LongTermDistribution (0, 0)
+    SUB			LongTermDistribution (0, 0)
+    SWAP1			LongTermDistribution (0, 0)
+    LOG1			LongTermDistribution (0, 0)
+  tag58: 
+    JUMPDEST		_
+  tag56: 
+    JUMPDEST		function raiseLongTermReward () onlyHB() {...
+    JUMP	[out]		function raiseLongTermReward () onlyHB() {...
+  tag38: 
+    JUMPDEST		uint32 public intensitySum
+    PUSH1 0x7		uint32 public intensitySum
+    PUSH1 0x0		uint32 public intensitySum
+    SWAP1			uint32 public intensitySum
+    SLOAD			uint32 public intensitySum
+    SWAP1			uint32 public intensitySum
+    PUSH2 0x100		uint32 public intensitySum
+    EXP			uint32 public intensitySum
+    SWAP1			uint32 public intensitySum
+    DIV			uint32 public intensitySum
+    PUSH4 0xFFFFFFFF		uint32 public intensitySum
+    AND			uint32 public intensitySum
+    DUP2			uint32 public intensitySum
+    JUMP	[out]		uint32 public intensitySum
+  tag40: 
+    JUMPDEST		address public HELPERBIT_ADDRESS
+    PUSH1 0x7		address public HELPERBIT_ADDRESS
+    PUSH1 0x5		address public HELPERBIT_ADDRESS
+    SWAP1			address public HELPERBIT_ADDRESS
+    SLOAD			address public HELPERBIT_ADDRESS
+    SWAP1			address public HELPERBIT_ADDRESS
+    PUSH2 0x100		address public HELPERBIT_ADDRESS
+    EXP			address public HELPERBIT_ADDRESS
+    SWAP1			address public HELPERBIT_ADDRESS
+    DIV			address public HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		address public HELPERBIT_ADDRESS
+    AND			address public HELPERBIT_ADDRESS
+    DUP2			address public HELPERBIT_ADDRESS
+    JUMP	[out]		address public HELPERBIT_ADDRESS
+  tag42: 
+    JUMPDEST		uint public totalInsuredAmountLongTerm
+    PUSH1 0x2		uint public totalInsuredAmountLongTerm
+    PUSH1 0x0		uint public totalInsuredAmountLongTerm
+    POP			uint public totalInsuredAmountLongTerm
+    SLOAD			uint public totalInsuredAmountLongTerm
+    DUP2			uint public totalInsuredAmountLongTerm
+    JUMP	[out]		uint public totalInsuredAmountLongTerm
+  tag44: 
+    JUMPDEST		bool public insuringPeriodActive
+    PUSH1 0x7		bool public insuringPeriodActive
+    PUSH1 0x4		bool public insuringPeriodActive
+    SWAP1			bool public insuringPeriodActive
+    SLOAD			bool public insuringPeriodActive
+    SWAP1			bool public insuringPeriodActive
+    PUSH2 0x100		bool public insuringPeriodActive
+    EXP			bool public insuringPeriodActive
+    SWAP1			bool public insuringPeriodActive
+    DIV			bool public insuringPeriodActive
+    PUSH1 0xFF		bool public insuringPeriodActive
+    AND			bool public insuringPeriodActive
+    DUP2			bool public insuringPeriodActive
+    JUMP	[out]		bool public insuringPeriodActive
+  tag46: 
+    JUMPDEST		uint32 public totalEvents
+    PUSH1 0x5		uint32 public totalEvents
+    PUSH1 0x0		uint32 public totalEvents
+    SWAP1			uint32 public totalEvents
+    SLOAD			uint32 public totalEvents
+    SWAP1			uint32 public totalEvents
+    PUSH2 0x100		uint32 public totalEvents
+    EXP			uint32 public totalEvents
+    SWAP1			uint32 public totalEvents
+    DIV			uint32 public totalEvents
+    PUSH4 0xFFFFFFFF		uint32 public totalEvents
+    AND			uint32 public totalEvents
+    DUP2			uint32 public totalEvents
+    JUMP	[out]		uint32 public totalEvents
+  tag48: 
+    JUMPDEST		uint32 public totalUsers
+    PUSH1 0x3		uint32 public totalUsers
+    PUSH1 0x0		uint32 public totalUsers
+    SWAP1			uint32 public totalUsers
+    SLOAD			uint32 public totalUsers
+    SWAP1			uint32 public totalUsers
+    PUSH2 0x100		uint32 public totalUsers
+    EXP			uint32 public totalUsers
+    SWAP1			uint32 public totalUsers
+    DIV			uint32 public totalUsers
+    PUSH4 0xFFFFFFFF		uint32 public totalUsers
+    AND			uint32 public totalUsers
+    DUP2			uint32 public totalUsers
+    JUMP	[out]		uint32 public totalUsers
+  tag50: 
+    JUMPDEST		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    PUSH1 0x0		uint total
+    PUSH1 0x0		uint i
+    PUSH1 0x0		uint32 j
+    PUSH1 0x0		uint32 celln
+    PUSH1 0x0		uint32 affected
+    PUSH1 0x0		uint toDistribute
+    PUSH1 0x0		uint amount
+    PUSH1 0x7		HELPERBIT_ADDRESS
+    PUSH1 0x5		HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    SLOAD			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    PUSH2 0x100		HELPERBIT_ADDRESS
+    EXP			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    DIV			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		HELPERBIT_ADDRESS
+    AND			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    CALLER			msg.sender
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    EQ			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [tag60]		if (msg.sender != HELPERBIT_ADDRESS)...
+    JUMPI			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [ErrorTag]		throw
+    JUMP			throw
+  tag60: 
+    JUMPDEST		if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH1 0x0		0
+    SWAP7			uint total = 0
+    POP			uint total = 0
+    PUSH1 0x0		0
+    SWAP6			i = 0
+    POP			i = 0
+    DUP6			i = 0
+    POP			i = 0
+  tag62: 
+    JUMPDEST		for (i = 0; i < cells.length; i++) {...
+    DUP9			cells
+    MLOAD			cells.length
+    DUP7			i
+    LT			i < cells.length
+    ISZERO			for (i = 0; i < cells.length; i++) {...
+    PUSH [tag63]		for (i = 0; i < cells.length; i++) {...
+    JUMPI			for (i = 0; i < cells.length; i++) {...
+    DUP9			cells
+    DUP7			i
+    DUP2			cells[i]
+    MLOAD			cells[i]
+    DUP2			cells[i]
+    LT			cells[i]
+    ISZERO			cells[i]
+    PUSH [ErrorTag]		cells[i]
+    JUMPI			cells[i]
+    SWAP1			cells[i]
+    PUSH1 0x20		cells[i]
+    ADD			cells[i]
+    SWAP1			cells[i]
+    PUSH1 0x20		cells[i]
+    MUL			cells[i]
+    ADD			cells[i]
+    MLOAD			cells[i]
+    SWAP4			celln = cells[i]
+    POP			celln = cells[i]
+    DUP4			celln = cells[i]
+    POP			celln = cells[i]
+    PUSH1 0x0		0
+    SWAP5			j = 0
+    POP			j = 0
+    DUP5			j = 0
+    POP			j = 0
+  tag65: 
+    JUMPDEST		for (j = 0; j < world[celln].usercount; j++) {...
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[celln]
+    DUP6			celln
+    PUSH4 0xFFFFFFFF		world[celln]
+    AND			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    SWAP1			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    PUSH1 0x0		world[celln]
+    SHA3			world[celln]
+    PUSH1 0x0		world[celln]
+    POP			world[celln]
+    PUSH1 0x0		world[celln].usercount
+    ADD			world[celln].usercount
+    PUSH1 0x0		world[celln].usercount
+    SWAP1			world[celln].usercount
+    SLOAD			world[celln].usercount
+    SWAP1			world[celln].usercount
+    PUSH2 0x100		world[celln].usercount
+    EXP			world[celln].usercount
+    SWAP1			world[celln].usercount
+    DIV			world[celln].usercount
+    PUSH4 0xFFFFFFFF		world[celln].usercount
+    AND			world[celln].usercount
+    PUSH4 0xFFFFFFFF		j < world[celln].usercount
+    AND			j < world[celln].usercount
+    DUP6			j
+    PUSH4 0xFFFFFFFF		j < world[celln].usercount
+    AND			j < world[celln].usercount
+    LT			j < world[celln].usercount
+    ISZERO			for (j = 0; j < world[celln].usercount; j++) {...
+    PUSH [tag66]		for (j = 0; j < world[celln].usercount; j++) {...
+    JUMPI			for (j = 0; j < world[celln].usercount; j++) {...
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[celln]
+    DUP6			celln
+    PUSH4 0xFFFFFFFF		world[celln]
+    AND			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    SWAP1			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    PUSH1 0x0		world[celln]
+    SHA3			world[celln]
+    PUSH1 0x0		world[celln]
+    POP			world[celln]
+    PUSH1 0x1		world[celln].users
+    ADD			world[celln].users
+    PUSH1 0x0		world[celln].users
+    POP			world[celln].users
+    PUSH1 0x0		world[celln].users[j]
+    DUP7			j
+    PUSH4 0xFFFFFFFF		world[celln].users[j]
+    AND			world[celln].users[j]
+    DUP2			world[celln].users[j]
+    MSTORE			world[celln].users[j]
+    PUSH1 0x20		world[celln].users[j]
+    ADD			world[celln].users[j]
+    SWAP1			world[celln].users[j]
+    DUP2			world[celln].users[j]
+    MSTORE			world[celln].users[j]
+    PUSH1 0x20		world[celln].users[j]
+    ADD			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j]
+    SHA3			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j]
+    POP			world[celln].users[j]
+    PUSH1 0x1		world[celln].users[j].amount
+    ADD			world[celln].users[j].amount
+    PUSH1 0x0		world[celln].users[j].amount
+    POP			world[celln].users[j].amount
+    SLOAD			world[celln].users[j].amount
+    DUP8			total += world[celln].users[j].amount
+    ADD			total += world[celln].users[j].amount
+    SWAP7			total += world[celln].users[j].amount
+    POP			total += world[celln].users[j].amount
+    DUP7			total += world[celln].users[j].amount
+    POP			total += world[celln].users[j].amount
+    PUSH1 0x1		1
+    DUP4			affected += 1
+    ADD			affected += 1
+    SWAP3			affected += 1
+    POP			affected += 1
+    DUP3			affected += 1
+    POP			affected += 1
+  tag67: 
+    JUMPDEST		for (j = 0; j < world[celln].usercount; j++) {...
+    DUP5			j++
+    DUP1			j++
+    PUSH1 0x1		j++
+    ADD			j++
+    SWAP6			j++
+    POP			j++
+    POP			j++
+    PUSH [tag65]		for (j = 0; j < world[celln].usercount; j++) {...
+    JUMP			for (j = 0; j < world[celln].usercount; j++) {...
+  tag66: 
+    JUMPDEST		for (j = 0; j < world[celln].usercount; j++) {...
+  tag64: 
+    JUMPDEST		for (i = 0; i < cells.length; i++) {...
+    DUP6			i++
+    DUP1			i++
+    PUSH1 0x1		i++
+    ADD			i++
+    SWAP7			i++
+    POP			i++
+    POP			i++
+    PUSH [tag62]		for (i = 0; i < cells.length; i++) {...
+    JUMP			for (i = 0; i < cells.length; i++) {...
+  tag63: 
+    JUMPDEST		for (i = 0; i < cells.length; i++) {...
+    PUSH1 0x1		totalInsuredAmountShortTerm
+    PUSH1 0x0		totalInsuredAmountShortTerm
+    POP			totalInsuredAmountShortTerm
+    SLOAD			totalInsuredAmountShortTerm
+    PUSH1 0x8		YEAR_INTENSITY
+    PUSH1 0x0		YEAR_INTENSITY
+    POP			YEAR_INTENSITY
+    SLOAD			YEAR_INTENSITY
+    DUP10			intensity
+    PUSH2 0xFFFF		intensity / YEAR_INTENSITY
+    AND			intensity / YEAR_INTENSITY
+    DUP2			intensity / YEAR_INTENSITY
+    ISZERO			intensity / YEAR_INTENSITY
+    PUSH [ErrorTag]		intensity / YEAR_INTENSITY
+    JUMPI			intensity / YEAR_INTENSITY
+    DIV			intensity / YEAR_INTENSITY
+    MUL			intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm
+    SWAP2			uint toDistribute = intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm
+    POP			uint toDistribute = intensity / YEAR_INTENSITY * totalInsuredAmountShortTerm
+    PUSH1 0x0		0
+    SWAP6			i = 0
+    POP			i = 0
+    DUP6			i = 0
+    POP			i = 0
+  tag68: 
+    JUMPDEST		for (i = 0; i < cells.length; i++) {...
+    DUP9			cells
+    MLOAD			cells.length
+    DUP7			i
+    LT			i < cells.length
+    ISZERO			for (i = 0; i < cells.length; i++) {...
+    PUSH [tag69]		for (i = 0; i < cells.length; i++) {...
+    JUMPI			for (i = 0; i < cells.length; i++) {...
+    DUP9			cells
+    DUP7			i
+    DUP2			cells[i]
+    MLOAD			cells[i]
+    DUP2			cells[i]
+    LT			cells[i]
+    ISZERO			cells[i]
+    PUSH [ErrorTag]		cells[i]
+    JUMPI			cells[i]
+    SWAP1			cells[i]
+    PUSH1 0x20		cells[i]
+    ADD			cells[i]
+    SWAP1			cells[i]
+    PUSH1 0x20		cells[i]
+    MUL			cells[i]
+    ADD			cells[i]
+    MLOAD			cells[i]
+    SWAP4			celln = cells[i]
+    POP			celln = cells[i]
+    DUP4			celln = cells[i]
+    POP			celln = cells[i]
+    PUSH1 0x0		0
+    SWAP5			j = 0
+    POP			j = 0
+    DUP5			j = 0
+    POP			j = 0
+  tag71: 
+    JUMPDEST		for (j = 0; j < world[celln].usercount; j++) {...
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[celln]
+    DUP6			celln
+    PUSH4 0xFFFFFFFF		world[celln]
+    AND			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    SWAP1			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    PUSH1 0x0		world[celln]
+    SHA3			world[celln]
+    PUSH1 0x0		world[celln]
+    POP			world[celln]
+    PUSH1 0x0		world[celln].usercount
+    ADD			world[celln].usercount
+    PUSH1 0x0		world[celln].usercount
+    SWAP1			world[celln].usercount
+    SLOAD			world[celln].usercount
+    SWAP1			world[celln].usercount
+    PUSH2 0x100		world[celln].usercount
+    EXP			world[celln].usercount
+    SWAP1			world[celln].usercount
+    DIV			world[celln].usercount
+    PUSH4 0xFFFFFFFF		world[celln].usercount
+    AND			world[celln].usercount
+    PUSH4 0xFFFFFFFF		j < world[celln].usercount
+    AND			j < world[celln].usercount
+    DUP6			j
+    PUSH4 0xFFFFFFFF		j < world[celln].usercount
+    AND			j < world[celln].usercount
+    LT			j < world[celln].usercount
+    ISZERO			for (j = 0; j < world[celln].usercount; j++) {...
+    PUSH [tag72]		for (j = 0; j < world[celln].usercount; j++) {...
+    JUMPI			for (j = 0; j < world[celln].usercount; j++) {...
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[celln]
+    DUP6			celln
+    PUSH4 0xFFFFFFFF		world[celln]
+    AND			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    SWAP1			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    PUSH1 0x0		world[celln]
+    SHA3			world[celln]
+    PUSH1 0x0		world[celln]
+    POP			world[celln]
+    PUSH1 0x1		world[celln].users
+    ADD			world[celln].users
+    PUSH1 0x0		world[celln].users
+    POP			world[celln].users
+    PUSH1 0x0		world[celln].users[j]
+    DUP7			j
+    PUSH4 0xFFFFFFFF		world[celln].users[j]
+    AND			world[celln].users[j]
+    DUP2			world[celln].users[j]
+    MSTORE			world[celln].users[j]
+    PUSH1 0x20		world[celln].users[j]
+    ADD			world[celln].users[j]
+    SWAP1			world[celln].users[j]
+    DUP2			world[celln].users[j]
+    MSTORE			world[celln].users[j]
+    PUSH1 0x20		world[celln].users[j]
+    ADD			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j]
+    SHA3			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j]
+    POP			world[celln].users[j]
+    PUSH1 0x1		world[celln].users[j].amount
+    ADD			world[celln].users[j].amount
+    PUSH1 0x0		world[celln].users[j].amount
+    POP			world[celln].users[j].amount
+    SLOAD			world[celln].users[j].amount
+    DUP3			toDistribute
+    DUP2			toDistribute / world[celln].users[j].amount
+    ISZERO			toDistribute / world[celln].users[j].amount
+    PUSH [ErrorTag]		toDistribute / world[celln].users[j].amount
+    JUMPI			toDistribute / world[celln].users[j].amount
+    DIV			toDistribute / world[celln].users[j].amount
+    SWAP1			uint amount = toDistribute / world[celln].users[j].amount
+    POP			uint amount = toDistribute / world[celln].users[j].amount
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[celln]
+    DUP6			celln
+    PUSH4 0xFFFFFFFF		world[celln]
+    AND			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    SWAP1			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    PUSH1 0x0		world[celln]
+    SHA3			world[celln]
+    PUSH1 0x0		world[celln]
+    POP			world[celln]
+    PUSH1 0x1		world[celln].users
+    ADD			world[celln].users
+    PUSH1 0x0		world[celln].users
+    POP			world[celln].users
+    PUSH1 0x0		world[celln].users[j]
+    DUP7			j
+    PUSH4 0xFFFFFFFF		world[celln].users[j]
+    AND			world[celln].users[j]
+    DUP2			world[celln].users[j]
+    MSTORE			world[celln].users[j]
+    PUSH1 0x20		world[celln].users[j]
+    ADD			world[celln].users[j]
+    SWAP1			world[celln].users[j]
+    DUP2			world[celln].users[j]
+    MSTORE			world[celln].users[j]
+    PUSH1 0x20		world[celln].users[j]
+    ADD			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j]
+    SHA3			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j]
+    POP			world[celln].users[j]
+    PUSH1 0x0		world[celln].users[j].addr
+    ADD			world[celln].users[j].addr
+    PUSH1 0x0		world[celln].users[j].addr
+    SWAP1			world[celln].users[j].addr
+    SLOAD			world[celln].users[j].addr
+    SWAP1			world[celln].users[j].addr
+    PUSH2 0x100		world[celln].users[j].addr
+    EXP			world[celln].users[j].addr
+    SWAP1			world[celln].users[j].addr
+    DIV			world[celln].users[j].addr
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		world[celln].users[j].addr
+    AND			world[celln].users[j].addr
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		world[celln].users[j].addr.send
+    AND			world[celln].users[j].addr.send
+    PUSH2 0x8FC		world[celln].users[j].addr.send (amount)
+    DUP3			amount
+    SWAP1			world[celln].users[j].addr.send (amount)
+    DUP2			world[celln].users[j].addr.send (amount)
+    ISZERO			world[celln].users[j].addr.send (amount)
+    MUL			world[celln].users[j].addr.send (amount)
+    SWAP1			world[celln].users[j].addr.send (amount)
+    PUSH1 0x40		world[celln].users[j].addr.send (amount)
+    MLOAD			world[celln].users[j].addr.send (amount)
+    DUP1			world[celln].users[j].addr.send (amount)
+    SWAP1			world[celln].users[j].addr.send (amount)
+    POP			world[celln].users[j].addr.send (amount)
+    PUSH1 0x0		world[celln].users[j].addr.send (amount)
+    PUSH1 0x40		world[celln].users[j].addr.send (amount)
+    MLOAD			world[celln].users[j].addr.send (amount)
+    DUP1			world[celln].users[j].addr.send (amount)
+    DUP4			world[celln].users[j].addr.send (amount)
+    SUB			world[celln].users[j].addr.send (amount)
+    DUP2			world[celln].users[j].addr.send (amount)
+    DUP6			world[celln].users[j].addr.send (amount)
+    DUP9			world[celln].users[j].addr.send (amount)
+    DUP9			world[celln].users[j].addr.send (amount)
+    CALL			world[celln].users[j].addr.send (amount)
+    SWAP4			world[celln].users[j].addr.send (amount)
+    POP			world[celln].users[j].addr.send (amount)
+    POP			world[celln].users[j].addr.send (amount)
+    POP			world[celln].users[j].addr.send (amount)
+    POP			world[celln].users[j].addr.send (amount)
+    ISZERO			!world[celln].users[j].addr.send (amount)
+    ISZERO			if (!world[celln].users[j].addr.send (amount))...
+    PUSH [tag74]		if (!world[celln].users[j].addr.send (amount))...
+    JUMPI			if (!world[celln].users[j].addr.send (amount))...
+    PUSH [ErrorTag]		throw
+    JUMP			throw
+  tag74: 
+    JUMPDEST		if (!world[celln].users[j].addr.send (amount))...
+  tag73: 
+    JUMPDEST		for (j = 0; j < world[celln].usercount; j++) {...
+    DUP5			j++
+    DUP1			j++
+    PUSH1 0x1		j++
+    ADD			j++
+    SWAP6			j++
+    POP			j++
+    POP			j++
+    PUSH [tag71]		for (j = 0; j < world[celln].usercount; j++) {...
+    JUMP			for (j = 0; j < world[celln].usercount; j++) {...
+  tag72: 
+    JUMPDEST		for (j = 0; j < world[celln].usercount; j++) {...
+    DUP8			intensity
+    PUSH2 0xFFFF		world[celln].intensity += intensity
+    AND			world[celln].intensity += intensity
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[celln]
+    DUP7			celln
+    PUSH4 0xFFFFFFFF		world[celln]
+    AND			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    SWAP1			world[celln]
+    DUP2			world[celln]
+    MSTORE			world[celln]
+    PUSH1 0x20		world[celln]
+    ADD			world[celln]
+    PUSH1 0x0		world[celln]
+    SHA3			world[celln]
+    PUSH1 0x0		world[celln]
+    POP			world[celln]
+    PUSH1 0x2		world[celln].intensity
+    ADD			world[celln].intensity
+    PUSH1 0x0		world[celln].intensity
+    DUP3			world[celln].intensity += intensity
+    DUP3			world[celln].intensity += intensity
+    DUP3			world[celln].intensity += intensity
+    SWAP1			world[celln].intensity += intensity
+    SLOAD			world[celln].intensity += intensity
+    SWAP1			world[celln].intensity += intensity
+    PUSH2 0x100		world[celln].intensity += intensity
+    EXP			world[celln].intensity += intensity
+    SWAP1			world[celln].intensity += intensity
+    DIV			world[celln].intensity += intensity
+    PUSH4 0xFFFFFFFF		world[celln].intensity += intensity
+    AND			world[celln].intensity += intensity
+    ADD			world[celln].intensity += intensity
+    SWAP3			world[celln].intensity += intensity
+    POP			world[celln].intensity += intensity
+    PUSH2 0x100		world[celln].intensity += intensity
+    EXP			world[celln].intensity += intensity
+    DUP2			world[celln].intensity += intensity
+    SLOAD			world[celln].intensity += intensity
+    DUP2			world[celln].intensity += intensity
+    PUSH4 0xFFFFFFFF		world[celln].intensity += intensity
+    MUL			world[celln].intensity += intensity
+    NOT			world[celln].intensity += intensity
+    AND			world[celln].intensity += intensity
+    SWAP1			world[celln].intensity += intensity
+    DUP4			world[celln].intensity += intensity
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		world[celln].intensity += intensity
+    SWAP1			world[celln].intensity += intensity
+    DUP2			world[celln].intensity += intensity
+    MUL			world[celln].intensity += intensity
+    DIV			world[celln].intensity += intensity
+    MUL			world[celln].intensity += intensity
+    OR			world[celln].intensity += intensity
+    SWAP1			world[celln].intensity += intensity
+    SSTORE			world[celln].intensity += intensity
+    POP			world[celln].intensity += intensity
+  tag70: 
+    JUMPDEST		for (i = 0; i < cells.length; i++) {...
+    DUP6			i++
+    DUP1			i++
+    PUSH1 0x1		i++
+    ADD			i++
+    SWAP7			i++
+    POP			i++
+    POP			i++
+    PUSH [tag68]		for (i = 0; i < cells.length; i++) {...
+    JUMP			for (i = 0; i < cells.length; i++) {...
+  tag69: 
+    JUMPDEST		for (i = 0; i < cells.length; i++) {...
+    DUP8			intensity
+    PUSH2 0xFFFF		intensitySum += intensity
+    AND			intensitySum += intensity
+    PUSH1 0x7		intensitySum
+    PUSH1 0x0		intensitySum
+    DUP3			intensitySum += intensity
+    DUP3			intensitySum += intensity
+    DUP3			intensitySum += intensity
+    SWAP1			intensitySum += intensity
+    SLOAD			intensitySum += intensity
+    SWAP1			intensitySum += intensity
+    PUSH2 0x100		intensitySum += intensity
+    EXP			intensitySum += intensity
+    SWAP1			intensitySum += intensity
+    DIV			intensitySum += intensity
+    PUSH4 0xFFFFFFFF		intensitySum += intensity
+    AND			intensitySum += intensity
+    ADD			intensitySum += intensity
+    SWAP3			intensitySum += intensity
+    POP			intensitySum += intensity
+    PUSH2 0x100		intensitySum += intensity
+    EXP			intensitySum += intensity
+    DUP2			intensitySum += intensity
+    SLOAD			intensitySum += intensity
+    DUP2			intensitySum += intensity
+    PUSH4 0xFFFFFFFF		intensitySum += intensity
+    MUL			intensitySum += intensity
+    NOT			intensitySum += intensity
+    AND			intensitySum += intensity
+    SWAP1			intensitySum += intensity
+    DUP4			intensitySum += intensity
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		intensitySum += intensity
+    SWAP1			intensitySum += intensity
+    DUP2			intensitySum += intensity
+    MUL			intensitySum += intensity
+    DIV			intensitySum += intensity
+    MUL			intensitySum += intensity
+    OR			intensitySum += intensity
+    SWAP1			intensitySum += intensity
+    SSTORE			intensitySum += intensity
+    POP			intensitySum += intensity
+    PUSH1 0xA0		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x40		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x40		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP1			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP12			eventType
+    DUP2			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP10			intensity
+    PUSH2 0xFFFF		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP11			cells
+    DUP2			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			toDistribute
+    DUP2			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP5			affected
+    DUP2			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x6		events
+    PUSH1 0x0		events
+    POP			events
+    PUSH1 0x0		events[totalEvents]
+    PUSH1 0x5		totalEvents
+    PUSH1 0x0		totalEvents
+    SWAP1			totalEvents
+    SLOAD			totalEvents
+    SWAP1			totalEvents
+    PUSH2 0x100		totalEvents
+    EXP			totalEvents
+    SWAP1			totalEvents
+    DIV			totalEvents
+    PUSH4 0xFFFFFFFF		totalEvents
+    AND			totalEvents
+    PUSH4 0xFFFFFFFF		events[totalEvents]
+    AND			events[totalEvents]
+    DUP2			events[totalEvents]
+    MSTORE			events[totalEvents]
+    PUSH1 0x20		events[totalEvents]
+    ADD			events[totalEvents]
+    SWAP1			events[totalEvents]
+    DUP2			events[totalEvents]
+    MSTORE			events[totalEvents]
+    PUSH1 0x20		events[totalEvents]
+    ADD			events[totalEvents]
+    PUSH1 0x0		events[totalEvents]
+    SHA3			events[totalEvents]
+    PUSH1 0x0		events[totalEvents]
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH2 0x100		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    EXP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0xFF		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    NOT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH32 0x100000000000000000000000000000000000000000000000000000000000000		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    OR			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x1		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH2 0x100		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    EXP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH4 0xFFFFFFFF		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    NOT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    OR			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x40		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x1		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SHA3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x7		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x8		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ISZERO			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag75]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMPI			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag76: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    GT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ISZERO			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag77]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMPI			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH2 0x100		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    EXP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH4 0xFFFFFFFF		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    NOT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    OR			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x4		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x3		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x1		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SUB			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag76]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag77: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ISZERO			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag78]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMPI			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH2 0x100		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    EXP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH4 0xFFFFFFFF		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    NOT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x4		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x20		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x3		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x1		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SUB			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag77]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag78: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag75: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag79]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag80]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag80: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    GT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ISZERO			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag81]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMPI			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH2 0x100		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    EXP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH4 0xFFFFFFFF		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    NOT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x1		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH [tag80]		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag81: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    JUMP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+  tag79: 
+    JUMPDEST		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x60		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x2		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x80		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP3			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x3		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    ADD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x0		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH2 0x100		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    EXP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SLOAD			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH4 0xFFFFFFFF		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    NOT			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    AND			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP4			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DUP2			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    DIV			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    MUL			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    OR			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SSTORE			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    SWAP1			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    POP			events[totalEvents] = Event ({eventType: eventType, intensity: intensity, cells: cells, distributed: toDistribute, users: affected})
+    PUSH1 0x1		1
+    PUSH1 0x5		totalEvents
+    PUSH1 0x0		totalEvents
+    DUP3			totalEvents += 1
+    DUP3			totalEvents += 1
+    DUP3			totalEvents += 1
+    SWAP1			totalEvents += 1
+    SLOAD			totalEvents += 1
+    SWAP1			totalEvents += 1
+    PUSH2 0x100		totalEvents += 1
+    EXP			totalEvents += 1
+    SWAP1			totalEvents += 1
+    DIV			totalEvents += 1
+    PUSH4 0xFFFFFFFF		totalEvents += 1
+    AND			totalEvents += 1
+    ADD			totalEvents += 1
+    SWAP3			totalEvents += 1
+    POP			totalEvents += 1
+    PUSH2 0x100		totalEvents += 1
+    EXP			totalEvents += 1
+    DUP2			totalEvents += 1
+    SLOAD			totalEvents += 1
+    DUP2			totalEvents += 1
+    PUSH4 0xFFFFFFFF		totalEvents += 1
+    MUL			totalEvents += 1
+    NOT			totalEvents += 1
+    AND			totalEvents += 1
+    SWAP1			totalEvents += 1
+    DUP4			totalEvents += 1
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		totalEvents += 1
+    SWAP1			totalEvents += 1
+    DUP2			totalEvents += 1
+    MUL			totalEvents += 1
+    DIV			totalEvents += 1
+    MUL			totalEvents += 1
+    OR			totalEvents += 1
+    SWAP1			totalEvents += 1
+    SSTORE			totalEvents += 1
+    POP			totalEvents += 1
+    PUSH32 0x36F4C29D492E0042739706CAABAB8D06F510D3917FD72F7D7F3DD0DD902205CA		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP11			eventType
+    DUP10			intensity
+    DUP12			cells
+    DUP6			toDistribute
+    DUP8			affected
+    PUSH1 0x40		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MLOAD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP7			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MSTORE			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP6			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH2 0xFFFF		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    AND			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MSTORE			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP5			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MSTORE			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP4			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH4 0xFFFFFFFF		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    AND			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MSTORE			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP3			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SUB			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP3			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MSTORE			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP6			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MLOAD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MSTORE			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MLOAD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MUL			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP4			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP4			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP3			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x0		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x4		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x20		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP5			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x1F		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DIV			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x3		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MUL			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0xF		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    CALL			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    ADD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP7			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    POP			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    PUSH1 0x40		RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    MLOAD			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    DUP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP2			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SUB			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    SWAP1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+    LOG1			RaisedEvent (eventType, intensity, cells, toDistribute, affected)
+  tag61: 
+    JUMPDEST		_
+  tag59: 
+    JUMPDEST		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    POP			function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+    JUMP	[out]		function raiseEvent (EventType eventType, uint32[] cells, uint16 intensity) onlyHB() {		...
+  tag52: 
+    JUMPDEST		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    PUSH1 0x7		HELPERBIT_ADDRESS
+    PUSH1 0x5		HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    SLOAD			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    PUSH2 0x100		HELPERBIT_ADDRESS
+    EXP			HELPERBIT_ADDRESS
+    SWAP1			HELPERBIT_ADDRESS
+    DIV			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		HELPERBIT_ADDRESS
+    AND			HELPERBIT_ADDRESS
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    CALLER			msg.sender
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		msg.sender != HELPERBIT_ADDRESS
+    AND			msg.sender != HELPERBIT_ADDRESS
+    EQ			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			msg.sender != HELPERBIT_ADDRESS
+    ISZERO			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [tag83]		if (msg.sender != HELPERBIT_ADDRESS)...
+    JUMPI			if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH [ErrorTag]		throw
+    JUMP			throw
+  tag83: 
+    JUMPDEST		if (msg.sender != HELPERBIT_ADDRESS)...
+    PUSH1 0x7		insuringPeriodActive
+    PUSH1 0x4		insuringPeriodActive
+    SWAP1			insuringPeriodActive
+    SLOAD			insuringPeriodActive
+    SWAP1			insuringPeriodActive
+    PUSH2 0x100		insuringPeriodActive
+    EXP			insuringPeriodActive
+    SWAP1			insuringPeriodActive
+    DIV			insuringPeriodActive
+    PUSH1 0xFF		insuringPeriodActive
+    AND			insuringPeriodActive
+    ISZERO			!insuringPeriodActive
+    ISZERO			if (!insuringPeriodActive)...
+    PUSH [tag85]		if (!insuringPeriodActive)...
+    JUMPI			if (!insuringPeriodActive)...
+    PUSH [ErrorTag]		throw
+    JUMP			throw
+  tag85: 
+    JUMPDEST		if (!insuringPeriodActive)...
+    CALLVALUE			msg.value
+    PUSH1 0x0		totalInsuredAmount
+    PUSH1 0x0		totalInsuredAmount
+    DUP3			totalInsuredAmount += msg.value
+    DUP3			totalInsuredAmount += msg.value
+    DUP3			totalInsuredAmount += msg.value
+    POP			totalInsuredAmount += msg.value
+    SLOAD			totalInsuredAmount += msg.value
+    ADD			totalInsuredAmount += msg.value
+    SWAP3			totalInsuredAmount += msg.value
+    POP			totalInsuredAmount += msg.value
+    POP			totalInsuredAmount += msg.value
+    DUP2			totalInsuredAmount += msg.value
+    SWAP1			totalInsuredAmount += msg.value
+    SSTORE			totalInsuredAmount += msg.value
+    POP			totalInsuredAmount += msg.value
+    PUSH1 0x64		100
+    PUSH1 0x9		SPLIT_SHORT_TERM
+    PUSH1 0x0		SPLIT_SHORT_TERM
+    POP			SPLIT_SHORT_TERM
+    SLOAD			SPLIT_SHORT_TERM
+    CALLVALUE			msg.value
+    DUP2			msg.value / SPLIT_SHORT_TERM
+    ISZERO			msg.value / SPLIT_SHORT_TERM
+    PUSH [ErrorTag]		msg.value / SPLIT_SHORT_TERM
+    JUMPI			msg.value / SPLIT_SHORT_TERM
+    DIV			msg.value / SPLIT_SHORT_TERM
+    MUL			msg.value / SPLIT_SHORT_TERM * 100
+    PUSH1 0x1		totalInsuredAmountShortTerm
+    PUSH1 0x0		totalInsuredAmountShortTerm
+    DUP3			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    DUP3			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    DUP3			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    POP			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    SLOAD			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    ADD			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    SWAP3			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    POP			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    POP			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    DUP2			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    SWAP1			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    SSTORE			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    POP			totalInsuredAmountShortTerm += msg.value / SPLIT_SHORT_TERM * 100
+    PUSH1 0x64		100
+    PUSH1 0xA		SPLIT_LONG_TERM
+    PUSH1 0x0		SPLIT_LONG_TERM
+    POP			SPLIT_LONG_TERM
+    SLOAD			SPLIT_LONG_TERM
+    CALLVALUE			msg.value
+    DUP2			msg.value / SPLIT_LONG_TERM
+    ISZERO			msg.value / SPLIT_LONG_TERM
+    PUSH [ErrorTag]		msg.value / SPLIT_LONG_TERM
+    JUMPI			msg.value / SPLIT_LONG_TERM
+    DIV			msg.value / SPLIT_LONG_TERM
+    MUL			msg.value / SPLIT_LONG_TERM * 100
+    PUSH1 0x2		totalInsuredAmountLongTerm
+    PUSH1 0x0		totalInsuredAmountLongTerm
+    DUP3			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    DUP3			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    DUP3			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    POP			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    SLOAD			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    ADD			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    SWAP3			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    POP			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    POP			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    DUP2			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    SWAP1			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    SSTORE			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    POP			totalInsuredAmountLongTerm += msg.value / SPLIT_LONG_TERM * 100
+    PUSH1 0x1		1
+    PUSH1 0x3		totalUsers
+    PUSH1 0x0		totalUsers
+    DUP3			totalUsers += 1
+    DUP3			totalUsers += 1
+    DUP3			totalUsers += 1
+    SWAP1			totalUsers += 1
+    SLOAD			totalUsers += 1
+    SWAP1			totalUsers += 1
+    PUSH2 0x100		totalUsers += 1
+    EXP			totalUsers += 1
+    SWAP1			totalUsers += 1
+    DIV			totalUsers += 1
+    PUSH4 0xFFFFFFFF		totalUsers += 1
+    AND			totalUsers += 1
+    ADD			totalUsers += 1
+    SWAP3			totalUsers += 1
+    POP			totalUsers += 1
+    PUSH2 0x100		totalUsers += 1
+    EXP			totalUsers += 1
+    DUP2			totalUsers += 1
+    SLOAD			totalUsers += 1
+    DUP2			totalUsers += 1
+    PUSH4 0xFFFFFFFF		totalUsers += 1
+    MUL			totalUsers += 1
+    NOT			totalUsers += 1
+    AND			totalUsers += 1
+    SWAP1			totalUsers += 1
+    DUP4			totalUsers += 1
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		totalUsers += 1
+    SWAP1			totalUsers += 1
+    DUP2			totalUsers += 1
+    MUL			totalUsers += 1
+    DIV			totalUsers += 1
+    MUL			totalUsers += 1
+    OR			totalUsers += 1
+    SWAP1			totalUsers += 1
+    SSTORE			totalUsers += 1
+    POP			totalUsers += 1
+    PUSH1 0x0		0
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[cell]
+    DUP5			cell
+    PUSH4 0xFFFFFFFF		world[cell]
+    AND			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    SWAP1			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    PUSH1 0x0		world[cell]
+    SHA3			world[cell]
+    PUSH1 0x0		world[cell]
+    POP			world[cell]
+    PUSH1 0x0		world[cell].usercount
+    ADD			world[cell].usercount
+    PUSH1 0x0		world[cell].usercount
+    SWAP1			world[cell].usercount
+    SLOAD			world[cell].usercount
+    SWAP1			world[cell].usercount
+    PUSH2 0x100		world[cell].usercount
+    EXP			world[cell].usercount
+    SWAP1			world[cell].usercount
+    DIV			world[cell].usercount
+    PUSH4 0xFFFFFFFF		world[cell].usercount
+    AND			world[cell].usercount
+    PUSH4 0xFFFFFFFF		world[cell].usercount == 0
+    AND			world[cell].usercount == 0
+    EQ			world[cell].usercount == 0
+    ISZERO			if (world[cell].usercount == 0) {...
+    PUSH [tag87]		if (world[cell].usercount == 0) {...
+    JUMPI			if (world[cell].usercount == 0) {...
+    PUSH1 0x40		Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x40		Cell ({ usercount: 0, intensity: 0 })
+    MLOAD			Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			Cell ({ usercount: 0, intensity: 0 })
+    DUP2			Cell ({ usercount: 0, intensity: 0 })
+    ADD			Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x40		Cell ({ usercount: 0, intensity: 0 })
+    MSTORE			Cell ({ usercount: 0, intensity: 0 })
+    DUP1			Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x0		0
+    DUP2			Cell ({ usercount: 0, intensity: 0 })
+    MSTORE			Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x20		Cell ({ usercount: 0, intensity: 0 })
+    ADD			Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x0		0
+    DUP2			Cell ({ usercount: 0, intensity: 0 })
+    MSTORE			Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x20		Cell ({ usercount: 0, intensity: 0 })
+    ADD			Cell ({ usercount: 0, intensity: 0 })
+    POP			Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[cell]
+    DUP5			cell
+    PUSH4 0xFFFFFFFF		world[cell]
+    AND			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    SWAP1			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    PUSH1 0x0		world[cell]
+    SHA3			world[cell]
+    PUSH1 0x0		world[cell]
+    POP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x0		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP3			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    ADD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MLOAD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x0		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    ADD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x0		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH2 0x100		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    EXP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SLOAD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH4 0xFFFFFFFF		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MUL			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    NOT			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    AND			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP4			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MUL			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DIV			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MUL			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    OR			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SSTORE			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    POP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x20		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP3			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    ADD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MLOAD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x2		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    ADD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH1 0x0		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH2 0x100		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    EXP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SLOAD			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH4 0xFFFFFFFF		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MUL			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    NOT			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    AND			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP4			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DUP2			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MUL			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    DIV			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    MUL			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    OR			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SSTORE			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    POP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    SWAP1			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    POP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+    POP			world[cell] = Cell ({ usercount: 0, intensity: 0 })
+  tag87: 
+    JUMPDEST		if (world[cell].usercount == 0) {...
+    PUSH1 0x40		User ({ addr: user, amount: msg.value })
+    PUSH1 0x40		User ({ addr: user, amount: msg.value })
+    MLOAD			User ({ addr: user, amount: msg.value })
+    SWAP1			User ({ addr: user, amount: msg.value })
+    DUP2			User ({ addr: user, amount: msg.value })
+    ADD			User ({ addr: user, amount: msg.value })
+    PUSH1 0x40		User ({ addr: user, amount: msg.value })
+    MSTORE			User ({ addr: user, amount: msg.value })
+    DUP1			User ({ addr: user, amount: msg.value })
+    DUP3			user
+    DUP2			User ({ addr: user, amount: msg.value })
+    MSTORE			User ({ addr: user, amount: msg.value })
+    PUSH1 0x20		User ({ addr: user, amount: msg.value })
+    ADD			User ({ addr: user, amount: msg.value })
+    CALLVALUE			msg.value
+    DUP2			User ({ addr: user, amount: msg.value })
+    MSTORE			User ({ addr: user, amount: msg.value })
+    PUSH1 0x20		User ({ addr: user, amount: msg.value })
+    ADD			User ({ addr: user, amount: msg.value })
+    POP			User ({ addr: user, amount: msg.value })
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[cell]
+    DUP5			cell
+    PUSH4 0xFFFFFFFF		world[cell]
+    AND			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    SWAP1			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    PUSH1 0x0		world[cell]
+    SHA3			world[cell]
+    PUSH1 0x0		world[cell]
+    POP			world[cell]
+    PUSH1 0x1		world[cell].users
+    ADD			world[cell].users
+    PUSH1 0x0		world[cell].users
+    POP			world[cell].users
+    PUSH1 0x0		world[cell].users[world[cell].usercount]
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[cell]
+    DUP7			cell
+    PUSH4 0xFFFFFFFF		world[cell]
+    AND			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    SWAP1			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    PUSH1 0x0		world[cell]
+    SHA3			world[cell]
+    PUSH1 0x0		world[cell]
+    POP			world[cell]
+    PUSH1 0x0		world[cell].usercount
+    ADD			world[cell].usercount
+    PUSH1 0x0		world[cell].usercount
+    SWAP1			world[cell].usercount
+    SLOAD			world[cell].usercount
+    SWAP1			world[cell].usercount
+    PUSH2 0x100		world[cell].usercount
+    EXP			world[cell].usercount
+    SWAP1			world[cell].usercount
+    DIV			world[cell].usercount
+    PUSH4 0xFFFFFFFF		world[cell].usercount
+    AND			world[cell].usercount
+    PUSH4 0xFFFFFFFF		world[cell].users[world[cell].usercount]
+    AND			world[cell].users[world[cell].usercount]
+    DUP2			world[cell].users[world[cell].usercount]
+    MSTORE			world[cell].users[world[cell].usercount]
+    PUSH1 0x20		world[cell].users[world[cell].usercount]
+    ADD			world[cell].users[world[cell].usercount]
+    SWAP1			world[cell].users[world[cell].usercount]
+    DUP2			world[cell].users[world[cell].usercount]
+    MSTORE			world[cell].users[world[cell].usercount]
+    PUSH1 0x20		world[cell].users[world[cell].usercount]
+    ADD			world[cell].users[world[cell].usercount]
+    PUSH1 0x0		world[cell].users[world[cell].usercount]
+    SHA3			world[cell].users[world[cell].usercount]
+    PUSH1 0x0		world[cell].users[world[cell].usercount]
+    POP			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x0		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP3			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    ADD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    MLOAD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP2			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x0		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    ADD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x0		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH2 0x100		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    EXP			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP2			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SLOAD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP2			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH20 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    MUL			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    NOT			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    AND			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SWAP1			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP4			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH13 0x1000000000000000000000000		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SWAP1			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP2			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    MUL			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DIV			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    MUL			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    OR			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SWAP1			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SSTORE			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    POP			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x20		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP3			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    ADD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    MLOAD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    DUP2			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x1		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    ADD			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x0		world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    POP			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SSTORE			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    SWAP1			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    POP			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    POP			world[cell].users[world[cell].usercount] = User ({ addr: user, amount: msg.value })
+    PUSH1 0x1		1
+    PUSH1 0x4		world
+    PUSH1 0x0		world
+    POP			world
+    PUSH1 0x0		world[cell]
+    DUP5			cell
+    PUSH4 0xFFFFFFFF		world[cell]
+    AND			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    SWAP1			world[cell]
+    DUP2			world[cell]
+    MSTORE			world[cell]
+    PUSH1 0x20		world[cell]
+    ADD			world[cell]
+    PUSH1 0x0		world[cell]
+    SHA3			world[cell]
+    PUSH1 0x0		world[cell]
+    POP			world[cell]
+    PUSH1 0x0		world[cell].usercount
+    ADD			world[cell].usercount
+    PUSH1 0x0		world[cell].usercount
+    DUP3			world[cell].usercount += 1
+    DUP3			world[cell].usercount += 1
+    DUP3			world[cell].usercount += 1
+    SWAP1			world[cell].usercount += 1
+    SLOAD			world[cell].usercount += 1
+    SWAP1			world[cell].usercount += 1
+    PUSH2 0x100		world[cell].usercount += 1
+    EXP			world[cell].usercount += 1
+    SWAP1			world[cell].usercount += 1
+    DIV			world[cell].usercount += 1
+    PUSH4 0xFFFFFFFF		world[cell].usercount += 1
+    AND			world[cell].usercount += 1
+    ADD			world[cell].usercount += 1
+    SWAP3			world[cell].usercount += 1
+    POP			world[cell].usercount += 1
+    PUSH2 0x100		world[cell].usercount += 1
+    EXP			world[cell].usercount += 1
+    DUP2			world[cell].usercount += 1
+    SLOAD			world[cell].usercount += 1
+    DUP2			world[cell].usercount += 1
+    PUSH4 0xFFFFFFFF		world[cell].usercount += 1
+    MUL			world[cell].usercount += 1
+    NOT			world[cell].usercount += 1
+    AND			world[cell].usercount += 1
+    SWAP1			world[cell].usercount += 1
+    DUP4			world[cell].usercount += 1
+    PUSH29 0x100000000000000000000000000000000000000000000000000000000		world[cell].usercount += 1
+    SWAP1			world[cell].usercount += 1
+    DUP2			world[cell].usercount += 1
+    MUL			world[cell].usercount += 1
+    DIV			world[cell].usercount += 1
+    MUL			world[cell].usercount += 1
+    OR			world[cell].usercount += 1
+    SWAP1			world[cell].usercount += 1
+    SSTORE			world[cell].usercount += 1
+    POP			world[cell].usercount += 1
+  tag86: 
+    JUMPDEST		_
+  tag84: 
+    JUMPDEST		_
+  tag82: 
+    JUMPDEST		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    POP			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    POP			function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...
+    JUMP	[out]		function insure (uint32 cell, address user) onlyHB() insuringPeriod() {...

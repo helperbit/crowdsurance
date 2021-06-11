@@ -1,0 +1,8 @@
+node_modules
+__pycache__
+*.pyc
+out/lang_test_*
+sim/lang_test_*
+*.proof
+sim/SCaml*
+sim/_build

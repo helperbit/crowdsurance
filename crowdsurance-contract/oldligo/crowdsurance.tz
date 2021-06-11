@@ -1,0 +1,568 @@
+{ parameter
+    (or (or (or (unit %endInsuringPhase) (unit %endRunningPhase))
+            (or (key_hash %initialize)
+                (pair %insureUser
+                   (pair (address %address) (mutez %balance))
+                   (pair (nat %cell) (nat %months)))))
+        (pair %triggerEvent
+           (pair (set %cells nat) (unit %etype))
+           (pair (map %intensity nat nat) (timestamp %time)))) ;
+  storage
+    (pair (pair (pair (map %cells nat (set address))
+                      (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                (pair (list %events
+                         (pair (pair (set %cells nat) (unit %etype))
+                               (pair (map %intensity nat nat) (timestamp %time))))
+                      (address %owner)))
+          (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                (pair (nat %total_users)
+                      (map %users
+                         address
+                         (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months))))))) ;
+  code { LAMBDA
+           (pair (pair (pair (map %cells nat (set address))
+                             (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                       (pair (list %events
+                                (pair (pair (set %cells nat) (unit %etype))
+                                      (pair (map %intensity nat nat) (timestamp %time))))
+                             (address %owner)))
+                 (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                       (pair (nat %total_users)
+                             (map %users
+                                address
+                                (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+           bool
+           { DUP ;
+             CAR ;
+             CAR ;
+             CDR ;
+             IF_LEFT
+               { DUP ;
+                 IF_LEFT { DROP ; PUSH bool False } { DROP ; PUSH bool True } ;
+                 DIP { DROP } }
+               { DROP ; PUSH bool False } ;
+             DIP { DROP } } ;
+         LAMBDA
+           (pair (pair (pair (map %cells nat (set address))
+                             (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                       (pair (list %events
+                                (pair (pair (set %cells nat) (unit %etype))
+                                      (pair (map %intensity nat nat) (timestamp %time))))
+                             (address %owner)))
+                 (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                       (pair (nat %total_users)
+                             (map %users
+                                address
+                                (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+           bool
+           { DUP ;
+             CAR ;
+             CAR ;
+             CDR ;
+             IF_LEFT
+               { DUP ;
+                 IF_LEFT { DROP ; PUSH bool False } { DROP ; PUSH bool False } ;
+                 DIP { DROP } }
+               { DROP ; PUSH bool True } ;
+             DIP { DROP } } ;
+         LAMBDA
+           (pair (pair (pair (map %cells nat (set address))
+                             (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                       (pair (list %events
+                                (pair (pair (set %cells nat) (unit %etype))
+                                      (pair (map %intensity nat nat) (timestamp %time))))
+                             (address %owner)))
+                 (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                       (pair (nat %total_users)
+                             (map %users
+                                address
+                                (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+           bool
+           { DUP ; CAR ; CDR ; CDR ; SENDER ; SWAP ; COMPARE ; EQ ; DIP { DROP } } ;
+         DIP 3 { DUP } ;
+         DIG 3 ;
+         DUP ;
+         CDR ;
+         DIP { DUP } ;
+         SWAP ;
+         CAR ;
+         IF_LEFT
+           { DUP ;
+             IF_LEFT
+               { DUP ;
+                 IF_LEFT
+                   { DIP 3 { DUP } ;
+                     DIG 3 ;
+                     DUP ;
+                     DIP { DIP 6 { DUP } ; DIG 6 } ;
+                     EXEC ;
+                     IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                     DIP { DUP } ;
+                     SWAP ;
+                     DIP { DIP 9 { DUP } ; DIG 9 } ;
+                     EXEC ;
+                     IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                     DIP 2 { DUP } ;
+                     DIG 2 ;
+                     PUSH unit Unit ;
+                     RIGHT (or unit unit) ;
+                     DIP { DUP ; CDR ; SWAP ; CAR ; DUP ; CDR ; SWAP ; CAR ; CAR } ;
+                     SWAP ;
+                     PAIR ;
+                     PAIR ;
+                     PAIR ;
+                     NIL operation ;
+                     PAIR ;
+                     DIP { DROP 4 } }
+                   { DIP 3 { DUP } ;
+                     DIG 3 ;
+                     DUP ;
+                     DIP { DIP 6 { DUP } ; DIG 6 } ;
+                     EXEC ;
+                     IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                     DIP { DUP } ;
+                     SWAP ;
+                     DIP { DIP 8 { DUP } ; DIG 8 } ;
+                     EXEC ;
+                     IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                     DIP 2 { DUP } ;
+                     DIG 2 ;
+                     PUSH unit Unit ;
+                     LEFT unit ;
+                     LEFT unit ;
+                     DIP { DUP ; CDR ; SWAP ; CAR ; DUP ; CDR ; SWAP ; CAR ; CAR } ;
+                     SWAP ;
+                     PAIR ;
+                     PAIR ;
+                     PAIR ;
+                     NIL operation ;
+                     PAIR ;
+                     DIP { DROP 4 } } ;
+                 DIP { DROP } }
+               { DUP ;
+                 IF_LEFT
+                   { DUP ;
+                     DIP { DIP 3 { DUP } ;
+                           DIG 3 ;
+                           DIP { DIP { DIP { DIP { DIP { DIP { DUP } ; SWAP } ; DUP ; DIP { PAIR } ; SWAP } ;
+                                             SWAP } ;
+                                       SWAP } ;
+                                 SWAP } ;
+                           DUP ;
+                           DIP { PAIR } ;
+                           SWAP ;
+                           LAMBDA
+                             (pair (pair (pair (pair (pair (map %cells nat (set address))
+                                                           (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                     (pair (list %events
+                                                              (pair (pair (set %cells nat) (unit %etype))
+                                                                    (pair (map %intensity nat nat) (timestamp %time))))
+                                                           (address %owner)))
+                                               (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                     (pair (nat %total_users)
+                                                           (map %users
+                                                              address
+                                                              (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                         (pair (pair (pair (pair (map %cells nat (set address))
+                                                                 (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                           (pair (list %events
+                                                                    (pair (pair (set %cells nat) (unit %etype))
+                                                                          (pair (map %intensity nat nat) (timestamp %time))))
+                                                                 (address %owner)))
+                                                     (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                           (pair (nat %total_users)
+                                                                 (map %users
+                                                                    address
+                                                                    (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                               (lambda
+                                                  (pair (pair (pair (map %cells nat (set address))
+                                                                    (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                              (pair (list %events
+                                                                       (pair (pair (set %cells nat) (unit %etype))
+                                                                             (pair (map %intensity nat nat) (timestamp %time))))
+                                                                    (address %owner)))
+                                                        (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                              (pair (nat %total_users)
+                                                                    (map %users
+                                                                       address
+                                                                       (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                                  bool)))
+                                   key_hash)
+                             (pair (list operation)
+                                   (pair (pair (pair (map %cells nat (set address))
+                                                     (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                               (pair (list %events
+                                                        (pair (pair (set %cells nat) (unit %etype))
+                                                              (pair (map %intensity nat nat) (timestamp %time))))
+                                                     (address %owner)))
+                                         (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                               (pair (nat %total_users)
+                                                     (map %users
+                                                        address
+                                                        (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months))))))))
+                             { DUP ;
+                               CAR ;
+                               SWAP ;
+                               CDR ;
+                               DIP { DUP ; CDR ; SWAP ; CAR ; DIP { DUP ; CDR ; SWAP ; CAR } ; DUP } ;
+                               SWAP ;
+                               DIP { DIP 3 { DUP } ; DIG 3 } ;
+                               EXEC ;
+                               IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                               DIP { DUP } ;
+                               SWAP ;
+                               SOME ;
+                               SET_DELEGATE ;
+                               DUP ;
+                               NIL operation ;
+                               SWAP ;
+                               CONS ;
+                               DIP { DIP 3 { DUP } ;
+                                     DIG 3 ;
+                                     DUP ;
+                                     CDR ;
+                                     SWAP ;
+                                     CAR ;
+                                     DUP ;
+                                     CAR ;
+                                     SWAP ;
+                                     CDR ;
+                                     CAR ;
+                                     SENDER ;
+                                     SWAP ;
+                                     PAIR ;
+                                     SWAP ;
+                                     PAIR ;
+                                     PAIR } ;
+                               PAIR ;
+                               DIP { DROP 6 } } ;
+                           SWAP ;
+                           APPLY ;
+                           DIP { DROP } } ;
+                     EXEC ;
+                     DIP { DROP } }
+                   { DUP ;
+                     DIP { DIP 3 { DUP } ;
+                           DIG 3 ;
+                           DIP { DIP { DIP { DIP { DIP { DIP { DIP { DIP { DUP } ; SWAP } ; DUP ; DIP { PAIR } ; SWAP } ;
+                                                         SWAP } ;
+                                                   DUP ;
+                                                   DIP { PAIR } ;
+                                                   SWAP } ;
+                                             SWAP } ;
+                                       SWAP } ;
+                                 SWAP } ;
+                           DUP ;
+                           DIP { PAIR } ;
+                           SWAP ;
+                           LAMBDA
+                             (pair (pair (pair (pair (pair (map %cells nat (set address))
+                                                           (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                     (pair (list %events
+                                                              (pair (pair (set %cells nat) (unit %etype))
+                                                                    (pair (map %intensity nat nat) (timestamp %time))))
+                                                           (address %owner)))
+                                               (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                     (pair (nat %total_users)
+                                                           (map %users
+                                                              address
+                                                              (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                         (pair (pair (pair (pair (map %cells nat (set address))
+                                                                 (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                           (pair (list %events
+                                                                    (pair (pair (set %cells nat) (unit %etype))
+                                                                          (pair (map %intensity nat nat) (timestamp %time))))
+                                                                 (address %owner)))
+                                                     (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                           (pair (nat %total_users)
+                                                                 (map %users
+                                                                    address
+                                                                    (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                               (pair (lambda
+                                                        (pair (pair (pair (map %cells nat (set address))
+                                                                          (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                                    (pair (list %events
+                                                                             (pair (pair (set %cells nat) (unit %etype))
+                                                                                   (pair (map %intensity nat nat) (timestamp %time))))
+                                                                          (address %owner)))
+                                                              (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                                    (pair (nat %total_users)
+                                                                          (map %users
+                                                                             address
+                                                                             (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                                        bool)
+                                                     (lambda
+                                                        (pair (pair (pair (map %cells nat (set address))
+                                                                          (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                                    (pair (list %events
+                                                                             (pair (pair (set %cells nat) (unit %etype))
+                                                                                   (pair (map %intensity nat nat) (timestamp %time))))
+                                                                          (address %owner)))
+                                                              (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                                    (pair (nat %total_users)
+                                                                          (map %users
+                                                                             address
+                                                                             (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                                        bool))))
+                                   (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months))))
+                             (pair (list operation)
+                                   (pair (pair (pair (map %cells nat (set address))
+                                                     (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                               (pair (list %events
+                                                        (pair (pair (set %cells nat) (unit %etype))
+                                                              (pair (map %intensity nat nat) (timestamp %time))))
+                                                     (address %owner)))
+                                         (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                               (pair (nat %total_users)
+                                                     (map %users
+                                                        address
+                                                        (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months))))))))
+                             { DUP ;
+                               CAR ;
+                               SWAP ;
+                               CDR ;
+                               DIP { DUP ;
+                                     CDR ;
+                                     SWAP ;
+                                     CAR ;
+                                     DIP { DUP ; CDR ; SWAP ; CAR ; DIP { DUP ; CDR ; SWAP ; CAR } } ;
+                                     DUP } ;
+                               SWAP ;
+                               DIP { DIP 3 { DUP } ; DIG 3 } ;
+                               EXEC ;
+                               IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                               DIP 2 { DUP } ;
+                               DIG 2 ;
+                               DIP { DIP 5 { DUP } ; DIG 5 } ;
+                               EXEC ;
+                               IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                               DIP 3 { DUP } ;
+                               DIG 3 ;
+                               DIP { DIP 2 { DUP } ; DIG 2 ; CAR ; CAR } ;
+                               PAIR ;
+                               DUP ;
+                               CDR ;
+                               DIP { DUP ; CAR ; CDR ; CDR ; CDR } ;
+                               GET ;
+                               IF_NONE { PUSH bool False } { DROP ; PUSH bool True } ;
+                               DIP { DROP } ;
+                               IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                               DIP 4 { DUP } ;
+                               DIG 4 ;
+                               DIP 4 { DUP } ;
+                               DIG 4 ;
+                               CAR ;
+                               CAR ;
+                               DIP { DIP 4 { DUP } ;
+                                     DIG 4 ;
+                                     SOME ;
+                                     DIP { DIP 5 { DUP } ; DIG 5 ; CDR ; CDR ; CDR } } ;
+                               UPDATE ;
+                               DIP { DUP ; CAR ; SWAP ; CDR ; DUP ; CAR ; SWAP ; CDR ; CAR } ;
+                               SWAP ;
+                               PAIR ;
+                               SWAP ;
+                               PAIR ;
+                               SWAP ;
+                               PAIR ;
+                               DIP 4 { DUP } ;
+                               DIG 4 ;
+                               CDR ;
+                               CAR ;
+                               DIP { DIP 5 { DUP } ; DIG 5 ; CAR ; CAR ; CAR } ;
+                               GET ;
+                               IF_NONE
+                                 { DIP 4 { DUP } ;
+                                   DIG 4 ;
+                                   CDR ;
+                                   CAR ;
+                                   DIP { DIP 4 { DUP } ;
+                                         DIG 4 ;
+                                         CAR ;
+                                         CAR ;
+                                         DIP { EMPTY_SET address ; PUSH bool True } ;
+                                         UPDATE ;
+                                         SOME ;
+                                         DIP { DIP 5 { DUP } ; DIG 5 ; CAR ; CAR ; CAR } } ;
+                                   UPDATE }
+                                 { DIP 5 { DUP } ;
+                                   DIG 5 ;
+                                   CDR ;
+                                   CAR ;
+                                   DIP { DIP 5 { DUP } ;
+                                         DIG 5 ;
+                                         CAR ;
+                                         CAR ;
+                                         DIP { DUP ; PUSH bool True } ;
+                                         UPDATE ;
+                                         SOME ;
+                                         DIP { DIP 6 { DUP } ; DIG 6 ; CAR ; CAR ; CAR } } ;
+                                   UPDATE ;
+                                   DIP { DROP } } ;
+                               DIP { DUP ; CDR ; SWAP ; CAR ; DUP ; CDR ; SWAP ; CAR ; CDR } ;
+                               PAIR ;
+                               PAIR ;
+                               PAIR ;
+                               DIP 5 { DUP } ;
+                               DIG 5 ;
+                               CDR ;
+                               CAR ;
+                               CAR ;
+                               DIP { DIP 4 { DUP } ; DIG 4 ; CAR ; CDR } ;
+                               ADD ;
+                               DIP { DUP ; CAR ; SWAP ; CDR ; DUP ; CDR ; SWAP ; CAR ; CDR } ;
+                               PAIR ;
+                               PAIR ;
+                               SWAP ;
+                               PAIR ;
+                               DIP 5 { DUP } ;
+                               DIG 5 ;
+                               CDR ;
+                               CAR ;
+                               CDR ;
+                               DIP { DIP 4 { DUP } ; DIG 4 ; CAR ; CDR } ;
+                               ADD ;
+                               DIP { DUP ; CAR ; SWAP ; CDR ; DUP ; CDR ; SWAP ; CAR ; CAR } ;
+                               SWAP ;
+                               PAIR ;
+                               PAIR ;
+                               SWAP ;
+                               PAIR ;
+                               DIP 5 { DUP } ;
+                               DIG 5 ;
+                               CDR ;
+                               CDR ;
+                               CAR ;
+                               PUSH nat 1 ;
+                               ADD ;
+                               DIP { DUP ; CAR ; SWAP ; CDR ; DUP ; CAR ; SWAP ; CDR ; CDR } ;
+                               PAIR ;
+                               SWAP ;
+                               PAIR ;
+                               SWAP ;
+                               PAIR ;
+                               NIL operation ;
+                               PAIR ;
+                               DIP { DROP 8 } } ;
+                           SWAP ;
+                           APPLY ;
+                           DIP { DROP } } ;
+                     EXEC ;
+                     DIP { DROP } } ;
+                 DIP { DROP } } ;
+             DIP { DROP } }
+           { DUP ;
+             DIP { DIP { DUP } ;
+                   SWAP ;
+                   DIP { DIP { DIP { DIP { DIP { DUP } ; DUP ; DIP { PAIR } ; SWAP } ; SWAP } ;
+                               DUP ;
+                               DIP { PAIR } ;
+                               SWAP } ;
+                         SWAP } ;
+                   DUP ;
+                   DIP { PAIR } ;
+                   SWAP ;
+                   LAMBDA
+                     (pair (pair (pair (pair (pair (map %cells nat (set address))
+                                                   (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                             (pair (list %events
+                                                      (pair (pair (set %cells nat) (unit %etype))
+                                                            (pair (map %intensity nat nat) (timestamp %time))))
+                                                   (address %owner)))
+                                       (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                             (pair (nat %total_users)
+                                                   (map %users
+                                                      address
+                                                      (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                 (pair (pair (pair (pair (map %cells nat (set address))
+                                                         (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                   (pair (list %events
+                                                            (pair (pair (set %cells nat) (unit %etype))
+                                                                  (pair (map %intensity nat nat) (timestamp %time))))
+                                                         (address %owner)))
+                                             (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                   (pair (nat %total_users)
+                                                         (map %users
+                                                            address
+                                                            (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                       (pair (lambda
+                                                (pair (pair (pair (map %cells nat (set address))
+                                                                  (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                            (pair (list %events
+                                                                     (pair (pair (set %cells nat) (unit %etype))
+                                                                           (pair (map %intensity nat nat) (timestamp %time))))
+                                                                  (address %owner)))
+                                                      (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                            (pair (nat %total_users)
+                                                                  (map %users
+                                                                     address
+                                                                     (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                                bool)
+                                             (lambda
+                                                (pair (pair (pair (map %cells nat (set address))
+                                                                  (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                                            (pair (list %events
+                                                                     (pair (pair (set %cells nat) (unit %etype))
+                                                                           (pair (map %intensity nat nat) (timestamp %time))))
+                                                                  (address %owner)))
+                                                      (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                                            (pair (nat %total_users)
+                                                                  (map %users
+                                                                     address
+                                                                     (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months)))))))
+                                                bool))))
+                           (pair (pair (set %cells nat) (unit %etype))
+                                 (pair (map %intensity nat nat) (timestamp %time))))
+                     (pair (list operation)
+                           (pair (pair (pair (map %cells nat (set address))
+                                             (or %current_phase (or (unit %end) (unit %insuring)) (unit %running)))
+                                       (pair (list %events
+                                                (pair (pair (set %cells nat) (unit %etype))
+                                                      (pair (map %intensity nat nat) (timestamp %time))))
+                                             (address %owner)))
+                                 (pair (pair (mutez %remaining_balance) (mutez %running_balance))
+                                       (pair (nat %total_users)
+                                             (map %users
+                                                address
+                                                (pair (pair (address %address) (mutez %balance)) (pair (nat %cell) (nat %months))))))))
+                     { DUP ;
+                       CAR ;
+                       SWAP ;
+                       CDR ;
+                       DIP { DUP ;
+                             CDR ;
+                             SWAP ;
+                             CAR ;
+                             DIP { DUP ; CDR ; SWAP ; CAR ; DIP { DUP ; CDR ; SWAP ; CAR } } ;
+                             DUP } ;
+                       SWAP ;
+                       DIP { DIP 3 { DUP } ; DIG 3 } ;
+                       EXEC ;
+                       IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                       DIP 2 { DUP } ;
+                       DIG 2 ;
+                       DIP { DIP 5 { DUP } ; DIG 5 } ;
+                       EXEC ;
+                       IF { PUSH unit Unit } { PUSH unit Unit ; FAILWITH } ;
+                       DIP 3 { DUP } ;
+                       DIG 3 ;
+                       DIP 3 { DUP } ;
+                       DIG 3 ;
+                       DIP { DIP 4 { DUP } ; DIG 4 ; CAR ; CDR ; CAR } ;
+                       CONS ;
+                       DIP { DUP ; CDR ; SWAP ; CAR ; DUP ; CAR ; SWAP ; CDR ; CDR } ;
+                       PAIR ;
+                       SWAP ;
+                       PAIR ;
+                       PAIR ;
+                       NIL operation ;
+                       PAIR ;
+                       DIP { DROP 7 } } ;
+                   SWAP ;
+                   APPLY ;
+                   DIP { DROP } } ;
+             EXEC ;
+             DIP { DROP } } ;
+         DUP ;
+         DIP { DROP 7 } } }
+

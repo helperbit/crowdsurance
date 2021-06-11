@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "ethereumjs-testrpc": "^3.0.2"
+  },
+
+  "scripts": {
+    "start": "./node_modules/ethereumjs-testrpc/bin/testrpc"
+  }
+}

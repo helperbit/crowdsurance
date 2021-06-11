@@ -1,0 +1,100 @@
+<!-- 
+  Helperbit: a p2p donation platform (crowdsurance)
+  Copyright (C) 2016-2021  Davide Gessa (gessadavide@gmail.com)
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>
+ -->
+
+<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/">
+<head profile="http://www.w3.org/2005/10/profile">
+	<meta charset="utf-8">
+	<meta http-equiv="cache-control" content="no-cache, no-store">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Insurbit</title>
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel='stylesheet' type='text/css' href="./app.css">
+
+	<script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+</head>
+<body  ng-cloak> <!--ng-app="insurbitApp" -->
+<nav id="mymenu"  class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid"><div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+		<a class="navbar-brand" href="#home"><img src="images/logo_white.svg" height="30px" /></a>
+	</div>
+
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	  <ul class="nav navbar-nav hidden-sm hidden-xs" style="padding-left: 2em; font-size: 155%;">
+		  <li><a href="https://facebook.com/helperbit" target="_blank">
+				<i class="fa fa-facebook"></i>
+		  </a></li>
+	  </ul>
+	  <ul class="nav navbar-nav navbar-right" style="background-color: #feb737;">
+		<li data-menuanchor="index.html" class=""><a href="http://www.helperbit.com">About Helperbit</a></li>
+	</ul>
+	</div>
+	</div>
+</nav>
+<div style="height: 60px"></div>
+<div class="container">
+  <div ng-include="'views/status.html'"></div>
+  <div>
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist">
+	  <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
+	  <li role="presentation"><a href="#insure" aria-controls="insure" role="tab" data-toggle="tab">Insure</a></li>
+	  <li role="presentation"><a href="#events" aria-controls="events" role="tab" data-toggle="tab">Events</a></li>
+	  <li role="presentation"><a href="#raise" aria-controls="raise" role="tab" data-toggle="tab">Raise Events</a></li>
+	  <li role="presentation"><a href="#admin" aria-controls="admin" role="tab" data-toggle="tab">Admin</a></li>
+	</ul>
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div role="tabpanel" class="tab-pane active" id="overview">
+
+	  </div>
+	  <div role="tabpanel" class="tab-pane" id="insure">
+		<div ng-include="'views/insure.html'"></div>
+	  </div>
+	  <div role="tabpanel" class="tab-pane" id="events">
+		<div ng-include="'views/events.html'"></div>
+	  </div>
+	  <div role="tabpanel" class="tab-pane" id="raise">
+		<div ng-include="'views/raise.html'"></div>
+	</div>
+	  <div role="tabpanel" class="tab-pane" id="admin">
+			<div ng-include="'views/admin.html'"></div>
+		</div>
+  </div>
+  <br>
+  <br>
+</div>
+
+<script>
+	window.addEventListener('load', function() {
+		angular.bootstrap(document, ['insurbitApp'])
+	});
+</script>
+</body>
+</html>

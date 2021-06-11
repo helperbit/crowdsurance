@@ -1,0 +1,48 @@
+type rat = nat * nat
+
+type phase = 
+  Creation
+| Insuring
+| Insured
+| Expired
+
+type user = {
+  addr    : address;
+  cell    : nat;
+  bal     : tez;
+  premium : tez;
+  verified: bool;
+}
+
+type event_type = 
+  Earthquake
+| Flood
+| Wildfire
+| Draught
+| Hurricane
+| Eruption
+
+type event = {
+  eid			  : string;					  (* Unique event identifier *)
+  date      : timestamp;        (* Event timestamp *)
+	etype		  : event_type;				(* Event type *)
+	mag			  : rat;					    (* Magnitude *)
+	cells		  : nat set;		      (* Affected cells *)
+	affected	: address set;			(* Affected users *)
+}
+
+type storage = {
+  current_phase     : phase;
+
+	insuring_deadline : timestamp;
+  expiration        : timestamp; 
+  initial_balance   : tez;
+  elapsed_balance   : tez;
+  insured_users     : nat;
+
+  users             : (address, user) map;
+  cells             : (nat, address set) map;
+  events            : event list;
+}
+
+type return = operation list * storage

@@ -1,0 +1,270 @@
+// Crowdsurance contract
+// v2
+//
+// - single intensity in whole area
+// - only instant distribution
+// - the user reward for an event, is the amount of its premium * (mag - minmag)
+// - the event trigger will fail if sum(afct_premium) > elapsed_balance
+
+// TODO: handle elapsed balance > 0 after expiration
+// TODO: handle afct_premium > elapsed_balance
+// TODO: allow to withdraw not verified premium
+
+archetype crowsurance
+
+// ATM there are no Set type, and list are not suitable for cell list in event or user list in cells
+
+(* oracles and manager *)
+constant contract_manager 	: role = @tz15P69BXJYAURaznhvN1k1KmuhR6P52hw6x
+constant event_oracle 		: role = @tz15P69BXJYAURaznhvN1k1KmuhR6P52hw6x
+constant verify_oracle 		: role = @tz15P69BXJYAURaznhvN1k1KmuhR6P52hw6x
+
+(* minium premium *)
+constant min_premium		: tez = 1tz
+
+(* max and mig magnitude *)
+constant max_mag			: rational = 12.0
+constant min_mag			: rational = 5.0
+
+(* contract durations *)
+constant insuring_duration	: duration = 1w
+constant insured_duration	: duration = 4w
+
+(* expected sum of events magnitude during the event *)
+// constant sum_mag			: rational = 100.0
+
+
+variable insuring_deadline 	: date = now 
+variable expiration 		: date = now
+
+variable initial_balance	: tez = 0tz
+variable elapsed_balance 	: tez = 0tz
+variable insured_users 		: int = 0
+
+states =
+| Creation initial
+| Insuring
+| Insured
+| Expired
+
+asset user identified by addr {
+	addr	: address;			(* Address of the insured user *)
+	cell	: int;				(* Cell where the user is geoverified *)
+	bal		: tez;				(* Balance gathered from distribution *)
+	premium	: tez;				(* Premium amount *)
+	verified: bool;				(* Verified by the oracle *)
+} with {
+	u0		: cell > 0;
+	u1		: premium > min_premium;
+}
+
+asset wcell identified by idx {
+	idx		: int;					(* Cell index *)
+	users	: user collection;		(* Users in this cell *)
+} with {
+	wc0		: idx > 0;
+}
+
+// asset EventLayer identified by damage {
+// 	damage	: int;					(* Damage leve (1 = low; 3 = high) *)
+// 	cells	: int list;				(* List of affceted cells *)
+// }
+
+enum event_type = 
+| Earthquake
+| Flood
+| Wildfire
+| Draught
+| Hurricane
+| Eruption
+
+asset event_cell identified by cid {
+	cid		: int;
+} with {
+	ec0		: cid > 0;
+}
+
+asset event identified by eid {
+	eid			: string;					(* Unique event identifier *)
+	etype		: event_type;				(* Event type *)
+	edate		: date;						(* Event timestamp *)
+	mag			: rational;					(* Magnitude *)
+	cells		: event_cell partition;		(* Affected cells *)
+	// layers	: EventLayer collection;	(* Affected cell list *)
+	affected	: user collection;			(* Affected users *)
+} with {
+	e0			: cells.count() > 0;
+	e1			: mag > min_mag and mag < max_mag
+}
+
+
+(* Start the contract, initializing the deadlines *)
+transition start () {
+  called by contract_manager
+  from Creation
+  to Insuring
+  with effect {
+	  insuring_deadline := now + insuring_duration;
+	  expiration 		:= now + insuring_duration + insured_duration;
+  }
+}
+
+(* End of the insuring period, callable after reaching insuring deadline *)
+transition endInsuring () {
+  called by contract_manager
+  from Insuring
+  to Insured when { now >= insuring_deadline }
+  with effect {
+	  var vrf = user.select(the.verified = true);
+	  elapsed_balance 	:= vrf.sum(premium);
+	  initial_balance 	:= elapsed_balance;
+	  insured_users 	:= vrf.count();
+  }
+}
+
+(* End of the insured period, callable after reaching expiration deadline *)
+transition endInsured () {
+  called by contract_manager
+  from Insured
+  to Expired when { now >= expiration }
+}
+
+(* Add an insured user, unverified *)
+action insureUser (pos: int) {
+    specification {
+        postcondition ip0 {
+            user.count() = before.user.count() + 1
+		}
+    }
+	accept transfer
+	require {
+		i0: state = Insuring;
+		i1: transferred >= min_premium;
+		i2: not user.contains(caller);
+	}
+	effect {
+		user.add({ addr = caller; premium = transferred; verified = false; cell = pos; bal = 0tz });
+	}
+}
+
+(* Verify an user, called by verify_oracle *)
+action verifyUser (uaddr: address, wc: int) {
+    specification {
+        postcondition vp0 {
+            user.select(the.verified = false).count() = before.user.select(the.verified = false).count() - 1
+		}
+		postcondition vp1 {
+			wcell.contains(wc)
+		}
+		// postcondition p2 {
+		// 	wcell.get(wc).users.contains(uaddr)
+		// }
+    }
+	called by verify_oracle
+	require {
+		v0 : state = Insuring;
+		v1 : user.contains(uaddr);
+		v2 : user.get(uaddr).cell = wc;
+		v3 : not (wcell.contains(wc)) or (wcell.contains(wc) and not wcell.get(wc).users.contains(uaddr))
+	}
+	effect {
+		(* set verification status *)
+		var u : user = user.get(uaddr);
+		user.update(uaddr, { verified = true });
+
+		(* add the user to the cell (if none, create) *)
+		if wcell.contains(u.cell) then (
+			wcell.add({ idx = u.cell; users = [] });
+		) else ();
+
+		wcell.get(u.cell).users.add(user.get(uaddr));
+	}
+}
+
+(* Withdraw user funds, if any (this could be automatic after expiration?) *)
+action withdraw () {
+    specification {
+        postcondition wp0 {
+            user.select(the.addr = caller).sum(the.bal) = 0tz
+		}
+		postcondition wp1 {
+			user.sum(the.bal) = before.user.sum(the.bal) - before.user.select(the.addr = caller).sum(the.bal)
+        }
+		postcondition wp2 {
+			balance = before.balance - before.user.select(the.addr = caller).sum(the.bal)
+		}
+    }
+	require {
+		w0 : state = Expired;
+		w1 : user.contains(caller);
+     	w2 : user.get(caller).verified;
+		w3 : user.get(caller).bal > 0utz;
+		w4 : balance >= user.get(caller).bal
+	}
+	effect {
+		user.update(caller, { bal = 0tz });
+		transfer user.get(caller).bal to caller
+	}
+}
+
+
+(* Trigger an event distribution, called by event_oracle *)
+action triggerEvent (ed: string, eda: date, emg: rational, et: event_type, cl: event_cell partition) {
+    specification {
+		postcondition tp0 {
+			event.count() = before.event.count() + 1
+		}
+		postcondition tp1 {
+			elapsed_balance >= 0tz
+		}
+	}
+	called by event_oracle
+	require {
+		t0 : state = Insured;
+		t1 : cl.count() > 0;
+		t2 : not event.contains(ed);
+		t3 : emg > min_mag and emg < max_mag
+		t4 : eda < now
+	}
+	effect {
+		var ev : event = { eid = ed; edate = eda; mag = emg; etype = et; cells = cl; affected = [] };
+
+		(* populate the affected  *)
+		for c in cl do								(* for every cell of the event *)
+			for ac in wcell.get(c.cid).users do		(* for every user of the cell *)
+				ev.affected.add(ac);
+			done;
+		done;
+
+		(* cumulative premium of affected users in this event *)
+		// var start_balance: tez = elapsed_balance;
+		var afct_premium: tez = ev.affected.sum(premium);
+
+		// start_balance > afct_premium?
+
+		(* amount to distribute with this event *)
+		// var to_dist: tez = (emg / sum_mag) * initial_balance;
+
+		for iu in ev.affected do
+			// atm we cannot do the following operation over tezos type; we can:
+			// 1. use rational for balance, premium (but we need a conversion function)
+			// var nbal = iu.bal + (iu.premium * to_dist / afct_premium);
+
+			// we use (emg - min_mag as a multiplier factor)
+			var nbal = iu.bal + (emg - min_mag) * iu.premium;
+
+			// for each user, we update the balance
+			user.update(iu.addr, { bal = nbal });
+			elapsed_balance -= nbal;
+		done;
+
+		// assert elapsed_balance = start_balance - afct_premium
+
+		event.add (ev);
+	}
+}
+
+
+security {
+	s0: no_storage_fail(anyaction);
+}

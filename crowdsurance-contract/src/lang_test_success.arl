@@ -1,0 +1,15 @@
+archetype langtest
+
+variable vv : rational = 0.0
+
+action start (cl: rational) {
+	specification {
+		postcondition p1 { vv > 0.0 }
+	}
+	require {
+		c0: cl > 0.0
+	}
+	effect {
+		vv := cl;
+	}
+}

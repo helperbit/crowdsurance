@@ -1,0 +1,154 @@
+(* 
+	Crowdsurance contract 
+	v1
+
+	The mlligo version of crwds_1.arl
+*)
+
+#include "types.mlligo"
+#include "helpers.mlligo"
+#include "constants.mlligo"
+
+type action =
+| Start
+| EndInsuring
+| EndInsured
+| Withdraw
+| WithdrawNotVerified
+| InsureUser    of nat
+| VerifyUser    of address * nat
+| TriggerEvent  of string * timestamp * rat * event_type * nat set
+
+
+(* Start the contract, initializing the deadlines *)
+let start (s: storage) : return =
+	let a0: unit = assert (called_by contract_manager) in
+  let a1: unit = assert (in_phase s, Creation) in
+  let sd_tx = Tezos.set_delegate (Some(contract_manager)) in
+  ([sd_tx]: operation list), { s with 
+    current_phase     = Insuring;
+    insuring_deadline = now + insuring_duration;
+    expiration        = now + insuring_duration + insured_duration;
+  }
+
+
+(* End of the insuring period, callable after reaching insuring deadline *)
+let end_insuring (s: storage) : return =
+	let a0: unit = assert (called_by contract_manager) in
+  let a1: unit = assert (in_insuring s) in
+  let a2: unit = assert (after s.insuring_deadline) in
+  rets { s with 
+    current_phase     = Insured;
+    initial_balance 	= s.elapsed_balance;
+  }
+
+
+
+(* End of the insured period, callable after reaching expiration deadline *)
+let end_insured (s: storage) : return = 
+	let a0: unit = assert (called_by contract_manager) in
+  let a1: unit = assert (in_insured s) in
+  let a2: unit = assert (after s.expiration) in
+  rets { s with current_phase = Expired }
+
+
+(* Add an insured user, unverified *)
+let insure_user (s, pos: storage * nat) : return = 
+  let a1: unit = assert (in_insuring s) in
+  let a2: unit = assert (after s.expiration) in
+  let a3: unit = assert (has_amount min_premium) in
+  let a4: unit = assert (not (Map.mem Tezos.sender s.users)) in
+  rets { s with 
+    users = Map.add (Tezos.sender : address) ({
+      addr    = Tezos.sender;
+      premium = Tezos.amount;
+      verified= false;
+      cell    = pos;
+      bal     = 0tz;
+    }: user) users.map
+  }
+
+(* Verify an user, called by verify_oracle *)
+let verify_user (s, uaddr, wc: storage * address * nat) : return =
+	let a0: unit = assert (called_by verify_oracle) in
+  let a1: unit = assert (in_insuring s) in
+  let a2: unit = assert (Map.mem uaddr s.users) in
+  let u: user = unroll_user_opt (Map.find_opt uaddr s.users) in
+  let a3: unit = assert (u.cell = wc) in
+  let cells = match Map.find_opt uaddr s.cells with
+  | None -> Map.add wc (Set.literal [uaddr]) s.cells
+  | Some(cset) -> Map.update wc (Set.add uaddr cset) s.cells
+  in
+  rets { s with 
+    insured_users   = insured_users + 1;
+    elapsed_balance = elapsed_balance + u.premium;
+    users           = Map.update uaddr (Some({ u with verified = true }: user)) s.users;
+    cells           = cells;
+  }
+
+
+(* Withdraw user funds, if any (this could be automatic after expiration?) *)
+let withdraw (s: storage) : return = 
+  let a0: unit = assert (in_expired s) in
+  let a1: unit = assert (Map.mem Tezos.sender s.users) in
+  let u: user = unroll_user_opt (Map.find_opt Tezos.sender s.users) in
+  let a2: unit = assert (u.bal > 0mutez) in
+  let a3: unit = assert (Tezos.balance >= u.bal) in
+  let a4: unit = assert (u.verified = true) in
+  let tx = Tezos.transfer unit u.bal sender_contract in
+  ([tx]: operation list), { s with 
+    users = Map.update Tezos.sender ({ u with bal = 0mutez }: user)
+  }
+
+
+(* If an user sent funds to contract but nobody verified it, allow to withdraw its premium *)
+let withdraw_notverified (s: storage) : return = 
+  let a0: unit = assert (in_expired s) in
+  let a1: unit = assert (Map.mem Tezos.sender s.users) in
+  let u: user = unroll_user_opt (Map.find_opt Tezos.sender s.users) in
+  let a2: unit = assert (u.premium > 0mutez) in
+  let a3: unit = assert (Tezos.balance >= u.premium) in
+  let a4: unit = assert (u.verified = false) in
+  let tx = Tezos.transfer unit u.premium sender_contract in
+  ([tx]: operation list), { s with 
+    users = Map.update Tezos.sender ({ u with premium = 0mutez }: user)
+  }
+
+
+(* Trigger an event distribution, called by event_oracle *)
+
+let sadd (acc, a : address set * address) : address set = Set.add a acc [@@inline]
+let addr_of_cell (s, acc, i : storage * address set * nat) : address set = 
+  match Map.find_opt i s.cells with
+  | None      -> Set.empty
+  | Some(ads) -> Set.fold sadd ads 
+  [@@inline]
+let reward_affected (s, i : storage * addr) =
+  let u   : user  = unroll_user_opt (Map.find_opt i s.users) in
+  let nbal: tez   = u.bal + u.premium in 
+  { s with 
+    elapsed_balance = s.elapsed_balance - nbal;
+    users           = Map.update i ({ u with bal = nbal }: user) s.users
+  }
+
+let trigger_event (s, ed, eda, emg, et, cl: storage * string * timestamp * rat * event_type * nat set) : return =
+	let a0: unit = assert (called_by event_oracle) in
+  let a1: unit = assert (in_insured s) in 
+  let a2: unit = assert (Set.cardinal cl > 0) in
+  let a3: unit = assert (rat_gte emg min_mag && rat_lte emg max_mag) in
+  let afctd: address set = Set.fold addr_of_cell cl Set.empty in 
+  let ev: event = { eid = ed; mag = emg; date = eda; etype = et; cells = cl; affected = afctd } in
+  let s: storage = Set.fold reward_affected afctd s.users in
+  rets { s with events = Set.add ev s.events }
+
+
+
+let main (a, s: action * storage) : return = match a with
+| Start -> start s
+| EndInsuring -> end_insuring s
+| EndInsured -> end_insured s
+| InsureUser wc -> insure_user (s, wc)
+| VerifyUser p -> let (adr, wc) = p in verify_user (s, adr, wc)
+| TriggerEvent p -> let (a,b,c,d,e) = p in trigger_event (s, a, b, c, d, e)
+| Withdraw -> withdraw s
+| WithdrawNotVerified -> withdraw_notverified s
